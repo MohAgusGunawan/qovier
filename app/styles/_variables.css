@@ -43,6 +43,7 @@
     hsla(0, 0%, 95%, 1) 100%
   );
   --surface-color: hsl(0, 0%, 100%);
+  --line-color: hsl(0, 0%, 91%);
 
   /* State Color */
   --success-color: hsl(148, 46%, 47%);
