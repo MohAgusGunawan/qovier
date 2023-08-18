@@ -1,0 +1,58 @@
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 1rem;
+
+  .logo {
+    width: 33px;
+    height: 28px;
+  }
+}
+
+.headline {
+  font-size: var(--fs-3xl);
+  font-weight: var(--fw-bold);
+
+  text-align: center;
+  text-wrap: balance;
+
+  color: var(--text-focal-color);
+}
+
+.paragraph {
+  margin-top: 1rem;
+
+  font-size: var(--fs-lg);
+
+  text-align: center;
+  text-wrap: balance;
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .logoWrapper {
+    .logo {
+      width: 44px;
+      height: 49px;
+    }
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+  .logoWrapper {
+    .logo {
+      width: 60px;
+      height: 65px;
+    }
+  }
+}

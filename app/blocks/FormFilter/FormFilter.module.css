@@ -1,0 +1,226 @@
+.customize {
+  border: 2px dashed var(--text-common-color);
+  border-radius: 16px;
+
+  margin: 0 auto;
+  margin-top: 4rem;
+  max-width: 864px;
+
+  padding: 1.6em 1em;
+
+  .headingCustomize {
+    font-size: var(--fs-lg);
+    font-weight: var(--fw-bold);
+
+    display: flex;
+    align-items: center;
+    gap: 0.4em;
+  }
+
+  .paragraph {
+    margin-top: 0;
+    text-align: left;
+    font-size: var(--fs-md);
+  }
+}
+
+.form {
+  margin-top: 1em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  .groupSelect {
+    display: flex;
+    flex-direction: column;
+
+    gap: inherit;
+  }
+}
+
+.selectWrap {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  position: relative;
+
+  .selectLabel {
+    font-size: var(--fs-md);
+    font-weight: var(--fw-semibold);
+  }
+
+  .selectButton {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    background: var(--surface-color);
+    color: var(--text-focal-color);
+
+    padding: 0.5em 0.875em;
+    border-radius: 8px;
+
+    font-size: var(--fs-md);
+
+    box-shadow: var(--shadow-bottom);
+
+    .selectChips {
+      flex-grow: 1;
+
+      display: flex;
+
+      border-radius: 4px;
+      overflow: hidden;
+
+      .selectChip {
+        --color: transparent;
+
+        display: flex;
+        flex-grow: 1;
+
+        height: var(--fs-md);
+
+        background: var(--color);
+        border: 0.5px solid gray;
+      }
+    }
+  }
+
+  .selectButton:focus-visible {
+    outline: 2px solid var(--text-common-color);
+  }
+
+  .selectOptionBox {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+
+    top: 100%;
+    margin-top: 1em;
+
+    width: 100%;
+    max-height: 240px;
+    border-radius: 8px;
+
+    overflow-y: auto;
+
+    z-index: 99;
+
+    box-shadow: var(--shadow-bottom);
+  }
+
+  .selectOption {
+    font-size: var(--fs-md);
+
+    padding: 0.5em 0.875em;
+    background: var(--surface-color);
+
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    user-select: none;
+    cursor: pointer;
+  }
+
+  .selectOptionFocus {
+    --color: transparent;
+
+    font-size: var(--fs-md);
+
+    padding: 0.5em 0.875em;
+
+    background: linear-gradient(
+      120deg,
+      var(--surface-color) 0%,
+      var(--surface-color) 20%,
+      var(--color) 100%
+    );
+
+    display: flex;
+    align-items: center;
+    gap: 1em;
+
+    user-select: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .selectOption:not(:last-child),
+  .selectOptionFocus:not(:last-child) {
+    border-bottom: 1px solid var(--line-color);
+  }
+
+  .selectSelected {
+    display: block;
+    width: 16px;
+  }
+
+  .colorIcon {
+    --color: transparent;
+
+    display: block;
+
+    width: var(--fs-md);
+    height: var(--fs-md);
+
+    border-radius: 50% / 50%;
+    border: 0.5px solid gray;
+
+    background: var(--color);
+  }
+}
+
+.buttonWrapper {
+  padding-top: 1em;
+}
+
+.buttonPrimary {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4em;
+
+  line-height: unset;
+
+  padding: 0.5em 0.875em;
+  border-radius: 8px;
+
+  background: var(--text-focal-color);
+  color: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
+
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+}
+
+.buttonPrimary:active {
+  background: var(--text-common-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .form {
+    .groupSelect {
+      flex-direction: row;
+    }
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
