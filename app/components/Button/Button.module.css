@@ -1,0 +1,40 @@
+.buttonPrimary {
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.4em;
+
+  line-height: unset;
+
+  padding: 0.5em 0.875em;
+  border-radius: 8px;
+
+  background: var(--text-focal-color);
+  color: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
+
+  font-weight: var(--fw-semibold);
+  cursor: pointer;
+}
+
+.buttonPrimary:active {
+  background: var(--text-common-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

@@ -10,6 +10,7 @@ import { colors, secondaryColors } from '@app/data/color';
 import { ColorType } from '@app/types/ColorType';
 
 import styles from './FormFilter.module.css';
+import Button from '@/app/components/Button/Button';
 
 const FormFilter = () => {
   const [selectedPrimary, setSelectedPrimary] = useState<ColorType>(colors[0]);
@@ -53,10 +54,7 @@ const FormFilter = () => {
         </div>
 
         <div className={styles.buttonWrapper}>
-          <button className={styles.buttonPrimary}>
-            <span>Generate</span>
-            <TbRefresh />
-          </button>
+          <Button icon={<TbRefresh />}>Generate</Button>
         </div>
       </form>
     </div>
