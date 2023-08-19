@@ -23,6 +23,10 @@
   background: var(--text-common-color);
 }
 
+.buttonPrimary:focus-visible {
+  outline: 5px solid var(--info-color);
+}
+
 @media (hover: hover) {
   /* when supported */
 }

@@ -27,6 +27,8 @@
 
     box-shadow: var(--shadow-bottom);
 
+    cursor: pointer;
+
     .selectChips {
       flex-grow: 1;
 
@@ -118,38 +120,6 @@
     display: block;
     width: 16px;
   }
-
-  .colorIcon {
-    --color: transparent;
-
-    display: block;
-
-    width: var(--fs-md);
-    height: var(--fs-md);
-
-    border-radius: 50% / 50%;
-    border: 0.5px solid gray;
-
-    background: var(--color);
-  }
-}
-
-.enterTransition {
-  transition: all 0.1s ease-in-out;
-}
-
-.leaveTransition {
-  transition: all 0.2s ease-out;
-}
-
-.fadeSlideOut {
-  transform: translateY(-10%);
-  opacity: 0;
-}
-
-.fadeSlideIn {
-  transform: translateY(0%);
-  opacity: 1;
 }
 
 @media (hover: hover) {

@@ -80,12 +80,12 @@ const SelectColor = (props: Props) => {
           </Listbox.Button>
           <Transition
             as={Fragment}
-            enter={styles.enterTransition}
-            enterFrom={styles.fadeSlideOut}
-            enterTo={styles.fadeSlideIn}
-            leave={styles.leaveTransition}
-            leaveFrom={styles.fadeSlideIn}
-            leaveTo={styles.fadeSlideOut}
+            enter="at-enterTransition"
+            enterFrom="at-fadeSlideOut"
+            enterTo="at-fadeSlideIn"
+            leave="at-leaveTransition"
+            leaveFrom="at-fadeSlideIn"
+            leaveTo="at-fadeSlideOut"
           >
             <Listbox.Options className={styles.selectOptionBox}>
               {list.map((color) => (
@@ -108,7 +108,7 @@ const SelectColor = (props: Props) => {
                           {selected && <HiCheck />}
                         </span>
                         <span
-                          className={styles.colorIcon}
+                          className="colorIcon"
                           style={
                             {
                               '--color': color.displayColor.circle,
@@ -128,7 +128,7 @@ const SelectColor = (props: Props) => {
         <Listbox value={value} onChange={onChange} name={name}>
           <Listbox.Button className={styles.selectButton}>
             <span
-              className={styles.colorIcon}
+              className="colorIcon"
               style={
                 {
                   '--color': value.displayColor.circle,
@@ -140,12 +140,12 @@ const SelectColor = (props: Props) => {
 
           <Transition
             as={Fragment}
-            enter={styles.enterTransition}
-            enterFrom={styles.fadeSlideOut}
-            enterTo={styles.fadeSlideIn}
-            leave={styles.leaveTransition}
-            leaveFrom={styles.fadeSlideIn}
-            leaveTo={styles.fadeSlideOut}
+            enter="at-enterTransition"
+            enterFrom="at-fadeSlideOut"
+            enterTo="at-fadeSlideIn"
+            leave="at-leaveTransition"
+            leaveFrom="at-fadeSlideIn"
+            leaveTo="at-fadeSlideOut"
           >
             <Listbox.Options className={styles.selectOptionBox}>
               {list.map((item) => (
@@ -168,7 +168,7 @@ const SelectColor = (props: Props) => {
                           {selected && <HiCheck />}
                         </span>
                         <span
-                          className={styles.colorIcon}
+                          className="colorIcon"
                           style={
                             {
                               '--color': item.displayColor.circle,

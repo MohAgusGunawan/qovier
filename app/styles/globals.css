@@ -35,6 +35,38 @@ img {
   padding: 0 1.6em;
 }
 
+.at-enterTransition {
+  transition: all 0.1s ease-in-out;
+}
+
+.at-leaveTransition {
+  transition: all 0.2s ease-out;
+}
+
+.at-fadeSlideOut {
+  transform: translateY(-10%);
+  opacity: 0;
+}
+
+.at-fadeSlideIn {
+  transform: translateY(0%);
+  opacity: 1;
+}
+
+.colorIcon {
+  --color: transparent;
+
+  display: block;
+
+  width: var(--fs-md);
+  height: var(--fs-md);
+
+  border-radius: 50% / 50%;
+  border: 0.5px solid gray;
+
+  background: var(--color);
+}
+
 @media (hover: hover) {
   /* when supported */
 }
