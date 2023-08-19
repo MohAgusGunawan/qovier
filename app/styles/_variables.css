@@ -1,0 +1,59 @@
+/* Global Variables */
+
+:root {
+  /* Font Weight */
+  --fw-extralight: 200;
+  --fw-light: 300;
+  --fw-reguler: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+  --fw-extrabold: 800;
+  --fw-black: 900;
+
+  /* Font Size */
+  --fs-3xl: 2.074em;
+  --fs-2xl: 1.728em;
+  --fs-xl: 1.44em;
+  --fs-lg: 1.2em;
+  --fs-md: 1em;
+  --fs-sm: 0.833em;
+  --fs-xs: 0.694em;
+
+  /* Line Height */
+  --lh-heading: 1.4;
+  --lh-paragraph: 1.6;
+
+  /* Shadow Effects */
+  --shadow-bottom: 0 4px 15px -4px hsla(0, 0%, 0%, 10%);
+  --shadow-top: 0 -4px 15px -4px hsla(0, 0%, 0%, 10%);
+
+  /* ### Color */
+  /* ### Color ########################################################################## */
+  /* ### Color */
+
+  /* Theme Color */
+  --primary-color: hsl(84, 82%, 46%);
+
+  /* App Color */
+  --body-background-color: hsl(0, 0%, 95%);
+  --background-color: linear-gradient(
+    180deg,
+    hsla(0, 0%, 100%, 1) 25%,
+    hsla(0, 0%, 95%, 1) 100%
+  );
+  --surface-color: hsl(0, 0%, 100%);
+  --line-color: hsl(0, 0%, 91%);
+
+  /* State Color */
+  --success-color: hsl(148, 46%, 47%);
+  --info-color: hsl(187, 98%, 44%);
+  --warning-color: hsl(54, 100%, 51%);
+  --danger-color: hsl(7, 93%, 66%);
+
+  /* Text Color */
+  --text-focal-color: hsl(0, 0%, 15%);
+  --text-common-color: hsl(0, 0%, 26%);
+
+  --text-onprimary-color: hsl(0, 0%, 100%);
+}

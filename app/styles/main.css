@@ -1,0 +1,11 @@
+/* Import all Reset Properties */
+@import url('./_reset.css');
+
+/* Import all css variables */
+@import url('./_variables.css');
+
+/* Import Font Type */
+@import url('./_typography.css');
+
+/* Import Global Styles */
+@import url('./globals.css');
