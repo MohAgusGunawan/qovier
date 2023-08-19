@@ -4,13 +4,13 @@ import { useState } from 'react';
 import { TbRefresh, TbFilterCog } from 'react-icons/tb';
 
 import SelectColor from '@/app/components/SelectColor/SelectColor';
+import Button from '@/app/components/Button/Button';
 
 import { colors, secondaryColors } from '@app/data/color';
 
 import { ColorType } from '@app/types/ColorType';
 
 import styles from './FormFilter.module.css';
-import Button from '@/app/components/Button/Button';
 
 const FormFilter = () => {
   const [selectedPrimary, setSelectedPrimary] = useState<ColorType>(colors[0]);
