@@ -2,7 +2,7 @@ import React, { SetStateAction, Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { HiCheck } from 'react-icons/hi2';
 
-import { MyCustomCSS, ColorType } from '@/app/types/ColorType';
+import { ColorIconType, ColorType } from '@/app/types/ColorType';
 
 import styles from './SelectColor.module.css';
 
@@ -50,7 +50,7 @@ const SelectColor = (props: Props) => {
                         style={
                           {
                             '--color': item.displayColor.circle,
-                          } as MyCustomCSS
+                          } as ColorIconType
                         }
                       />
                     );
@@ -69,7 +69,7 @@ const SelectColor = (props: Props) => {
                         style={
                           {
                             '--color': item.displayColor.circle,
-                          } as MyCustomCSS
+                          } as ColorIconType
                         }
                       />
                     );
@@ -88,8 +88,8 @@ const SelectColor = (props: Props) => {
             leaveTo="at-fadeSlideOut"
           >
             <Listbox.Options className={styles.selectOptionBox}>
-              {list.map((color) => (
-                <Listbox.Option key={color.name} value={color}>
+              {list.map((item) => (
+                <Listbox.Option key={item.name} value={item}>
                   {({ active, selected }) => {
                     return (
                       <span
@@ -100,8 +100,8 @@ const SelectColor = (props: Props) => {
                         }`}
                         style={
                           {
-                            '--color': color.displayColor.gradientEnd,
-                          } as MyCustomCSS
+                            '--color': item.displayColor.gradientEnd,
+                          } as ColorIconType
                         }
                       >
                         <span className={styles.selectSelected}>
@@ -111,11 +111,11 @@ const SelectColor = (props: Props) => {
                           className="colorIcon"
                           style={
                             {
-                              '--color': color.displayColor.circle,
-                            } as MyCustomCSS
+                              '--color': item.displayColor.circle,
+                            } as ColorIconType
                           }
                         />
-                        <span>{color.name}</span>
+                        <span>{item.name}</span>
                       </span>
                     );
                   }}
@@ -132,7 +132,7 @@ const SelectColor = (props: Props) => {
               style={
                 {
                   '--color': value.displayColor.circle,
-                } as MyCustomCSS
+                } as ColorIconType
               }
             />
             <span>{value.name}</span>
@@ -161,7 +161,7 @@ const SelectColor = (props: Props) => {
                         style={
                           {
                             '--color': item.displayColor.gradientEnd,
-                          } as MyCustomCSS
+                          } as ColorIconType
                         }
                       >
                         <span className={styles.selectSelected}>
@@ -172,7 +172,7 @@ const SelectColor = (props: Props) => {
                           style={
                             {
                               '--color': item.displayColor.circle,
-                            } as MyCustomCSS
+                            } as ColorIconType
                           }
                         />
                         <span>{item.name}</span>

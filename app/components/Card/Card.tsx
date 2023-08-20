@@ -5,15 +5,34 @@ import { Menu, Transition } from '@headlessui/react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 
-import { MyCustomCSS } from '@app/types/ColorType';
+import {
+  ColorPair,
+  CustomColorType,
+  ColorIconType,
+} from '@app/types/ColorType';
 
 import styles from './Card.module.css';
 
-const Card = () => {
+type Props = {
+  data: ColorPair;
+};
+
+const Card = ({ data }: Props) => {
+  const primary = data.primary;
+  const secondary = data.secondary;
+
   return (
     <div className={styles.card}>
       <div className={styles.cardDisplay}>
-        <div className={styles.cardPairColor} />
+        <div
+          className={styles.cardPairColor}
+          style={
+            {
+              '--first-color': `#${primary.hex}`,
+              '--second-color': `#${secondary.hex}`,
+            } as CustomColorType
+          }
+        />
       </div>
       <div className={styles.cardInfo}>
         <div className={styles.cardButtonWrap}>
@@ -24,11 +43,13 @@ const Card = () => {
                   className="colorIcon"
                   style={
                     {
-                      '--color': 'yellow',
-                    } as MyCustomCSS
+                      '--color': `#${primary.hex}`,
+                    } as ColorIconType
                   }
                 />
-                <span className={styles.mbLabel}>#762839</span>
+                <span
+                  className={styles.mbLabel}
+                >{`#${primary.hex.toLocaleUpperCase()}`}</span>
                 <IoIosArrowDown />
               </Menu.Button>
               <Transition
@@ -49,7 +70,7 @@ const Card = () => {
                         }`}
                       >
                         <TbCopy />
-                        <span>Copy HEX</span>
+                        <span>HEX - ({primary.hex.toLocaleUpperCase()})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -61,7 +82,7 @@ const Card = () => {
                         }`}
                       >
                         <TbCopy />
-                        <span>Copy HSL</span>
+                        <span>RGB - ({String(primary.rgb)})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -73,7 +94,7 @@ const Card = () => {
                         }`}
                       >
                         <TbCopy />
-                        <span>Copy RGB</span>
+                        <span>HSL - ({String(primary.hsl)})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -88,11 +109,13 @@ const Card = () => {
                   className="colorIcon"
                   style={
                     {
-                      '--color': '#762839',
-                    } as MyCustomCSS
+                      '--color': `#${secondary.hex}`,
+                    } as ColorIconType
                   }
                 />
-                <span className={styles.mbLabel}>#762839</span>
+                <span
+                  className={styles.mbLabel}
+                >{`#${secondary.hex.toUpperCase()}`}</span>
                 <IoIosArrowDown />
               </Menu.Button>
               <Transition
@@ -113,7 +136,7 @@ const Card = () => {
                         }`}
                       >
                         <TbCopy />
-                        <span>Copy HEX</span>
+                        <span>HEX - ({secondary.hex.toLocaleUpperCase()})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -125,7 +148,7 @@ const Card = () => {
                         }`}
                       >
                         <TbCopy />
-                        <span>Copy HSL</span>
+                        <span>RGB - ({String(secondary.rgb)})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -137,7 +160,7 @@ const Card = () => {
                         }`}
                       >
                         <TbCopy />
-                        <span>Copy RGB</span>
+                        <span>HSL - ({String(secondary.hsl)})</span>
                       </button>
                     )}
                   </Menu.Item>

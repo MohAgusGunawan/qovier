@@ -5,6 +5,8 @@ import FormFilter from './blocks/FormFilter/FormFilter';
 
 import Card from '@app/components/Card/Card';
 
+import { dataColors } from '@app/data/sampleColor';
+
 import styles from './page.module.css';
 
 export default function Home() {
@@ -24,15 +26,9 @@ export default function Home() {
           </h2>
 
           <div className={styles.cardContainer}>
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
-            <Card />
+            {dataColors.map((data, index) => (
+              <Card data={data} key={index} />
+            ))}
           </div>
         </section>
       </div>
