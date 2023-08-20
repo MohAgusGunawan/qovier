@@ -22,8 +22,8 @@
 
   background: linear-gradient(
     45deg,
-    var(--primary-color) 55%,
-    rgb(208, 0, 255) 55%
+    var(--first-color) 55%,
+    var(--second-color) 55%
   );
 }
 
