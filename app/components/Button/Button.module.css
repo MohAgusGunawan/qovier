@@ -27,6 +27,11 @@
   outline: 5px solid var(--info-color);
 }
 
+.buttonPrimary:disabled {
+  background: gray;
+  cursor: wait;
+}
+
 @media (hover: hover) {
   /* when supported */
 }

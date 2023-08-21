@@ -1,10 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { RefObject, useEffect, useRef, useState } from 'react';
 import { TbRefresh, TbFilterCog } from 'react-icons/tb';
 
-import { useAppDispatch } from '@app/redux/hooks';
-import { receiveColors } from '@app/redux/features/combinationSlice';
+import { useAppDispatch, useAppSelector } from '@app/redux/hooks';
+import {
+  refreshColors,
+  receiveColors,
+} from '@app/redux/features/combinationSlice';
 
 import SelectColor from '@/app/components/SelectColor/SelectColor';
 import Button from '@/app/components/Button/Button';
@@ -17,25 +20,42 @@ import { ColorType } from '@app/types/ColorType';
 
 import styles from './FormFilter.module.css';
 
-const FormFilter = () => {
+type Props = {
+  elementRef: RefObject<HTMLDivElement>;
+};
+
+const FormFilter = ({ elementRef }: Props) => {
+  const { loading } = useAppSelector((state) => state.combination);
   const dispatch = useAppDispatch();
 
   const [selectedPrimary, setSelectedPrimary] = useState<ColorType>(colors[0]);
   const [selectedSecondary, setSelectedSecondary] = useState<ColorType[]>([]);
 
+  const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const firstFilter =
-      selectedPrimary.name === 'All'
-        ? []
-        : [selectedPrimary.name.toLowerCase().replace(' ', '')];
-    const secondFilter = selectedSecondary.map((selected) =>
-      selected.name.toLowerCase().replace(' ', '')
-    );
+    dispatch(refreshColors());
 
-    dispatch(receiveColors(generateCombination(firstFilter, secondFilter)));
+    timerRef.current = setTimeout(() => {
+      const firstFilter =
+        selectedPrimary.name === 'All'
+          ? []
+          : [selectedPrimary.name.toLowerCase().replace(' ', '')];
+      const secondFilter = selectedSecondary.map((selected) =>
+        selected.name.toLowerCase().replace(' ', '')
+      );
+
+      dispatch(receiveColors(generateCombination(firstFilter, secondFilter)));
+      elementRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 1500);
   };
+
+  useEffect(() => {
+    // Clear the interval when the component unmounts
+    return () => clearTimeout(timerRef.current);
+  }, []);
 
   return (
     <div className={styles.customize}>
@@ -69,7 +89,9 @@ const FormFilter = () => {
         </div>
 
         <div className={styles.buttonWrapper}>
-          <Button icon={<TbRefresh />}>Generate</Button>
+          <Button icon={<TbRefresh />} disabled={loading}>
+            Regenerate
+          </Button>
         </div>
       </form>
     </div>

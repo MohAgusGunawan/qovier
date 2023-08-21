@@ -5,6 +5,8 @@ import { Menu, Transition } from '@headlessui/react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 
+import { useAppSelector } from '@app/redux/hooks';
+
 import {
   ColorPair,
   CustomColorType,
@@ -18,6 +20,8 @@ type Props = {
 };
 
 const Card = ({ data }: Props) => {
+  const { loading } = useAppSelector((state) => state.combination);
+
   const primary = data.primary;
   const secondary = data.secondary;
 
@@ -38,7 +42,7 @@ const Card = ({ data }: Props) => {
         <div className={styles.cardButtonWrap}>
           <div className={styles.buttonWrap}>
             <Menu>
-              <Menu.Button className={styles.menuButton}>
+              <Menu.Button className={styles.menuButton} disabled={loading}>
                 <span
                   className="colorIcon"
                   style={
@@ -47,64 +51,66 @@ const Card = ({ data }: Props) => {
                     } as ColorIconType
                   }
                 />
-                <span
-                  className={styles.mbLabel}
-                >{`#${primary.hex.toLocaleUpperCase()}`}</span>
+                <span className={styles.mbLabel}>
+                  {loading ? '#######' : `#${primary.hex.toUpperCase()}`}
+                </span>
                 <IoIosArrowDown />
               </Menu.Button>
-              <Transition
-                as={Fragment}
-                enter="at-enterTransition"
-                enterFrom="at-fadeSlideOut"
-                enterTo="at-fadeSlideIn"
-                leave="at-leaveTransition"
-                leaveFrom="at-fadeSlideIn"
-                leaveTo="at-fadeSlideOut"
-              >
-                <Menu.Items className={styles.menuItems}>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${styles.menuCopyButton} ${
-                          active ? styles.menuCopyButtonActive : null
-                        }`}
-                      >
-                        <TbCopy />
-                        <span>HEX ({primary.hex.toLocaleUpperCase()})</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${styles.menuCopyButton} ${
-                          active ? styles.menuCopyButtonActive : null
-                        }`}
-                      >
-                        <TbCopy />
-                        <span>RGB ({String(primary.rgb)})</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${styles.menuCopyButton} ${
-                          active ? styles.menuCopyButtonActive : null
-                        }`}
-                      >
-                        <TbCopy />
-                        <span>HSL ({String(primary.hsl)})</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                </Menu.Items>
-              </Transition>
+              {!loading && (
+                <Transition
+                  as={Fragment}
+                  enter="at-enterTransition"
+                  enterFrom="at-fadeSlideOut"
+                  enterTo="at-fadeSlideIn"
+                  leave="at-leaveTransition"
+                  leaveFrom="at-fadeSlideIn"
+                  leaveTo="at-fadeSlideOut"
+                >
+                  <Menu.Items className={styles.menuItems}>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${styles.menuCopyButton} ${
+                            active ? styles.menuCopyButtonActive : null
+                          }`}
+                        >
+                          <TbCopy />
+                          <span>HEX ({primary.hex.toLocaleUpperCase()})</span>
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${styles.menuCopyButton} ${
+                            active ? styles.menuCopyButtonActive : null
+                          }`}
+                        >
+                          <TbCopy />
+                          <span>RGB ({String(primary.rgb)})</span>
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${styles.menuCopyButton} ${
+                            active ? styles.menuCopyButtonActive : null
+                          }`}
+                        >
+                          <TbCopy />
+                          <span>HSL ({String(primary.hsl)})</span>
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </Menu.Items>
+                </Transition>
+              )}
             </Menu>
           </div>
           <div className={styles.buttonWrap}>
             <Menu>
-              <Menu.Button className={styles.menuButton}>
+              <Menu.Button className={styles.menuButton} disabled={loading}>
                 <span
                   className="colorIcon"
                   style={
@@ -113,59 +119,61 @@ const Card = ({ data }: Props) => {
                     } as ColorIconType
                   }
                 />
-                <span
-                  className={styles.mbLabel}
-                >{`#${secondary.hex.toUpperCase()}`}</span>
+                <span className={styles.mbLabel}>
+                  {loading ? '#######' : `#${secondary.hex.toUpperCase()}`}
+                </span>
                 <IoIosArrowDown />
               </Menu.Button>
-              <Transition
-                as={Fragment}
-                enter="at-enterTransition"
-                enterFrom="at-fadeSlideOut"
-                enterTo="at-fadeSlideIn"
-                leave="at-leaveTransition"
-                leaveFrom="at-fadeSlideIn"
-                leaveTo="at-fadeSlideOut"
-              >
-                <Menu.Items className={styles.menuItems}>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${styles.menuCopyButton} ${
-                          active ? styles.menuCopyButtonActive : null
-                        }`}
-                      >
-                        <TbCopy />
-                        <span>HEX ({secondary.hex.toLocaleUpperCase()})</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${styles.menuCopyButton} ${
-                          active ? styles.menuCopyButtonActive : null
-                        }`}
-                      >
-                        <TbCopy />
-                        <span>RGB ({String(secondary.rgb)})</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item>
-                    {({ active }) => (
-                      <button
-                        className={`${styles.menuCopyButton} ${
-                          active ? styles.menuCopyButtonActive : null
-                        }`}
-                      >
-                        <TbCopy />
-                        <span>HSL ({String(secondary.hsl)})</span>
-                      </button>
-                    )}
-                  </Menu.Item>
-                </Menu.Items>
-              </Transition>
+              {!loading && (
+                <Transition
+                  as={Fragment}
+                  enter="at-enterTransition"
+                  enterFrom="at-fadeSlideOut"
+                  enterTo="at-fadeSlideIn"
+                  leave="at-leaveTransition"
+                  leaveFrom="at-fadeSlideIn"
+                  leaveTo="at-fadeSlideOut"
+                >
+                  <Menu.Items className={styles.menuItems}>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${styles.menuCopyButton} ${
+                            active ? styles.menuCopyButtonActive : null
+                          }`}
+                        >
+                          <TbCopy />
+                          <span>HEX ({secondary.hex.toLocaleUpperCase()})</span>
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${styles.menuCopyButton} ${
+                            active ? styles.menuCopyButtonActive : null
+                          }`}
+                        >
+                          <TbCopy />
+                          <span>RGB ({String(secondary.rgb)})</span>
+                        </button>
+                      )}
+                    </Menu.Item>
+                    <Menu.Item>
+                      {({ active }) => (
+                        <button
+                          className={`${styles.menuCopyButton} ${
+                            active ? styles.menuCopyButtonActive : null
+                          }`}
+                        >
+                          <TbCopy />
+                          <span>HSL ({String(secondary.hsl)})</span>
+                        </button>
+                      )}
+                    </Menu.Item>
+                  </Menu.Items>
+                </Transition>
+              )}
             </Menu>
           </div>
         </div>
