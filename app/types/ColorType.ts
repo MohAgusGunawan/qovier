@@ -17,7 +17,7 @@ export interface ColorType {
   };
 }
 
-interface ColorDetail {
+export interface ColorDetail {
   range: string;
   name: string;
   hex: string;

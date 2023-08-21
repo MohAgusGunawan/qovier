@@ -121,6 +121,9 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
+  .menuButton {
+    font-size: var(--fs-sm);
+  }
 }
 
 /* ================================================ */

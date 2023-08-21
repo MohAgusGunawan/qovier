@@ -70,7 +70,7 @@ const Card = ({ data }: Props) => {
                         }`}
                       >
                         <TbCopy />
-                        <span>HEX - ({primary.hex.toLocaleUpperCase()})</span>
+                        <span>HEX ({primary.hex.toLocaleUpperCase()})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -82,7 +82,7 @@ const Card = ({ data }: Props) => {
                         }`}
                       >
                         <TbCopy />
-                        <span>RGB - ({String(primary.rgb)})</span>
+                        <span>RGB ({String(primary.rgb)})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -94,7 +94,7 @@ const Card = ({ data }: Props) => {
                         }`}
                       >
                         <TbCopy />
-                        <span>HSL - ({String(primary.hsl)})</span>
+                        <span>HSL ({String(primary.hsl)})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -136,7 +136,7 @@ const Card = ({ data }: Props) => {
                         }`}
                       >
                         <TbCopy />
-                        <span>HEX - ({secondary.hex.toLocaleUpperCase()})</span>
+                        <span>HEX ({secondary.hex.toLocaleUpperCase()})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -148,7 +148,7 @@ const Card = ({ data }: Props) => {
                         }`}
                       >
                         <TbCopy />
-                        <span>RGB - ({String(secondary.rgb)})</span>
+                        <span>RGB ({String(secondary.rgb)})</span>
                       </button>
                     )}
                   </Menu.Item>
@@ -160,7 +160,7 @@ const Card = ({ data }: Props) => {
                         }`}
                       >
                         <TbCopy />
-                        <span>HSL - ({String(secondary.hsl)})</span>
+                        <span>HSL ({String(secondary.hsl)})</span>
                       </button>
                     )}
                   </Menu.Item>

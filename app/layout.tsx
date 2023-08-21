@@ -1,7 +1,9 @@
-import './styles/main.css';
+import { Providers } from '@app/redux/provider';
 
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
+
+import './styles/main.css';
 
 const sourceSans3 = Source_Sans_3({
   subsets: ['latin'],
@@ -25,7 +27,9 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
