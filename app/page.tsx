@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { HiChevronDoubleDown } from 'react-icons/hi2';
 
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks';
@@ -16,8 +16,10 @@ import { generateCombination } from './utils/generateCombination';
 import styles from './page.module.css';
 
 export default function Home() {
+  const scollToRef = useRef<HTMLDivElement>(null);
+
   const dispatch = useAppDispatch();
-  const combination = useAppSelector((state) => state.combination.value);
+  const { value: combination } = useAppSelector((state) => state.combination);
 
   useEffect(() => {
     dispatch(receiveColors(generateCombination()));
@@ -27,22 +29,34 @@ export default function Home() {
     <main className={styles.main}>
       <div className="wrapper">
         <Header />
-        <FormFilter />
 
-        <section className={styles.result} aria-labelledby="heading-result">
-          <div className={styles.divider}>
-            <HiChevronDoubleDown className={styles.arrowDown} />
-          </div>
-
-          <h2 className={styles.title} id="heading-result">
-            Result
-          </h2>
-
+        <section
+          className={styles.result}
+          aria-label="Result color pair"
+          id="result"
+          ref={scollToRef}
+        >
           <div className={styles.cardContainer}>
             {combination.map((data, index) => (
               <Card data={data} key={index} />
             ))}
           </div>
+        </section>
+
+        <div className={styles.divider}>
+          <HiChevronDoubleDown className={styles.arrowDown} />
+        </div>
+
+        <FormFilter elementRef={scollToRef} />
+
+        <section>
+          <h2>About Qovier</h2>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis
+            beatae maxime sit labore, ratione doloribus tenetur illo dolorem
+            veniam tempora voluptatum neque omnis. Facilis perferendis dolorum
+            in magni autem dicta?
+          </p>
         </section>
       </div>
     </main>

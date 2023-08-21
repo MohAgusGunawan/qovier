@@ -65,6 +65,10 @@
   outline: 2px solid var(--text-common-color);
 }
 
+.menuButton:disabled {
+  cursor: wait;
+}
+
 .menuItems {
   position: absolute;
 

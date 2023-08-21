@@ -221,7 +221,7 @@ const rangeColor = {
 
 const group = Object.keys(rangeColor);
 
-const maxList = 20;
+export const maxList = 21;
 
 const isClosed = (primary: ColorDetail, secondary: ColorDetail) => {
   const ligPr = primary.hsl[2];

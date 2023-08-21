@@ -1,7 +1,9 @@
+import { maxList } from '@app/utils/generateCombination';
+
 export const loadingCombination = () => {
   const data = [];
 
-  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < maxList; i++) {
     data.push({
       primary: {
         range: 'Gray',
