@@ -2,7 +2,7 @@ import React, { SetStateAction, Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { HiCheck } from 'react-icons/hi2';
 
-import { ColorIconType, ColorType } from '@/app/types/ColorType';
+import { ColorIconType, ColorType } from '@app/types/ColorType';
 
 import styles from './SelectColor.module.css';
 

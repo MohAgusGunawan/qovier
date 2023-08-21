@@ -56,7 +56,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1em;
+  gap: 0.5em;
 
   cursor: pointer;
 }
@@ -121,6 +121,9 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
+  .menuButton {
+    font-size: var(--fs-sm);
+  }
 }
 
 /* ================================================ */
