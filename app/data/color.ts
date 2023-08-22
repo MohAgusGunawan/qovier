@@ -115,3 +115,27 @@ export const colors = [
 ];
 
 export const secondaryColors = colors.filter((color) => color.name !== 'All');
+
+export const nameHueColors = colors
+  .filter((color) => {
+    const removeList = ['All', 'Black', 'Gray', 'White'];
+
+    return !removeList.includes(color.name);
+  })
+  .map((color) => color.name);
+
+export const harmonyColor = [
+  'Monochromatic',
+  'Analogous',
+  'Tetradic',
+  'Square',
+  'Triadic, Tetradic',
+  'Split Complementary',
+  'Complementary, Square, Tetadric',
+  'Split Complementary',
+  'Triadic, Tetradic',
+  'Square',
+  'Tetradic',
+  'Analogous',
+  'Monochromatic',
+];

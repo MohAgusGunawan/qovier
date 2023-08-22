@@ -70,7 +70,7 @@ const FormFilter = ({ elementRef }: Props) => {
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.groupSelect}>
           <SelectColor
-            label="Primary"
+            label="Main"
             name="primary-color"
             list={colors}
             value={selectedPrimary}
@@ -79,12 +79,13 @@ const FormFilter = ({ elementRef }: Props) => {
           />
 
           <SelectColor
-            label="Secondary"
+            label="Support"
             name="secondary-color"
             list={secondaryColors}
             value={selectedSecondary}
             onChange={setSelectedSecondary}
             multiple={true}
+            mainColor={selectedPrimary.name}
           />
         </div>
 

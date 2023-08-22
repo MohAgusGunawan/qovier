@@ -120,6 +120,11 @@
     display: block;
     width: 16px;
   }
+
+  .harmonyInfo {
+    font-size: var(--fs-xs);
+    color: var(--text-mute-color);
+  }
 }
 
 @media (hover: hover) {
