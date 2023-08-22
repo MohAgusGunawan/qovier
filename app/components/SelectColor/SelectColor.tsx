@@ -2,6 +2,8 @@ import React, { SetStateAction, Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { HiCheck } from 'react-icons/hi2';
 
+import { harmonyColor, nameHueColors } from '@app/data/color';
+
 import { ColorIconType, ColorType } from '@app/types/ColorType';
 
 import styles from './SelectColor.module.css';
@@ -22,10 +24,11 @@ type Props = {
   label: string;
   name: string;
   list: ColorType[];
+  mainColor?: string;
 } & (SingleProps | MultiProps);
 
 const SelectColor = (props: Props) => {
-  const { label, name, list, value, onChange, multiple } = props;
+  const { label, name, list, value, onChange, mainColor, multiple } = props;
 
   return (
     <div className={styles.selectWrap}>
@@ -116,6 +119,27 @@ const SelectColor = (props: Props) => {
                           }
                         />
                         <span>{item.name}</span>
+                        {mainColor !== undefined && (
+                          <>
+                            {['All', 'Black', 'Gray', 'White'].includes(
+                              mainColor
+                            ) ||
+                              (['All', 'Black', 'Gray', 'White'].includes(
+                                item.name
+                              ) ? null : (
+                                <span className={styles.harmonyInfo}>
+                                  {
+                                    harmonyColor[
+                                      Math.abs(
+                                        nameHueColors.indexOf(mainColor) -
+                                          nameHueColors.indexOf(item.name)
+                                      )
+                                    ]
+                                  }
+                                </span>
+                              ))}
+                          </>
+                        )}
                       </span>
                     );
                   }}

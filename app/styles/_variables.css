@@ -54,6 +54,7 @@
   /* Text Color */
   --text-focal-color: hsl(0, 0%, 15%);
   --text-common-color: hsl(0, 0%, 26%);
+  --text-mute-color: hsl(0, 0%, 40%);
 
   --text-onprimary-color: hsl(0, 0%, 100%);
 }
