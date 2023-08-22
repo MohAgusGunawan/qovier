@@ -1,0 +1,72 @@
+.footer {
+  margin-top: 4rem;
+}
+
+.about {
+  margin: 0 auto;
+  margin-bottom: 6rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  max-width: 980px;
+}
+
+.aboutTitle {
+  text-align: center;
+
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+
+  color: var(--text-focal-color);
+}
+
+.aboutParagraph {
+  text-wrap: balance;
+  text-align: center;
+}
+
+.copyright {
+  min-height: 70px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 1em;
+
+  background-color: var(--text-focal-color);
+  box-shadow: var(--shadow-top);
+}
+
+.copyrightText {
+  color: var(--body-background-color);
+
+  font-size: var(--fs-sm);
+
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+
+.copyrightLink {
+  font-weight: var(--fw-semibold);
+  color: var(--surface-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
