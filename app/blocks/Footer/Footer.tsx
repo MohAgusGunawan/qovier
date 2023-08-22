@@ -20,10 +20,16 @@ const Footer = () => {
             value.
           </p>
           <p className={styles.aboutParagraph}>
-            But keep in mind, some colors may have been registered as a patent.
-            If you want to use a color found here as a brand, please do your own
-            research. All color pairs are randomly generated based on a certain
-            range.
+            Qovier uses the RGB (Red, Green, Blue) type on the color wheel,
+            resulting in different complementary colors from the traditional RYB
+            (Red, Yellow, Blue) type.
+          </p>
+          <p className={styles.aboutParagraph}>
+            Please note, some colors may be registered as a patent by some
+            companies. If you wish to use a color found here as a brand, do your
+            own research. All color pairs are randomly generated based on a
+            certain range. So, there is still a possibility that it will produce
+            the same color.
           </p>
         </section>
       </div>
