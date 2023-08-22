@@ -4,6 +4,7 @@ import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
+import { toast } from 'react-toastify';
 
 import { useAppSelector } from '@app/redux/hooks';
 
@@ -25,18 +26,41 @@ const Card = ({ data }: Props) => {
   const primary = data.primary;
   const secondary = data.secondary;
 
+  const handleCopy = (text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        toast(`"${text}" copied`);
+      })
+      .catch(() => {
+        window.alert('Copy failed, please update your browser!');
+      });
+  };
+
   return (
     <div className={styles.card}>
       <div className={styles.cardDisplay}>
-        <div
-          className={styles.cardPairColor}
-          style={
-            {
-              '--first-color': `#${primary.hex}`,
-              '--second-color': `#${secondary.hex}`,
-            } as CustomColorType
-          }
-        />
+        {loading ? (
+          <div
+            className={`${styles.cardPairColor} ${styles.sparklingAnimation}`}
+            style={
+              {
+                '--first-color': `#${primary.hex}`,
+                '--second-color': `#${secondary.hex}`,
+              } as CustomColorType
+            }
+          />
+        ) : (
+          <div
+            className={styles.cardPairColor}
+            style={
+              {
+                '--first-color': `#${primary.hex}`,
+                '--second-color': `#${secondary.hex}`,
+              } as CustomColorType
+            }
+          />
+        )}
       </div>
       <div className={styles.cardInfo}>
         <div className={styles.cardButtonWrap}>
@@ -73,6 +97,7 @@ const Card = ({ data }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
+                          onClick={() => handleCopy(primary.hex)}
                         >
                           <TbCopy />
                           <span>HEX ({primary.hex.toLocaleUpperCase()})</span>
@@ -85,6 +110,7 @@ const Card = ({ data }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
+                          onClick={() => handleCopy(String(primary.rgb))}
                         >
                           <TbCopy />
                           <span>RGB ({String(primary.rgb)})</span>
@@ -97,6 +123,7 @@ const Card = ({ data }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
+                          onClick={() => handleCopy(String(primary.hsl))}
                         >
                           <TbCopy />
                           <span>HSL ({String(primary.hsl)})</span>
@@ -141,6 +168,7 @@ const Card = ({ data }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
+                          onClick={() => handleCopy(secondary.hex)}
                         >
                           <TbCopy />
                           <span>HEX ({secondary.hex.toLocaleUpperCase()})</span>
@@ -153,6 +181,7 @@ const Card = ({ data }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
+                          onClick={() => handleCopy(String(secondary.rgb))}
                         >
                           <TbCopy />
                           <span>RGB ({String(secondary.rgb)})</span>
@@ -165,6 +194,7 @@ const Card = ({ data }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
+                          onClick={() => handleCopy(String(secondary.hsl))}
                         >
                           <TbCopy />
                           <span>HSL ({String(secondary.hsl)})</span>

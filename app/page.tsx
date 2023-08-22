@@ -6,8 +6,9 @@ import { HiChevronDoubleDown } from 'react-icons/hi2';
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks';
 import { receiveColors } from '@app/redux/features/combinationSlice';
 
-import Header from './blocks/Header/Header';
-import FormFilter from './blocks/FormFilter/FormFilter';
+import Header from '@app/blocks/Header/Header';
+import FormFilter from '@app/blocks/FormFilter/FormFilter';
+import Footer from '@app/blocks/Footer/Footer';
 
 import Card from '@app/components/Card/Card';
 
@@ -26,39 +27,33 @@ export default function Home() {
   }, [dispatch]);
 
   return (
-    <main className={styles.main}>
-      <div className="wrapper">
-        <Header />
+    <>
+      <main className={styles.main}>
+        <div className="wrapper">
+          <Header />
 
-        <section
-          className={styles.result}
-          aria-label="Result color pair"
-          id="result"
-          ref={scollToRef}
-        >
-          <div className={styles.cardContainer}>
-            {combination.map((data, index) => (
-              <Card data={data} key={index} />
-            ))}
+          <section
+            className={styles.result}
+            aria-label="Result color pair"
+            id="result"
+            ref={scollToRef}
+          >
+            <div className={styles.cardContainer}>
+              {combination.map((data, index) => (
+                <Card data={data} key={index} />
+              ))}
+            </div>
+          </section>
+
+          <div className={styles.divider}>
+            <HiChevronDoubleDown className={styles.arrowDown} />
           </div>
-        </section>
 
-        <div className={styles.divider}>
-          <HiChevronDoubleDown className={styles.arrowDown} />
+          <FormFilter elementRef={scollToRef} />
         </div>
+      </main>
 
-        <FormFilter elementRef={scollToRef} />
-
-        <section>
-          <h2>About Qovier</h2>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis
-            beatae maxime sit labore, ratione doloribus tenetur illo dolorem
-            veniam tempora voluptatum neque omnis. Facilis perferendis dolorum
-            in magni autem dicta?
-          </p>
-        </section>
-      </div>
-    </main>
+      <Footer />
+    </>
   );
 }

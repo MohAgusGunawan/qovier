@@ -23,7 +23,7 @@
 .paragraph {
   margin-top: 1rem;
 
-  font-size: var(--fs-lg);
+  font-size: var(--fs-md);
 
   text-align: center;
   text-wrap: balance;
