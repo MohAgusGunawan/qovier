@@ -79,7 +79,7 @@ const FormFilter = ({ elementRef }: Props) => {
           />
 
           <SelectColor
-            label="Support"
+            label="Accent"
             name="secondary-color"
             list={secondaryColors}
             value={selectedSecondary}
