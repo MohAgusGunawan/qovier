@@ -30,7 +30,9 @@ const Card = ({ data }: Props) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        toast(`"${text}" copied`);
+        toast(`"${text}" copied`, {
+          icon: <TbCopy />,
+        });
       })
       .catch(() => {
         window.alert('Copy failed, please update your browser!');
