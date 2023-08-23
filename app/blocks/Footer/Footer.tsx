@@ -1,5 +1,7 @@
 import { TbHeartFilled } from 'react-icons/tb';
 
+import ColorwheelSlider from '@app/components/ColorwheelSlider/ColorwheelSlider';
+
 import styles from './Footer.module.css';
 
 const Footer = () => {
@@ -19,10 +21,11 @@ const Footer = () => {
             black) have a saturation value of 0 and a different brightness
             value.
           </p>
+          <ColorwheelSlider />
           <p className={styles.aboutParagraph}>
-            Qovier uses the RGB (Red, Green, Blue) type on the color wheel,
+            Qovier uses the RGB (Red, Green, Blue) format on the color wheel,
             resulting in different complementary colors from the traditional RYB
-            (Red, Yellow, Blue) type.
+            (Red, Yellow, Blue) format.
           </p>
           <p className={styles.aboutParagraph}>
             Please note, some colors may be registered as a patent by some
