@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
+import { getContrast } from 'accessible-colors';
 
 import { useAppSelector } from '@app/redux/hooks';
 
@@ -17,6 +18,7 @@ import {
 
 import UserInterfaceSVG from '@app/elements/UserInterfaceSVG/UserInterfaceSVG';
 import IllustrationSVG from '@app/elements/IllustrationSVG/IllustrationSVG';
+import RatioBadge from '@app/elements/RatioBadge/RatioBadge';
 
 import styles from './Card.module.css';
 
@@ -29,6 +31,8 @@ const Card = ({ data }: Props) => {
 
   const primary = data.primary;
   const secondary = data.secondary;
+
+  const contrastRatio = getContrast(primary.hex, secondary.hex);
 
   const sliderSettings = {
     arrows: false,
@@ -139,16 +143,17 @@ const Card = ({ data }: Props) => {
                     Eveniet sint maiores quisquam.
                   </p>
                 </div>
+                {contrastRatio && <RatioBadge ratio={contrastRatio} />}
               </div>
             </div>
-            {/* <div>
+            <div>
               <div className={styles.cardPairPreview}>
                 <IllustrationSVG
                   mainColor={primary.hex}
                   accentColor={secondary.hex}
                 />
               </div>
-            </div> */}
+            </div>
           </Slider>
         )}
       </div>
