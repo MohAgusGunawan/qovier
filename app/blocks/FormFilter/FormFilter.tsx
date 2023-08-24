@@ -47,8 +47,8 @@ const FormFilter = ({ elementRef }: Props) => {
         selected.name.toLowerCase().replace(' ', '')
       );
 
-      dispatch(receiveColors(generateCombination(firstFilter, secondFilter)));
       elementRef.current?.scrollIntoView({ behavior: 'smooth' });
+      dispatch(receiveColors(generateCombination(firstFilter, secondFilter)));
     }, 1500);
   };
 

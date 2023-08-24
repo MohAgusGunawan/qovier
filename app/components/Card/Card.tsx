@@ -120,27 +120,31 @@ const Card = ({ data }: Props) => {
                 }
               >
                 <div className={styles.cardTypoColorMain}>
-                  <p className={styles.cardTypoText}>Quos tenetur dolorum.</p>
+                  <p className={styles.cardTypoTextBold}>
+                    Puos tenetur dolorum.
+                  </p>
                   <p className={styles.cardTypoText}>
                     Eveniet sint maiores quisquam.
                   </p>
                 </div>
                 <div className={styles.cardTypoColorAccent}>
-                  <p className={styles.cardTypoText}>Quos tenetur dolorum.</p>
+                  <p className={styles.cardTypoTextBold}>
+                    Puos tenetur dolorum.
+                  </p>
                   <p className={styles.cardTypoText}>
                     Eveniet sint maiores quisquam.
                   </p>
                 </div>
               </div>
             </div>
-            <div>
+            {/* <div>
               <div className={styles.cardPairPreview}>
                 <IllustrationSVG
                   mainColor={primary.hex}
                   accentColor={secondary.hex}
                 />
               </div>
-            </div>
+            </div> */}
           </Slider>
         )}
       </div>
