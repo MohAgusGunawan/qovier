@@ -52,8 +52,8 @@
   --info-text-color: hsl(187, 98%, 20%);
   --warning-color: hsl(54, 100%, 51%);
   --warning-text-color: hsl(54, 98%, 24%);
-  --danger-color: hsl(7, 93%, 66%);
-  --danger-text-color: hsl(8, 67%, 19%);
+  --danger-color: hsl(7, 93%, 70%);
+  --danger-text-color: hsl(8, 100%, 21%);
 
   /* Text Color */
   --text-focal-color: hsl(0, 0%, 15%);

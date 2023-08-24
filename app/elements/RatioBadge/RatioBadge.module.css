@@ -3,10 +3,7 @@
   position: absolute;
 
   font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-
-  /* top: 1em;
-  left: 1em; */
+  font-weight: var(--fw-medium);
 
   top: 50%;
   left: 50%;
