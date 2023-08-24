@@ -2,6 +2,7 @@
 
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import Slider from 'react-slick';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
@@ -14,6 +15,9 @@ import {
   ColorIconType,
 } from '@app/types/ColorType';
 
+import UserInterfaceSVG from '@app/elements/UserInterfaceSVG/UserInterfaceSVG';
+import IllustrationSVG from '@app/elements/IllustrationSVG/IllustrationSVG';
+
 import styles from './Card.module.css';
 
 type Props = {
@@ -25,6 +29,15 @@ const Card = ({ data }: Props) => {
 
   const primary = data.primary;
   const secondary = data.secondary;
+
+  const sliderSettings = {
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+  };
 
   const handleCopy = (text: string) => {
     navigator.clipboard
@@ -53,15 +66,82 @@ const Card = ({ data }: Props) => {
             }
           />
         ) : (
-          <div
-            className={styles.cardPairColor}
-            style={
-              {
-                '--first-color': `#${primary.hex}`,
-                '--second-color': `#${secondary.hex}`,
-              } as CustomColorType
-            }
-          />
+          <Slider {...sliderSettings}>
+            <div>
+              <div
+                className={styles.cardPairColor}
+                style={
+                  {
+                    '--first-color': `#${primary.hex}`,
+                    '--second-color': `#${secondary.hex}`,
+                  } as CustomColorType
+                }
+              />
+            </div>
+            <div>
+              <div className={styles.cardPairPreview}>
+                <UserInterfaceSVG
+                  mainColor={primary.hex}
+                  accentColor={secondary.hex}
+                />
+              </div>
+            </div>
+            <div>
+              <div
+                className={styles.cardPatternColor}
+                style={
+                  {
+                    '--first-color': `#${primary.hex}`,
+                    '--second-color': `#${secondary.hex}`,
+                  } as CustomColorType
+                }
+              />
+            </div>
+
+            <div>
+              <div
+                className={styles.cardGradientColor}
+                style={
+                  {
+                    '--first-color': `#${primary.hex}`,
+                    '--second-color': `#${secondary.hex}`,
+                  } as CustomColorType
+                }
+              />
+            </div>
+            <div>
+              <div
+                className={styles.cardTypoColor}
+                style={
+                  {
+                    '--first-color': `#${primary.hex}`,
+                    '--second-color': `#${secondary.hex}`,
+                  } as CustomColorType
+                }
+              >
+                <div className={styles.cardTypoColorMain}>
+                  <p className={styles.cardTypoText}>Quos tenetur dolorum.</p>
+                  <p className={styles.cardTypoText}>
+                    Eveniet sint maiores quisquam.
+                  </p>
+                </div>
+                <div className={styles.cardTypoColorAccent}>
+                  <p className={styles.cardTypoText}>Quos tenetur dolorum.</p>
+                  <p className={styles.cardTypoText}>
+                    Eveniet sint maiores quisquam.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div>
+              <div className={styles.cardPairPreview}>
+                <IllustrationSVG
+                  mainColor={primary.hex}
+                  accentColor={secondary.hex}
+                />
+              </div>
+            </div>
+          </Slider>
         )}
       </div>
       <div className={styles.cardInfo}>

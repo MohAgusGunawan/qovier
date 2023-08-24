@@ -1,3 +1,13 @@
+@keyframes animate-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .customize {
   border: 2px dashed var(--text-common-color);
   border-radius: 16px;
@@ -42,6 +52,12 @@
 
 .buttonWrapper {
   padding-top: 1em;
+}
+
+.rotateAnimation {
+  animation-name: animate-rotate;
+  animation-duration: 0.5s;
+  animation-iteration-count: infinite;
 }
 
 @media (hover: hover) {

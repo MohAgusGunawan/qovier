@@ -27,6 +27,15 @@
   overflow: hidden;
 
   position: relative;
+
+  border-top-right-radius: 16px;
+  border-top-left-radius: 16px;
+
+  width: 100%;
+
+  aspect-ratio: 16 / 9;
+
+  border-bottom: 1px solid rgb(194, 194, 194);
 }
 
 .cardPairColor {
@@ -35,16 +44,97 @@
 
   aspect-ratio: 16 / 9;
 
-  border-top-right-radius: 16px;
-  border-top-left-radius: 16px;
-
-  border-bottom: 1px solid gray;
-
   background: linear-gradient(
     45deg,
     var(--first-color) 55%,
     var(--second-color) 55%
   );
+}
+
+.cardPairPreview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  aspect-ratio: 16 / 9;
+
+  background: var(--background-color);
+}
+
+.cardPatternColor {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  --s: 72px; /* control the size */
+  --c1: var(--first-color);
+  --c2: var(--second-color);
+
+  aspect-ratio: 16 / 9;
+
+  --_g: var(--c1) 90deg, var(--c2) 0 135deg, #0000 0;
+  background: conic-gradient(
+      from -45deg at calc(100% / 3) calc(100% / 3),
+      var(--c1) 90deg,
+      #0000 0
+    ),
+    conic-gradient(from -135deg at calc(100% / 3) calc(2 * 100% / 3), var(--_g)),
+    conic-gradient(
+      from 135deg at calc(2 * 100% / 3) calc(2 * 100% / 3),
+      var(--_g)
+    ),
+    conic-gradient(
+      from 45deg at calc(2 * 100% / 3) calc(100% / 3),
+      var(--_g),
+      var(--c1) 0 225deg,
+      var(--c2) 0
+    );
+  background-size: var(--s) var(--s);
+}
+
+.cardGradientColor {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: linear-gradient(45deg, var(--first-color), var(--second-color));
+}
+
+.cardTypoColor {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.cardTypoColorMain,
+.cardTypoColorAccent {
+  flex-grow: 1;
+
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardTypoColorMain {
+  color: var(--second-color);
+  background: var(--first-color);
+}
+
+.cardTypoColorAccent {
+  color: var(--first-color);
+  background: var(--second-color);
+}
+
+.cardTypoText {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
 }
 
 .sparklingAnimation {
@@ -153,6 +243,10 @@
 @media only screen and (min-width: 768px) {
   .menuButton {
     font-size: var(--fs-sm);
+  }
+
+  .cardTypoText {
+    font-size: var(--fs-md);
   }
 }
 

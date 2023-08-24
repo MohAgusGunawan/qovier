@@ -90,7 +90,12 @@ const FormFilter = ({ elementRef }: Props) => {
         </div>
 
         <div className={styles.buttonWrapper}>
-          <Button icon={<TbRefresh />} disabled={loading}>
+          <Button
+            icon={
+              <TbRefresh className={loading ? styles.rotateAnimation : null} />
+            }
+            disabled={loading}
+          >
             Regenerate
           </Button>
         </div>
