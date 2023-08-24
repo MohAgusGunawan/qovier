@@ -1,0 +1,40 @@
+.ratioBadge {
+  display: block;
+  position: absolute;
+
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+
+  /* top: 1em;
+  left: 1em; */
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  padding: 0.4em 1em;
+
+  border-radius: 0.5em;
+
+  background-color: var(--danger-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .ratioBadge {
+    font-size: var(--fs-xs);
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

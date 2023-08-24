@@ -108,6 +108,8 @@
 
   display: flex;
   flex-direction: column;
+
+  position: relative;
 }
 
 .cardTypoColorMain,
@@ -132,9 +134,15 @@
   background: var(--second-color);
 }
 
-.cardTypoText {
+.cardTypoText,
+.cardTypoTextBold {
   font-size: var(--fs-lg);
-  font-weight: var(--fw-semibold);
+
+  line-height: 1.4;
+}
+
+.cardTypoTextBold {
+  font-weight: var(--fw-bold);
 }
 
 .sparklingAnimation {
@@ -245,7 +253,8 @@
     font-size: var(--fs-sm);
   }
 
-  .cardTypoText {
+  .cardTypoText,
+  .cardTypoTextBold {
     font-size: var(--fs-md);
   }
 }

@@ -6,6 +6,7 @@ import Slider from 'react-slick';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
+import { getContrast } from 'accessible-colors';
 
 import { useAppSelector } from '@app/redux/hooks';
 
@@ -17,6 +18,7 @@ import {
 
 import UserInterfaceSVG from '@app/elements/UserInterfaceSVG/UserInterfaceSVG';
 import IllustrationSVG from '@app/elements/IllustrationSVG/IllustrationSVG';
+import RatioBadge from '@app/elements/RatioBadge/RatioBadge';
 
 import styles from './Card.module.css';
 
@@ -30,13 +32,19 @@ const Card = ({ data }: Props) => {
   const primary = data.primary;
   const secondary = data.secondary;
 
+  const contrastRatio = getContrast(primary.hex, secondary.hex);
+
   const sliderSettings = {
+    arrows: false,
     infinite: true,
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 5000,
+    pauseOnHover: false,
+    accessibility: false,
+    swipe: false,
   };
 
   const handleCopy = (text: string) => {
@@ -120,17 +128,22 @@ const Card = ({ data }: Props) => {
                 }
               >
                 <div className={styles.cardTypoColorMain}>
-                  <p className={styles.cardTypoText}>Quos tenetur dolorum.</p>
+                  <p className={styles.cardTypoTextBold}>
+                    Puos tenetur dolorum.
+                  </p>
                   <p className={styles.cardTypoText}>
                     Eveniet sint maiores quisquam.
                   </p>
                 </div>
                 <div className={styles.cardTypoColorAccent}>
-                  <p className={styles.cardTypoText}>Quos tenetur dolorum.</p>
+                  <p className={styles.cardTypoTextBold}>
+                    Puos tenetur dolorum.
+                  </p>
                   <p className={styles.cardTypoText}>
                     Eveniet sint maiores quisquam.
                   </p>
                 </div>
+                {contrastRatio && <RatioBadge ratio={contrastRatio} />}
               </div>
             </div>
             <div>
