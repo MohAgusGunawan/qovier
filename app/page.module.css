@@ -46,7 +46,7 @@
   align-items: center;
 }
 
-.arrowDown {
+.arrowUp {
   width: var(--fs-3xl);
   height: var(--fs-3xl);
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import { HiChevronDoubleDown } from 'react-icons/hi2';
+import { HiChevronDoubleUp } from 'react-icons/hi2';
 
 import { useAppDispatch, useAppSelector } from '@app/redux/hooks';
 import { receiveColors } from '@app/redux/features/combinationSlice';
@@ -46,7 +46,7 @@ export default function Home() {
           </section>
 
           <div className={styles.divider}>
-            <HiChevronDoubleDown className={styles.arrowDown} />
+            <HiChevronDoubleUp className={styles.arrowUp} />
           </div>
 
           <FormFilter elementRef={scollToRef} />
