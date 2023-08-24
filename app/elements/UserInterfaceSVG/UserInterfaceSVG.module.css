@@ -1,0 +1,27 @@
+.svg {
+  width: 75%;
+
+  max-width: 300px;
+
+  box-shadow: var(--shadow-bottom);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .svg {
+    width: 100%;
+    max-width: 220px;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
