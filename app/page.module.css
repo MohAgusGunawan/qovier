@@ -66,6 +66,10 @@
   animation-name: bounce;
 }
 
+.selectBox {
+  margin-bottom: 1.5em;
+}
+
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
