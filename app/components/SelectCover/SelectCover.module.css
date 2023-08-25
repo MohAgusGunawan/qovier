@@ -4,6 +4,7 @@
 
 .selectButton {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   gap: 1em;
 
@@ -63,6 +64,15 @@
   color: var(--surface-color);
 }
 
+.titleBold {
+  font-weight: var(--fw-semibold);
+}
+
+.iconBtn {
+  display: block;
+  color: var(--text-mute-color);
+}
+
 @media (hover: hover) {
   /* when supported */
 }
@@ -79,10 +89,17 @@
     width: fit-content;
     min-width: 240px;
   }
+
+  .iconBtn {
+    display: none;
+  }
 }
 
 /* ================================================ */
 /* Desktop Responsive */
 
 @media only screen and (min-width: 1024px) {
+  .selectButton {
+    padding: 0.5em 1em;
+  }
 }

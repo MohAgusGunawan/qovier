@@ -17,13 +17,13 @@ const RatioBadge = ({ ratio }: Props) => {
   };
 
   const getThemeByRatio = (number: number) => {
-    if (number >= 4)
+    if (number >= 12)
       return {
         background: 'var(--success-color)',
         color: 'var(--success-text-color',
       };
 
-    if (number >= 2.5 && number < 4)
+    if (number >= 2.5 && number < 12)
       return {
         background: 'var(--warning-color)',
         color: 'var(--warning-text-color',

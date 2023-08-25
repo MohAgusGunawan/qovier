@@ -2,7 +2,7 @@ import React, { SetStateAction, Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { HiCheck } from 'react-icons/hi2';
 
-import { harmonyColor, nameHueColors } from '@app/data/color';
+import { excludeColors, harmonyColor, nameHueColors } from '@app/data/color';
 
 import { ColorIconType, ColorType } from '@app/types/ColorType';
 
@@ -121,12 +121,8 @@ const SelectColor = (props: Props) => {
                         <span>{item.name}</span>
                         {mainColor !== undefined && (
                           <>
-                            {['All', 'Black', 'Gray', 'White'].includes(
-                              mainColor
-                            ) ||
-                              (['All', 'Black', 'Gray', 'White'].includes(
-                                item.name
-                              ) ? null : (
+                            {excludeColors.includes(mainColor) ||
+                              (excludeColors.includes(item.name) ? null : (
                                 <span className={styles.harmonyInfo}>
                                   {
                                     harmonyColor[
