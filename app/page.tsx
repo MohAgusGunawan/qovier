@@ -37,17 +37,11 @@ export default function Home() {
 
   return (
     <>
+      <Header />
       <main className={styles.main}>
-        <div className="wrapper">
-          <Header />
-
-          <section
-            className={styles.result}
-            aria-label="Result color pair"
-            id="result"
-            ref={scollToRef}
-          >
-            <div className={styles.selectBox}>
+        <section aria-label="Result color pair" id="result" ref={scollToRef}>
+          <div className={styles.selectBox}>
+            <div className="wrapper">
               <SelectCover
                 value={cover}
                 onChange={handleCoverChange}
@@ -55,13 +49,17 @@ export default function Home() {
                 name="Change Preview"
               />
             </div>
+          </div>
+          <div className="wrapper">
             <div className={styles.cardContainer}>
               {combination.map((data, index) => (
                 <Card data={data} key={index} cover={cover} />
               ))}
             </div>
-          </section>
+          </div>
+        </section>
 
+        <div className="wrapper">
           <div className={styles.divider}>
             <HiChevronDoubleUp className={styles.arrowUp} />
           </div>

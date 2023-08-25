@@ -16,7 +16,7 @@ function SelectCover({ value, onChange, list, name }: Props) {
     <div className={styles.selectWrap}>
       <Listbox value={value} onChange={onChange} name={name}>
         <Listbox.Button className={styles.selectButton}>
-          <span>
+          <span className={styles.selectLabel}>
             Preview: <b className={styles.titleBold}>{list[value]}</b>
           </span>
           <TbArrowsVertical className={styles.iconBtn} />

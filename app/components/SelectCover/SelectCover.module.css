@@ -23,6 +23,20 @@
   cursor: pointer;
 }
 
+.selectLabel {
+  color: var(--text-mute-color);
+}
+
+.titleBold {
+  color: var(--text-focal-color);
+  font-weight: var(--fw-semibold);
+}
+
+.iconBtn {
+  display: block;
+  color: var(--text-mute-color);
+}
+
 .selectButton:focus-visible {
   outline: 2px solid var(--text-common-color);
 }
@@ -62,15 +76,6 @@
 .selectOptionFocus {
   background: var(--text-common-color);
   color: var(--surface-color);
-}
-
-.titleBold {
-  font-weight: var(--fw-semibold);
-}
-
-.iconBtn {
-  display: block;
-  color: var(--text-mute-color);
 }
 
 @media (hover: hover) {
