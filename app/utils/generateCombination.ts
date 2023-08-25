@@ -175,42 +175,45 @@ const rangeColor = {
       max: hueLightnessMax,
     },
   },
-  black: {
+  dim: {
+    // Black
     hue: {
       min: 0,
       max: 360,
     },
     saturation: {
       min: 0,
-      max: 0,
+      max: 100,
     },
     lightness: {
       min: 0,
       max: 31,
     },
   },
-  gray: {
+  neutral: {
+    // Gray
     hue: {
       min: 0,
       max: 360,
     },
     saturation: {
       min: 0,
-      max: 0,
+      max: 10,
     },
     lightness: {
       min: 30,
       max: 71,
     },
   },
-  white: {
+  bright: {
+    // White
     hue: {
       min: 0,
       max: 360,
     },
     saturation: {
       min: 0,
-      max: 0,
+      max: 100,
     },
     lightness: {
       min: 70,

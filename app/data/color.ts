@@ -92,21 +92,21 @@ export const colors = [
     },
   },
   {
-    name: 'Black',
+    name: 'Dim', // Black
     displayColor: {
       circle: '#000000',
       gradientEnd: '#000000',
     },
   },
   {
-    name: 'Gray',
+    name: 'Neutral', // Gray
     displayColor: {
       circle: '#808080',
       gradientEnd: '#808080',
     },
   },
   {
-    name: 'White',
+    name: 'Bright', // White
     displayColor: {
       circle: '#FFFFFF',
       gradientEnd: '#dadada',
@@ -116,12 +116,10 @@ export const colors = [
 
 export const secondaryColors = colors.filter((color) => color.name !== 'All');
 
-export const nameHueColors = colors
-  .filter((color) => {
-    const removeList = ['All', 'Black', 'Gray', 'White'];
+export const excludeColors = ['All', 'Dim', 'Neutral', 'Bright'];
 
-    return !removeList.includes(color.name);
-  })
+export const nameHueColors = colors
+  .filter((color) => !excludeColors.includes(color.name))
   .map((color) => color.name);
 
 export const harmonyColor = [
