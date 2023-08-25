@@ -1,0 +1,88 @@
+.selectWrap {
+  position: relative;
+}
+
+.selectButton {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  background: var(--surface-color);
+  color: var(--text-focal-color);
+
+  width: 100%;
+
+  padding: 0.5em 0.875em;
+  border-radius: 8px;
+
+  font-size: var(--fs-md);
+
+  box-shadow: var(--shadow-bottom);
+
+  cursor: pointer;
+}
+
+.selectButton:focus-visible {
+  outline: 2px solid var(--text-common-color);
+}
+
+.selectOptionBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+
+  top: 100%;
+  margin-top: 1em;
+
+  width: 100%;
+  border-radius: 8px;
+
+  overflow-y: auto;
+
+  z-index: 99;
+
+  box-shadow: var(--shadow-bottom);
+}
+
+.selectOption {
+  font-size: var(--fs-md);
+
+  padding: 0.5em 0.875em;
+  background: var(--surface-color);
+
+  display: flex;
+  align-items: center;
+  gap: 1em;
+
+  user-select: none;
+  cursor: pointer;
+}
+
+.selectOptionFocus {
+  background: var(--text-common-color);
+  color: var(--surface-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .selectButton {
+    width: fit-content;
+  }
+
+  .selectOptionBox {
+    width: fit-content;
+    min-width: 240px;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
