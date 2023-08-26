@@ -187,7 +187,7 @@ const rangeColor = {
     },
     lightness: {
       min: 0,
-      max: 31,
+      max: 21,
     },
   },
   neutral: {
@@ -216,7 +216,7 @@ const rangeColor = {
       max: 100,
     },
     lightness: {
-      min: 70,
+      min: 80,
       max: 101,
     },
   },
