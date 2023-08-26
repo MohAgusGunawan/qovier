@@ -9,10 +9,10 @@ import {
   receiveColors,
 } from '@app/redux/features/combinationSlice';
 
-import SelectColor from '@/app/components/SelectColor/SelectColor';
-import Button from '@/app/components/Button/Button';
+import SelectColor from '@app/components/SelectColor/SelectColor';
+import Button from '@app/components/Button/Button';
 
-import { colors, secondaryColors } from '@app/data/color';
+import { colors, excludeColors, secondaryColors } from '@app/data/color';
 
 import { generateCombination } from '@app/utils/generateCombination';
 
@@ -30,6 +30,16 @@ const FormFilter = ({ elementRef }: Props) => {
 
   const [selectedPrimary, setSelectedPrimary] = useState<ColorType>(colors[0]);
   const [selectedSecondary, setSelectedSecondary] = useState<ColorType[]>([]);
+
+  const excludeList = secondaryColors.filter((color) => {
+    const isExcludeColor = excludeColors.includes(selectedPrimary.name);
+
+    if (isExcludeColor) {
+      return color.name !== selectedPrimary.name;
+    }
+
+    return true;
+  });
 
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
 
@@ -57,6 +67,14 @@ const FormFilter = ({ elementRef }: Props) => {
     return () => clearTimeout(timerRef.current);
   }, []);
 
+  useEffect(() => {
+    if (excludeColors.includes(selectedPrimary.name)) {
+      setSelectedSecondary((prev) => {
+        return prev.filter((color) => color.name !== selectedPrimary.name);
+      });
+    }
+  }, [selectedPrimary]);
+
   return (
     <div className={styles.customize}>
       <h2 className={styles.headingCustomize}>
@@ -81,7 +99,7 @@ const FormFilter = ({ elementRef }: Props) => {
           <SelectColor
             label="Accent"
             name="secondary-color"
-            list={secondaryColors}
+            list={excludeList}
             value={selectedSecondary}
             onChange={setSelectedSecondary}
             multiple={true}
