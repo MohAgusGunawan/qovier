@@ -21,7 +21,7 @@ const sourceSans3 = Source_Sans_3({
 export const metadata: Metadata = {
   title: 'Qovier - Explore Color Pair',
   description:
-    'Generator of beautiful two color combinations for your designs.',
+    'With Qover you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!',
 };
 
 export default function RootLayout({
@@ -53,6 +53,32 @@ export default function RootLayout({
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
+
+        {/* <!-- Open Graph / Facebook --> */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://qovier.vercel.app/" />
+        <meta property="og:title" content="Qovier - Explore Color Pair" />
+        <meta
+          property="og:description"
+          content="With Qover you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
+        />
+        <meta
+          property="og:image"
+          content="https://qovier.vercel.app/images/qovier.png"
+        />
+
+        {/* <!-- Twitter --> */}
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://qovier.vercel.app/" />
+        <meta property="twitter:title" content="Qovier - Explore Color Pair" />
+        <meta
+          property="twitter:description"
+          content="With Qover you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
+        />
+        <meta
+          property="twitter:image"
+          content="https://qovier.vercel.app/images/qovier.png"
+        />
       </head>
       <body>
         <Providers>
