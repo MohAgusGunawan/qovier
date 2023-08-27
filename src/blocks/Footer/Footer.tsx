@@ -18,8 +18,8 @@ const Footer = () => {
           <p className={styles.aboutParagraph}>
             Each color family has a hue range of 30, taken from a 360 degree
             color wheel to produce 12 color families. Dim Color has a low
-            brightness value. Moderate color has a moderate brightness value.
-            Bright color has a high brightness value.
+            brightness value. Medium color has a low saturation value and
+            moderate brightness level. Bright color has a high brightness value.
           </p>
           <ColorwheelSlider />
           <p className={styles.aboutParagraph}>
