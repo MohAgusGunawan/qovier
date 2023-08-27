@@ -6,14 +6,14 @@ export const loadingCombination = () => {
   for (let i = 0; i < maxList; i++) {
     data.push({
       primary: {
-        range: 'Neutral',
+        range: 'Moderate',
         name: 'Gray',
         hex: 'b3b3b3',
         hsl: [0, 0, 70],
         rgb: [179, 179, 179],
       },
       secondary: {
-        range: 'Neutral',
+        range: 'Moderate',
         name: 'Gray',
         hex: 'cccccc',
         hsl: [0, 0, 80],

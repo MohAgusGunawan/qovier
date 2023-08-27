@@ -190,7 +190,7 @@ const rangeColor = {
       max: 21,
     },
   },
-  neutral: {
+  moderate: {
     // Gray
     hue: {
       min: 0,

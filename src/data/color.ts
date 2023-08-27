@@ -99,7 +99,7 @@ export const colors = [
     },
   },
   {
-    name: 'Neutral', // Gray
+    name: 'Moderate', // Gray
     displayColor: {
       circle: '#808080',
       gradientEnd: '#808080',
@@ -116,7 +116,7 @@ export const colors = [
 
 export const secondaryColors = colors.filter((color) => color.name !== 'All');
 
-export const excludeColors = ['All', 'Dim', 'Neutral', 'Bright'];
+export const excludeColors = ['All', 'Dim', 'Moderate', 'Bright'];
 
 export const nameHueColors = colors
   .filter((color) => !excludeColors.includes(color.name))
