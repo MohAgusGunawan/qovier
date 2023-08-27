@@ -66,8 +66,8 @@
   --second-color: transparent;
 
   --s: 72px; /* control the size */
-  --c1: var(--first-color);
-  --c2: var(--second-color);
+  --c1: var(--second-color);
+  --c2: var(--first-color);
 
   aspect-ratio: 16 / 9;
 
