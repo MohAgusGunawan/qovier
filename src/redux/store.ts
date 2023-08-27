@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import combinationReducer from '@app/redux/features/combinationSlice';
-import coverReducer from '@app/redux/features/coverSlice';
+import combinationReducer from '@/src/redux/features/combinationSlice';
+import coverReducer from '@/src/redux/features/coverSlice';
 
 export const store = configureStore({
   reducer: {

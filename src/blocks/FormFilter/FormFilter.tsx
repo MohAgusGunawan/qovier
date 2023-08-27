@@ -3,20 +3,20 @@
 import { RefObject, useEffect, useRef, useState } from 'react';
 import { TbRefresh, TbFilterCog } from 'react-icons/tb';
 
-import { useAppDispatch, useAppSelector } from '@app/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import {
   refreshColors,
   receiveColors,
-} from '@app/redux/features/combinationSlice';
+} from '@/src/redux/features/combinationSlice';
 
-import SelectColor from '@app/components/SelectColor/SelectColor';
-import Button from '@app/components/Button/Button';
+import SelectColor from '@/src/components/SelectColor/SelectColor';
+import Button from '@/src/components/Button/Button';
 
-import { colors, excludeColors, secondaryColors } from '@app/data/color';
+import { colors, excludeColors, secondaryColors } from '@/src/data/color';
 
-import { generateCombination } from '@app/utils/generateCombination';
+import { generateCombination } from '@/src/utils/generateCombination';
 
-import { ColorType } from '@app/types/ColorType';
+import { ColorType } from '@/src/types/ColorType';
 
 import styles from './FormFilter.module.css';
 

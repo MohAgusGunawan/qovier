@@ -3,20 +3,20 @@
 import { useEffect, useRef } from 'react';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
 
-import { useAppDispatch, useAppSelector } from '@app/redux/hooks';
-import { receiveColors } from '@app/redux/features/combinationSlice';
-import { setCover } from '@app/redux/features/coverSlice';
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
+import { receiveColors } from '@/src/redux/features/combinationSlice';
+import { setCover } from '@/src/redux/features/coverSlice';
 
-import Header from '@app/blocks/Header/Header';
-import FormFilter from '@app/blocks/FormFilter/FormFilter';
-import Footer from '@app/blocks/Footer/Footer';
+import Header from '@/src/blocks/Header/Header';
+import FormFilter from '@/src//blocks/FormFilter/FormFilter';
+import Footer from '@/src/blocks/Footer/Footer';
 
-import Card from '@app/components/Card/Card';
-import SelectCover from '@app/components/SelectCover/SelectCover';
+import Card from '@/src/components/Card/Card';
+import SelectCover from '@/src/components/SelectCover/SelectCover';
 
-import { generateCombination } from './utils/generateCombination';
+import { generateCombination } from '@/src/utils/generateCombination';
 
-import { coverPreview } from '@app/data/coverPreview';
+import { coverPreview } from '@/src/data/coverPreview';
 
 import styles from './page.module.css';
 

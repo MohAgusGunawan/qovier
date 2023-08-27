@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-import { loadingCombination } from '@app/data/loadingCombination';
+import { loadingCombination } from '@/src/data/loadingCombination';
 
-import { ColorPair } from '@app/types/ColorType';
+import { ColorPair } from '@/src/types/ColorType';
 
 type CombinationState = {
   value: ColorPair[];

@@ -3,7 +3,7 @@ import { ToastContainer } from 'react-toastify';
 import type { Metadata } from 'next';
 import { Source_Sans_3 } from 'next/font/google';
 
-import { Providers } from '@app/redux/provider';
+import { Providers } from '@/src/redux/provider';
 
 import 'react-toastify/dist/ReactToastify.css';
 

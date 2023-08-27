@@ -1,4 +1,4 @@
-import { maxList } from '@app/utils/generateCombination';
+import { maxList } from '@/src/utils/generateCombination';
 
 export const loadingCombination = () => {
   const data = [];

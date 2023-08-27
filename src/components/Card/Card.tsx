@@ -7,17 +7,17 @@ import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import { getContrast } from 'accessible-colors';
 
-import { useAppSelector } from '@app/redux/hooks';
+import { useAppSelector } from '@/src/redux/hooks';
 
 import {
   ColorPair,
   CustomColorType,
   ColorIconType,
-} from '@app/types/ColorType';
+} from '@/src/types/ColorType';
 
-import UserInterfaceSVG from '@app/elements/UserInterfaceSVG/UserInterfaceSVG';
-import IllustrationSVG from '@app/elements/IllustrationSVG/IllustrationSVG';
-import RatioBadge from '@app/elements/RatioBadge/RatioBadge';
+import UserInterfaceSVG from '@/src/elements/UserInterfaceSVG/UserInterfaceSVG';
+import IllustrationSVG from '@/src/elements/IllustrationSVG/IllustrationSVG';
+import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
 
 import styles from './Card.module.css';
 

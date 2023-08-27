@@ -1,4 +1,4 @@
-import { ColorPair } from '@app/types/ColorType';
+import { ColorPair } from '@/src/types/ColorType';
 
 export const dataColors: ColorPair[] = [
   {

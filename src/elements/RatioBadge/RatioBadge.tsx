@@ -1,5 +1,3 @@
-import fontColorContrast from 'font-color-contrast';
-
 import styles from './RatioBadge.module.css';
 
 interface Props {

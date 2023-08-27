@@ -1,6 +1,6 @@
 import { TbHeartFilled } from 'react-icons/tb';
 
-import ColorwheelSlider from '@app/components/ColorwheelSlider/ColorwheelSlider';
+import ColorwheelSlider from '@/src/components/ColorwheelSlider/ColorwheelSlider';
 
 import styles from './Footer.module.css';
 

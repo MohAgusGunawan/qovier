@@ -1,5 +1,4 @@
 import { Listbox } from '@headlessui/react';
-
 import { TbArrowsVertical } from 'react-icons/tb';
 
 import styles from './SelectCover.module.css';

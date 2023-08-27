@@ -1,6 +1,6 @@
 import convert from 'color-convert';
 
-import { ColorDetail, ColorPair } from '@app/types/ColorType';
+import { ColorDetail, ColorPair } from '@/src/types/ColorType';
 
 const hueSaturationMin = 30;
 const hueLightnessMin = 30;
