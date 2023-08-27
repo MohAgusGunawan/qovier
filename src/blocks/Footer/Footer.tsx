@@ -16,16 +16,17 @@ const Footer = () => {
             colors by hue range to get more specific color pairs.
           </p>
           <p className={styles.aboutParagraph}>
-            From 360 degrees divided by 12, so that each color has a hue range
-            of 30 with a saturation value above 0. Neutral colors (white, gray,
-            black) have a saturation value of 0 and a different brightness
-            value.
+            Each color family has a hue range of 30, taken from a 360 degree
+            color wheel to produce 12 color families. Dim Color has a low
+            brightness value. Moderate color has a moderate brightness value.
+            Bright color has a high brightness value.
           </p>
           <ColorwheelSlider />
           <p className={styles.aboutParagraph}>
             Qovier uses the RGB (Red, Green, Blue) format on the color wheel,
-            resulting in different complementary colors from the traditional RYB
-            (Red, Yellow, Blue) format.
+            thus producing complementary colors that are different from the RYB
+            (Red, Yellow, Blue) format and also the CYM (Cyan, Yellow, Magenta)
+            format.
           </p>
           <p className={styles.aboutParagraph}>
             Please note, some colors may be registered as a patent by some
