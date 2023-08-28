@@ -1,5 +1,6 @@
 .svg {
   width: 55%;
+  max-width: 240px;
 }
 
 @media (hover: hover) {

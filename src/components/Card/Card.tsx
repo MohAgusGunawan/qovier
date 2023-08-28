@@ -2,6 +2,7 @@
 
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import Carousel, { InternalCarouselProps } from 'nuka-carousel';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
@@ -15,9 +16,11 @@ import {
   ColorIconType,
 } from '@/src/types/ColorType';
 
-import UserInterfaceSVG from '@/src/elements/UserInterfaceSVG/UserInterfaceSVG';
-import IllustrationSVG from '@/src/elements/IllustrationSVG/IllustrationSVG';
+import IllustrationOneSVG from '@/src/elements/IllustrationOneSVG/IllustrationOneSVG';
+import IllustrationTwoSVG from '@/src/elements/IllustrationTwoSVG/IllustrationTwoSVG';
+import IllustrationThreeSVG from '@/src/elements/IllustrationThreeSVG/IllustrationThreeSVG';
 import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
+import IndicatorSlider from '@/src/elements/IndicatorSlider/IndicatorSlider';
 
 import styles from './Card.module.css';
 
@@ -45,6 +48,24 @@ const Card = ({ data, cover }: Props) => {
       .catch(() => {
         window.alert('Copy failed, please update your browser!');
       });
+  };
+
+  const carouselSettings: Partial<InternalCarouselProps> = {
+    wrapAround: true,
+    renderCenterRightControls: null,
+    renderCenterLeftControls: null,
+    renderBottomCenterControls: null,
+    renderBottomLeftControls: ({
+      currentSlide,
+      pagingDotsIndices,
+      goToSlide,
+    }) => (
+      <IndicatorSlider
+        currentSlide={currentSlide}
+        pagingDotsIndices={pagingDotsIndices}
+        goToSlide={goToSlide}
+      />
+    ),
   };
 
   return (
@@ -77,14 +98,26 @@ const Card = ({ data, cover }: Props) => {
             )}
 
             {cover === 1 && (
-              <div>
+              <Carousel {...carouselSettings}>
                 <div className={styles.cardPairPreview}>
-                  <IllustrationSVG
+                  <IllustrationOneSVG
                     mainColor={primary.hex}
                     accentColor={secondary.hex}
                   />
                 </div>
-              </div>
+                <div className={styles.cardPairPreview}>
+                  <IllustrationTwoSVG
+                    mainColor={primary.hex}
+                    accentColor={secondary.hex}
+                  />
+                </div>
+                <div className={styles.cardPairPreview}>
+                  <IllustrationThreeSVG
+                    mainColor={primary.hex}
+                    accentColor={secondary.hex}
+                  />
+                </div>
+              </Carousel>
             )}
 
             {cover === 2 && (
@@ -144,17 +177,6 @@ const Card = ({ data, cover }: Props) => {
                     } as CustomColorType
                   }
                 />
-              </div>
-            )}
-
-            {cover === 5 && (
-              <div>
-                <div className={styles.cardPairPreview}>
-                  <UserInterfaceSVG
-                    mainColor={primary.hex}
-                    accentColor={secondary.hex}
-                  />
-                </div>
               </div>
             )}
           </>

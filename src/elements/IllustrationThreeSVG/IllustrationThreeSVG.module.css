@@ -1,25 +1,7 @@
-.sliderWrapper {
-  margin: 2em auto;
+.svg {
+  width: 80%;
 
-  width: 100%;
-  max-width: 360px;
-
-  aspect-ratio: 4 / 5;
-
-  box-shadow: var(--shadow-bottom);
-}
-
-.responsiveImageWrapper {
-  position: relative;
-
-  width: 100%;
-  max-width: 480px;
-
-  aspect-ratio: 4 / 5;
-}
-
-.pagingDotsContainer {
-  gap: 0.5em;
+  max-width: 220px;
 }
 
 @media (hover: hover) {
@@ -30,6 +12,10 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
+  .svg {
+    width: 100%;
+    max-width: 200px;
+  }
 }
 
 /* ================================================ */
