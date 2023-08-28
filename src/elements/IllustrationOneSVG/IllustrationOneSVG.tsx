@@ -1,13 +1,13 @@
 import fontColorContrast from 'font-color-contrast';
 
-import styles from './IllustrationSVG.module.css';
+import styles from './IllustrationOneSVG.module.css';
 
 interface Props {
   mainColor: string;
   accentColor: string;
 }
 
-const IllustrationSVG = ({ mainColor, accentColor }: Props) => {
+const IllustrationOneSVG = ({ mainColor, accentColor }: Props) => {
   const adaptiveMainColor = fontColorContrast(mainColor);
   const adaptiveAccentColor = fontColorContrast(accentColor);
 
@@ -250,4 +250,4 @@ const IllustrationSVG = ({ mainColor, accentColor }: Props) => {
   );
 };
 
-export default IllustrationSVG;
+export default IllustrationOneSVG;

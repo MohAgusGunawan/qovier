@@ -1,13 +1,13 @@
 import fontColorContrast from 'font-color-contrast';
 
-import styles from './UserInterfaceSVG.module.css';
+import styles from './IllustrationTwoSVG.module.css';
 
 interface Props {
   mainColor: string;
   accentColor: string;
 }
 
-const UserInterfaceSVG = ({ mainColor, accentColor }: Props) => {
+const IllustrationTwoSVG = ({ mainColor, accentColor }: Props) => {
   const adaptiveAccentColor = fontColorContrast(accentColor);
 
   return (
@@ -204,4 +204,4 @@ const UserInterfaceSVG = ({ mainColor, accentColor }: Props) => {
   );
 };
 
-export default UserInterfaceSVG;
+export default IllustrationTwoSVG;

@@ -1,0 +1,56 @@
+.indicatorSlider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.3em;
+
+  min-width: 50px;
+  max-width: 80px;
+  height: 32px;
+
+  border-top-right-radius: 8px;
+  background: var(--surface-color);
+  box-shadow: var(--shadow-top);
+}
+
+.indicatorList {
+  display: grid;
+}
+
+.indicatorDot {
+  width: 4px;
+  height: 4px;
+
+  border-radius: 50% / 50%;
+  background: var(--text-mute-color);
+  opacity: 0.5;
+
+  cursor: pointer;
+}
+
+.indicatorDotActive {
+  background: var(--text-focal-color);
+  opacity: 1;
+}
+
+.indicatorDot:focus-visible {
+  outline-offset: 2px;
+  outline: 1px solid var(--text-focal-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
