@@ -21,7 +21,7 @@ const sourceSans3 = Source_Sans_3({
 export const metadata: Metadata = {
   title: 'Qovier - Explore Color Pair',
   description:
-    'With Qover you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!',
+    'With Qovier you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!',
 };
 
 export default function RootLayout({
@@ -60,7 +60,7 @@ export default function RootLayout({
         <meta property="og:title" content="Qovier - Explore Color Pair" />
         <meta
           property="og:description"
-          content="With Qover you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
+          content="With Qovier you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
         />
         <meta
           property="og:image"
@@ -73,7 +73,7 @@ export default function RootLayout({
         <meta property="twitter:title" content="Qovier - Explore Color Pair" />
         <meta
           property="twitter:description"
-          content="With Qover you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
+          content="With Qovier you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
         />
         <meta
           property="twitter:image"
