@@ -7,9 +7,6 @@ import { Providers } from '@/src/redux/provider';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
 import './styles/main.css';
 
 const sourceSans3 = Source_Sans_3({

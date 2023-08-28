@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import Slider from 'react-slick';
+import Carousel from 'nuka-carousel';
 
 import styles from './ColorwheelSlider.module.css';
 
@@ -10,21 +10,19 @@ import ColorWheelTertiaryPNG from '@/src/assets/images/color-wheel-rgb-tertiary.
 
 const ColorwheelSlider = () => {
   const settings = {
+    wrapAround: true,
     autoplay: true,
-    autoplaySpeed: 5000,
-    dots: false,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    arrows: false,
-    pauseOnFocus: true,
-    pasueOnHover: true,
+    autoplayInterval: 5000,
+    renderCenterRightControls: null,
+    renderCenterLeftControls: null,
+    defaultControlsConfig: {
+      pagingDotsContainerClassName: styles.pagingDotsContainer,
+    },
   };
 
   return (
     <div className={styles.sliderWrapper}>
-      <Slider {...settings}>
+      <Carousel {...settings}>
         <div className={styles.responsiveImageWrapper}>
           <Image
             src={ColorWheelPNG}
@@ -62,7 +60,7 @@ const ColorwheelSlider = () => {
             priority
           />
         </div>
-      </Slider>
+      </Carousel>
     </div>
   );
 };

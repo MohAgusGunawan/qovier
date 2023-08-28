@@ -18,6 +18,10 @@
   aspect-ratio: 4 / 5;
 }
 
+.pagingDotsContainer {
+  gap: 0.5em;
+}
+
 @media (hover: hover) {
   /* when supported */
 }
