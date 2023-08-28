@@ -186,6 +186,7 @@
   aspect-ratio: 16 / 9;
 
   background: repeating-conic-gradient(
+    from 45deg at 30% 50%,
     var(--first-color),
     var(--second-color) 20%
   );
