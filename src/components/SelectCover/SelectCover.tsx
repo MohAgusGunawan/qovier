@@ -1,4 +1,5 @@
-import { Listbox } from '@headlessui/react';
+import { Fragment } from 'react';
+import { Listbox, Transition } from '@headlessui/react';
 import { HiChevronUpDown } from 'react-icons/hi2';
 
 import styles from './SelectCover.module.css';
@@ -20,21 +21,31 @@ function SelectCover({ value, onChange, list, name }: Props) {
           </span>
           <HiChevronUpDown className={styles.iconBtn} />
         </Listbox.Button>
-        <Listbox.Options className={styles.selectOptionBox}>
-          {list.map((cover, index) => (
-            <Listbox.Option key={index} value={index}>
-              {({ active }) => (
-                <span
-                  className={`${styles.selectOption} ${
-                    active ? styles.selectOptionFocus : null
-                  }`}
-                >
-                  {cover}
-                </span>
-              )}
-            </Listbox.Option>
-          ))}
-        </Listbox.Options>
+        <Transition
+          as={Fragment}
+          enter="at-enterTransition"
+          enterFrom="at-fadeSlideOut"
+          enterTo="at-fadeSlideIn"
+          leave="at-leaveTransition"
+          leaveFrom="at-fadeSlideIn"
+          leaveTo="at-fadeSlideOut"
+        >
+          <Listbox.Options className={styles.selectOptionBox}>
+            {list.map((cover, index) => (
+              <Listbox.Option key={index} value={index}>
+                {({ active }) => (
+                  <span
+                    className={`${styles.selectOption} ${
+                      active ? styles.selectOptionFocus : null
+                    }`}
+                  >
+                    {cover}
+                  </span>
+                )}
+              </Listbox.Option>
+            ))}
+          </Listbox.Options>
+        </Transition>
       </Listbox>
     </div>
   );
