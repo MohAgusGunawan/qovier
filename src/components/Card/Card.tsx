@@ -121,9 +121,9 @@ const Card = ({ data, cover }: Props) => {
             )}
 
             {cover === 2 && (
-              <div>
+              <Carousel {...carouselSettings}>
                 <div
-                  className={styles.cardPatternColor}
+                  className={styles.cardPatternZigzag}
                   style={
                     {
                       '--first-color': `#${primary.hex}`,
@@ -131,7 +131,25 @@ const Card = ({ data, cover }: Props) => {
                     } as CustomColorType
                   }
                 />
-              </div>
+                <div
+                  className={styles.cardPatternWindmill}
+                  style={
+                    {
+                      '--first-color': `#${primary.hex}`,
+                      '--second-color': `#${secondary.hex}`,
+                    } as CustomColorType
+                  }
+                />
+                <div
+                  className={styles.cardPatternCircledot}
+                  style={
+                    {
+                      '--first-color': `#${primary.hex}`,
+                      '--second-color': `#${secondary.hex}`,
+                    } as CustomColorType
+                  }
+                />
+              </Carousel>
             )}
 
             {cover === 3 && (
@@ -167,9 +185,9 @@ const Card = ({ data, cover }: Props) => {
             )}
 
             {cover === 4 && (
-              <div>
+              <Carousel {...carouselSettings}>
                 <div
-                  className={styles.cardGradientColor}
+                  className={styles.cardLinearGradient}
                   style={
                     {
                       '--first-color': `#${primary.hex}`,
@@ -177,7 +195,25 @@ const Card = ({ data, cover }: Props) => {
                     } as CustomColorType
                   }
                 />
-              </div>
+                <div
+                  className={styles.cardRadialGradient}
+                  style={
+                    {
+                      '--first-color': `#${primary.hex}`,
+                      '--second-color': `#${secondary.hex}`,
+                    } as CustomColorType
+                  }
+                />
+                <div
+                  className={styles.cardConicGradient}
+                  style={
+                    {
+                      '--first-color': `#${primary.hex}`,
+                      '--second-color': `#${secondary.hex}`,
+                    } as CustomColorType
+                  }
+                />
+              </Carousel>
             )}
           </>
         )}

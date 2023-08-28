@@ -61,7 +61,75 @@
   background: var(--background-color);
 }
 
-.cardPatternColor {
+.cardPatternZigzag {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  --size: 48px;
+
+  aspect-ratio: 16 / 9;
+
+  background-color: var(--second-color);
+  background-image: linear-gradient(
+      135deg,
+      var(--first-color) 25%,
+      transparent 25%
+    ),
+    linear-gradient(225deg, var(--first-color) 25%, transparent 25%),
+    linear-gradient(45deg, var(--first-color) 25%, transparent 25%),
+    linear-gradient(315deg, var(--first-color) 25%, var(--second-color) 25%);
+  background-position:
+    calc(var(--size) / 2) 0,
+    calc(var(--size) / 2) 0,
+    0 0,
+    0 0;
+  background-size: var(--size) var(--size);
+  background-repeat: repeat;
+}
+
+.cardPatternCircledot {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  --size: 48px;
+
+  aspect-ratio: 16 / 9;
+
+  background: radial-gradient(
+      circle at top right,
+      transparent 10%,
+      var(--first-color) 10%,
+      var(--first-color) 20%,
+      transparent 21%
+    ),
+    radial-gradient(
+      circle at left bottom,
+      transparent 10%,
+      var(--first-color) 10%,
+      var(--first-color) 20%,
+      transparent 21%
+    ),
+    radial-gradient(
+      circle at top left,
+      transparent 10%,
+      var(--first-color) 10%,
+      var(--first-color) 20%,
+      transparent 21%
+    ),
+    radial-gradient(
+      circle at right bottom,
+      transparent 10%,
+      var(--first-color) 10%,
+      var(--first-color) 20%,
+      transparent 21%
+    ),
+    radial-gradient(circle at center, var(--first-color) 30%, transparent 31%);
+  background-size: var(--size) var(--size);
+  background-color: var(--second-color);
+  opacity: 1;
+}
+
+.cardPatternWindmill {
   --first-color: transparent;
   --second-color: transparent;
 
@@ -91,13 +159,36 @@
   background-size: var(--s) var(--s);
 }
 
-.cardGradientColor {
+.cardLinearGradient {
   --first-color: transparent;
   --second-color: transparent;
 
   aspect-ratio: 16 / 9;
 
   background: linear-gradient(45deg, var(--first-color), var(--second-color));
+}
+.cardRadialGradient {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: repeating-radial-gradient(
+    circle at 100%,
+    var(--first-color),
+    var(--second-color) 20%
+  );
+}
+.cardConicGradient {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: repeating-conic-gradient(
+    var(--first-color),
+    var(--second-color) 20%
+  );
 }
 
 .cardTypoColor {
