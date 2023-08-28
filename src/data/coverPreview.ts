@@ -4,5 +4,4 @@ export const coverPreview = [
   'Pattern',
   'Text',
   'Gradient',
-  'User Interface',
 ];

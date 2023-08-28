@@ -15,7 +15,6 @@ import {
   ColorIconType,
 } from '@/src/types/ColorType';
 
-import UserInterfaceSVG from '@/src/elements/UserInterfaceSVG/UserInterfaceSVG';
 import IllustrationSVG from '@/src/elements/IllustrationSVG/IllustrationSVG';
 import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
 
@@ -144,17 +143,6 @@ const Card = ({ data, cover }: Props) => {
                     } as CustomColorType
                   }
                 />
-              </div>
-            )}
-
-            {cover === 5 && (
-              <div>
-                <div className={styles.cardPairPreview}>
-                  <UserInterfaceSVG
-                    mainColor={primary.hex}
-                    accentColor={secondary.hex}
-                  />
-                </div>
               </div>
             )}
           </>
