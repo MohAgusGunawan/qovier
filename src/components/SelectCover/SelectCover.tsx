@@ -1,5 +1,5 @@
 import { Listbox } from '@headlessui/react';
-import { TbArrowsVertical } from 'react-icons/tb';
+import { HiChevronUpDown } from 'react-icons/hi2';
 
 import styles from './SelectCover.module.css';
 
@@ -18,7 +18,7 @@ function SelectCover({ value, onChange, list, name }: Props) {
           <span className={styles.selectLabel}>
             Preview: <b className={styles.titleBold}>{list[value]}</b>
           </span>
-          <TbArrowsVertical className={styles.iconBtn} />
+          <HiChevronUpDown className={styles.iconBtn} />
         </Listbox.Button>
         <Listbox.Options className={styles.selectOptionBox}>
           {list.map((cover, index) => (
