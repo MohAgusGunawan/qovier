@@ -34,7 +34,7 @@
 
 .iconBtn {
   display: block;
-  color: var(--text-mute-color);
+  color: var(--text-common-color);
 }
 
 .selectButton:focus-visible {
