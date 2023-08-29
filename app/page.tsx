@@ -53,7 +53,7 @@ export default function Home() {
           <div className="wrapper">
             <div className={styles.cardContainer}>
               {combination.map((data, index) => (
-                <Card data={data} key={index} cover={cover} />
+                <Card data={data} key={index} index={index} />
               ))}
             </div>
           </div>

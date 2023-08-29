@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment } from 'react';
+import React, { Fragment, useCallback, useMemo } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import Carousel, { InternalCarouselProps } from 'nuka-carousel';
 import { IoIosArrowDown } from 'react-icons/io';
@@ -26,18 +26,21 @@ import styles from './Card.module.css';
 
 type Props = {
   data: ColorPair;
-  cover: number;
+  index: number;
 };
 
-const Card = ({ data, cover }: Props) => {
+const Card = ({ data, index }: Props) => {
   const { loading } = useAppSelector((state) => state.combination);
+  const { value: cover } = useAppSelector((state) => state.cover);
 
   const primary = data.primary;
   const secondary = data.secondary;
 
-  const contrastRatio = getContrast(primary.hex, secondary.hex);
+  const contrastRatio = useMemo(() => {
+    return getContrast(primary.hex, secondary.hex);
+  }, [primary.hex, secondary.hex]);
 
-  const handleCopy = (text: string) => {
+  const handleCopy = useCallback((text: string) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
@@ -48,25 +51,28 @@ const Card = ({ data, cover }: Props) => {
       .catch(() => {
         window.alert('Copy failed, please update your browser!');
       });
-  };
+  }, []);
 
-  const carouselSettings: Partial<InternalCarouselProps> = {
-    wrapAround: true,
-    renderCenterRightControls: null,
-    renderCenterLeftControls: null,
-    renderBottomCenterControls: null,
-    renderBottomLeftControls: ({
-      currentSlide,
-      pagingDotsIndices,
-      goToSlide,
-    }) => (
-      <IndicatorSlider
-        currentSlide={currentSlide}
-        pagingDotsIndices={pagingDotsIndices}
-        goToSlide={goToSlide}
-      />
-    ),
-  };
+  const carouselSettings: Partial<InternalCarouselProps> = useMemo(() => {
+    return {
+      wrapAround: true,
+      slideIndex: index % 3,
+      renderCenterRightControls: null,
+      renderCenterLeftControls: null,
+      renderBottomCenterControls: null,
+      renderBottomLeftControls: ({
+        currentSlide,
+        pagingDotsIndices,
+        goToSlide,
+      }) => (
+        <IndicatorSlider
+          currentSlide={currentSlide}
+          pagingDotsIndices={pagingDotsIndices}
+          goToSlide={goToSlide}
+        />
+      ),
+    };
+  }, [index]);
 
   return (
     <div className={styles.card}>
@@ -368,4 +374,4 @@ const Card = ({ data, cover }: Props) => {
   );
 };
 
-export default Card;
+export default React.memo(Card);
