@@ -10,7 +10,8 @@ import {
 } from '@/src/redux/features/combinationSlice';
 
 import SelectColor from '@/src/components/SelectColor/SelectColor';
-import Button from '@/src/components/Button/Button';
+
+import Button from '@/src/elements/Button/Button';
 
 import { colors, excludeColors, secondaryColors } from '@/src/data/color';
 
