@@ -23,6 +23,8 @@ import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
 import SlideButton from '@/src/elements/SlideButton/SlideButton';
 import IndicatorSlider from '@/src/elements/IndicatorSlider/IndicatorSlider';
 
+import { coverPreview } from '@/src/data/coverPreview';
+
 import styles from './Card.module.css';
 
 type Props = {
@@ -38,6 +40,8 @@ const Card = ({ data, index }: Props) => {
   const [slideIllustration, setSlideIllustration] = useState(index % maxSlide);
   const [slidePattern, setSlidePattern] = useState(index % maxSlide);
   const [slideGradient, setSlideGradient] = useState(index % maxSlide);
+
+  const preview = coverPreview[cover];
 
   const primary = data.primary;
   const secondary = data.secondary;
@@ -130,7 +134,7 @@ const Card = ({ data, index }: Props) => {
               </div>
             )}
 
-            {cover === 1 && (
+            {preview === 'Illustration' && (
               <>
                 <div className={styles.slide}>
                   {slideIllustration === 0 && (
@@ -190,7 +194,7 @@ const Card = ({ data, index }: Props) => {
               </>
             )}
 
-            {cover === 2 && (
+            {preview === 'Pattern' && (
               <div className={styles.slide}>
                 {slidePattern === 0 && (
                   <div
@@ -264,7 +268,7 @@ const Card = ({ data, index }: Props) => {
               </div>
             )}
 
-            {cover === 3 && (
+            {preview === 'Text' && (
               <div>
                 <div
                   className={styles.cardTypoColor}
@@ -296,7 +300,7 @@ const Card = ({ data, index }: Props) => {
               </div>
             )}
 
-            {cover === 4 && (
+            {preview === 'Gradient' && (
               <div className={styles.slide}>
                 {slideGradient === 0 && (
                   <div
