@@ -1,3 +1,5 @@
+import { BsStarFill, BsStarHalf, BsStar } from 'react-icons/bs';
+
 import styles from './RatioBadge.module.css';
 
 interface Props {
@@ -14,35 +16,36 @@ const RatioBadge = ({ ratio }: Props) => {
     return 'Bad';
   };
 
-  const getThemeByRatio = (number: number) => {
-    if (number >= 12)
-      return {
-        background: 'var(--success-color)',
-        color: 'var(--success-text-color',
-      };
-
-    if (number >= 2.5 && number < 12)
-      return {
-        background: 'var(--warning-color)',
-        color: 'var(--warning-text-color',
-      };
-
-    return {
-      background: 'var(--danger-color)',
-      color: 'var(--danger-text-color',
-    };
-  };
-
   return (
-    <span
-      className={styles.ratioBadge}
-      style={{
-        color: getThemeByRatio(ratio).color,
-        background: getThemeByRatio(ratio).background,
-      }}
-    >
-      {getTextByRatio(ratio)}
-    </span>
+    <div className={styles.ratioBadge}>
+      <span className={styles.badgeText}>{getTextByRatio(ratio)}</span>
+      {ratio >= 12 && (
+        <BsStarFill
+          className={styles.icon}
+          style={{
+            color: 'var(--success-color)',
+          }}
+        />
+      )}
+
+      {ratio >= 2.5 && ratio < 12 && (
+        <BsStarHalf
+          className={styles.icon}
+          style={{
+            color: 'var(--warning-color)',
+          }}
+        />
+      )}
+
+      {ratio < 2.5 && (
+        <BsStar
+          className={styles.icon}
+          style={{
+            color: 'var(--danger-color)',
+          }}
+        />
+      )}
+    </div>
   );
 };
 
