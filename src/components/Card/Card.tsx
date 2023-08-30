@@ -18,6 +18,7 @@ import {
 import IllustrationOneSVG from '@/src/elements/IllustrationOneSVG/IllustrationOneSVG';
 import IllustrationTwoSVG from '@/src/elements/IllustrationTwoSVG/IllustrationTwoSVG';
 import IllustrationThreeSVG from '@/src/elements/IllustrationThreeSVG/IllustrationThreeSVG';
+import IllustrationFourSVG from '@/src/elements/IllustrationFourSVG/IllustrationFourSVG';
 import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
 import SlideButton from '@/src/elements/SlideButton/SlideButton';
 import IndicatorSlider from '@/src/elements/IndicatorSlider/IndicatorSlider';
@@ -30,7 +31,7 @@ type Props = {
 };
 
 const Card = ({ data, index }: Props) => {
-  const maxSlide = 3;
+  const maxSlide = 4;
   const { loading } = useAppSelector((state) => state.combination);
   const { value: cover } = useAppSelector((state) => state.cover);
 
@@ -156,11 +157,22 @@ const Card = ({ data, index }: Props) => {
                       />
                     </div>
                   )}
+                  {slideIllustration === 3 && (
+                    <div className={styles.cardPairPreview}>
+                      <IllustrationFourSVG
+                        mainColor={primary.hex}
+                        accentColor={secondary.hex}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slideIllustration}
-                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    pagingDotsIndices={Array.from(
+                      { length: maxSlide },
+                      (x, i) => i
+                    )}
                     slideName="illustration"
                     goToSlide={goToSlide}
                   />
@@ -216,10 +228,25 @@ const Card = ({ data, index }: Props) => {
                   />
                 )}
 
+                {slidePattern === 3 && (
+                  <div
+                    className={styles.cardPatternCircleWave}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slidePattern}
-                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    pagingDotsIndices={Array.from(
+                      { length: maxSlide },
+                      (x, i) => i
+                    )}
                     slideName="pattern"
                     goToSlide={goToSlide}
                   />
@@ -297,6 +324,18 @@ const Card = ({ data, index }: Props) => {
 
                 {slideGradient === 2 && (
                   <div
+                    className={styles.cardLinearGradientRepeat}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                {slideGradient === 3 && (
+                  <div
                     className={styles.cardConicGradient}
                     style={
                       {
@@ -310,7 +349,10 @@ const Card = ({ data, index }: Props) => {
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slideGradient}
-                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    pagingDotsIndices={Array.from(
+                      { length: maxSlide },
+                      (x, i) => i
+                    )}
                     slideName="gradient"
                     goToSlide={goToSlide}
                   />

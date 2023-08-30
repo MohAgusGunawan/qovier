@@ -186,6 +186,41 @@
   background-size: var(--s) var(--s);
 }
 
+.cardPatternCircleWave {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  --size: 48px;
+
+  aspect-ratio: 16 / 9;
+
+  background: radial-gradient(
+    circle at bottom,
+    var(--first-color),
+    var(--first-color) 10%,
+    transparent 10%,
+    transparent 20%,
+    var(--first-color) 20%,
+    var(--first-color) 30%,
+    transparent 30%,
+    transparent 40%,
+    var(--first-color) 40%,
+    var(--first-color) 50%,
+    transparent 50%,
+    transparent 60%,
+    var(--first-color) 60%,
+    var(--first-color) 70%,
+    transparent 70%,
+    transparent 80%,
+    var(--first-color) 80%,
+    var(--first-color) 90%,
+    transparent 90%
+  );
+  background-size: var(--size) var(--size);
+  background-color: var(--second-color);
+  opacity: 1;
+}
+
 .cardLinearGradient {
   --first-color: transparent;
   --second-color: transparent;
@@ -194,6 +229,7 @@
 
   background: linear-gradient(45deg, var(--first-color), var(--second-color));
 }
+
 .cardRadialGradient {
   --first-color: transparent;
   --second-color: transparent;
@@ -206,6 +242,20 @@
     var(--second-color) 20%
   );
 }
+
+.cardLinearGradientRepeat {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--first-color),
+    var(--second-color) 33%
+  );
+}
+
 .cardConicGradient {
   --first-color: transparent;
   --second-color: transparent;
