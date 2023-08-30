@@ -18,9 +18,12 @@ import {
 import IllustrationOneSVG from '@/src/elements/IllustrationOneSVG/IllustrationOneSVG';
 import IllustrationTwoSVG from '@/src/elements/IllustrationTwoSVG/IllustrationTwoSVG';
 import IllustrationThreeSVG from '@/src/elements/IllustrationThreeSVG/IllustrationThreeSVG';
+import IllustrationFourSVG from '@/src/elements/IllustrationFourSVG/IllustrationFourSVG';
 import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
 import SlideButton from '@/src/elements/SlideButton/SlideButton';
 import IndicatorSlider from '@/src/elements/IndicatorSlider/IndicatorSlider';
+
+import { coverPreview } from '@/src/data/coverPreview';
 
 import styles from './Card.module.css';
 
@@ -30,13 +33,15 @@ type Props = {
 };
 
 const Card = ({ data, index }: Props) => {
-  const maxSlide = 3;
+  const maxSlide = 4;
   const { loading } = useAppSelector((state) => state.combination);
   const { value: cover } = useAppSelector((state) => state.cover);
 
   const [slideIllustration, setSlideIllustration] = useState(index % maxSlide);
   const [slidePattern, setSlidePattern] = useState(index % maxSlide);
   const [slideGradient, setSlideGradient] = useState(index % maxSlide);
+
+  const preview = coverPreview[cover];
 
   const primary = data.primary;
   const secondary = data.secondary;
@@ -129,7 +134,7 @@ const Card = ({ data, index }: Props) => {
               </div>
             )}
 
-            {cover === 1 && (
+            {preview === 'Illustration' && (
               <>
                 <div className={styles.slide}>
                   {slideIllustration === 0 && (
@@ -156,11 +161,22 @@ const Card = ({ data, index }: Props) => {
                       />
                     </div>
                   )}
+                  {slideIllustration === 3 && (
+                    <div className={styles.cardPairPreview}>
+                      <IllustrationFourSVG
+                        mainColor={primary.hex}
+                        accentColor={secondary.hex}
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slideIllustration}
-                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    pagingDotsIndices={Array.from(
+                      { length: maxSlide },
+                      (x, i) => i
+                    )}
                     slideName="illustration"
                     goToSlide={goToSlide}
                   />
@@ -178,7 +194,7 @@ const Card = ({ data, index }: Props) => {
               </>
             )}
 
-            {cover === 2 && (
+            {preview === 'Pattern' && (
               <div className={styles.slide}>
                 {slidePattern === 0 && (
                   <div
@@ -216,10 +232,25 @@ const Card = ({ data, index }: Props) => {
                   />
                 )}
 
+                {slidePattern === 3 && (
+                  <div
+                    className={styles.cardPatternCircleWave}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slidePattern}
-                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    pagingDotsIndices={Array.from(
+                      { length: maxSlide },
+                      (x, i) => i
+                    )}
                     slideName="pattern"
                     goToSlide={goToSlide}
                   />
@@ -237,7 +268,7 @@ const Card = ({ data, index }: Props) => {
               </div>
             )}
 
-            {cover === 3 && (
+            {preview === 'Text' && (
               <div>
                 <div
                   className={styles.cardTypoColor}
@@ -269,7 +300,7 @@ const Card = ({ data, index }: Props) => {
               </div>
             )}
 
-            {cover === 4 && (
+            {preview === 'Gradient' && (
               <div className={styles.slide}>
                 {slideGradient === 0 && (
                   <div
@@ -297,6 +328,18 @@ const Card = ({ data, index }: Props) => {
 
                 {slideGradient === 2 && (
                   <div
+                    className={styles.cardLinearGradientRepeat}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                {slideGradient === 3 && (
+                  <div
                     className={styles.cardConicGradient}
                     style={
                       {
@@ -310,7 +353,10 @@ const Card = ({ data, index }: Props) => {
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slideGradient}
-                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    pagingDotsIndices={Array.from(
+                      { length: maxSlide },
+                      (x, i) => i
+                    )}
                     slideName="gradient"
                     goToSlide={goToSlide}
                   />
@@ -391,7 +437,11 @@ const Card = ({ data, index }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
-                          onClick={() => handleCopy(String(primary.hsl))}
+                          onClick={() =>
+                            handleCopy(
+                              `${primary.hsl[0]}°,${primary.hsl[1]}%,${primary.hsl[2]}%`
+                            )
+                          }
                         >
                           <TbCopy />
                           <span>HSL ({String(primary.hsl)})</span>
@@ -462,7 +512,11 @@ const Card = ({ data, index }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
-                          onClick={() => handleCopy(String(secondary.hsl))}
+                          onClick={() =>
+                            handleCopy(
+                              `${secondary.hsl[0]}°,${secondary.hsl[1]}%,${secondary.hsl[2]}%`
+                            )
+                          }
                         >
                           <TbCopy />
                           <span>HSL ({String(secondary.hsl)})</span>

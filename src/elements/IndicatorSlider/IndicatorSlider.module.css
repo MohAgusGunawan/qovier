@@ -1,4 +1,6 @@
 .indicatorSlider {
+  padding: 0 0.875em;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,7 +8,6 @@
   gap: 0.3em;
 
   min-width: 50px;
-  max-width: 80px;
   height: 32px;
 
   border-top-right-radius: 8px;

@@ -1,19 +1,38 @@
 .ratioBadge {
-  display: block;
   position: absolute;
 
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  display: flex;
+  align-items: center;
 
-  top: 1em;
-  left: 1em;
+  gap: 0.2em;
 
-  padding: 0.4em 1em;
+  top: 0;
+  left: 0;
 
-  border-radius: 8px;
+  min-width: 60px;
+  min-height: 32px;
 
-  background-color: var(--danger-color);
+  padding: 0.5em 0.875em;
+  padding-top: 0.6em;
+
+  border-bottom-right-radius: 8px;
+
+  background-color: var(--surface-color);
   box-shadow: var(--shadow-bottom);
+  border-right: 1px solid #b2b2b2;
+  border-bottom: 1px solid #b2b2b2;
+}
+
+.badgeText {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+
+  color: var(--text-focal-color);
+}
+
+.icon {
+  margin-top: -2px;
+  font-size: var(--fs-sm);
 }
 
 @media (hover: hover) {
@@ -24,7 +43,7 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
-  .ratioBadge {
+  .badgeText {
     font-size: var(--fs-xs);
   }
 }
