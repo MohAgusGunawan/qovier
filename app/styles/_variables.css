@@ -47,13 +47,13 @@
 
   /* State Color */
   --success-color: hsl(148, 64%, 53%);
-  --success-text-color: hsl(148, 75%, 9%);
+  --success-text-color: hsl(148, 59%, 25%);
   --info-color: hsl(187, 98%, 44%);
   --info-text-color: hsl(187, 98%, 20%);
-  --warning-color: hsl(54, 95%, 46%);
-  --warning-text-color: hsl(54, 98%, 24%);
-  --danger-color: hsl(7, 100%, 46%);
-  --danger-text-color: hsl(8, 100%, 21%);
+  --warning-color: hsl(69, 100%, 55%);
+  --warning-text-color: hsl(69, 93%, 23%);
+  --danger-color: hsl(7, 100%, 81%);
+  --danger-text-color: hsl(8, 79%, 24%);
 
   /* Text Color */
   --text-focal-color: hsl(0, 0%, 15%);
