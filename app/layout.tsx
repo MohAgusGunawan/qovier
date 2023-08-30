@@ -90,7 +90,7 @@ export default function RootLayout({
             pauseOnFocusLoss
             draggable
             pauseOnHover
-            theme="light"
+            theme="dark"
           />
         </Providers>
       </body>

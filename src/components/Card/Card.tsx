@@ -433,7 +433,11 @@ const Card = ({ data, index }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
-                          onClick={() => handleCopy(String(primary.hsl))}
+                          onClick={() =>
+                            handleCopy(
+                              `${primary.hsl[0]}°,${primary.hsl[1]}%,${primary.hsl[2]}%`
+                            )
+                          }
                         >
                           <TbCopy />
                           <span>HSL ({String(primary.hsl)})</span>
@@ -504,7 +508,11 @@ const Card = ({ data, index }: Props) => {
                           className={`${styles.menuCopyButton} ${
                             active ? styles.menuCopyButtonActive : null
                           }`}
-                          onClick={() => handleCopy(String(secondary.hsl))}
+                          onClick={() =>
+                            handleCopy(
+                              `${secondary.hsl[0]}°,${secondary.hsl[1]}%,${secondary.hsl[2]}%`
+                            )
+                          }
                         >
                           <TbCopy />
                           <span>HSL ({String(secondary.hsl)})</span>
