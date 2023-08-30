@@ -1,7 +1,6 @@
 .svg {
-  width: 75%;
-
-  max-width: 300px;
+  width: 100%;
+  height: 75%;
 
   box-shadow: var(--shadow-bottom);
 }
@@ -14,10 +13,6 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
-  .svg {
-    width: 100%;
-    max-width: 220px;
-  }
 }
 
 /* ================================================ */
