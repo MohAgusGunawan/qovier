@@ -17,22 +17,35 @@
 
   border-bottom-right-radius: 8px;
 
-  background-color: var(--surface-color);
   box-shadow: var(--shadow-bottom);
-  border-right: 1px solid #b2b2b2;
-  border-bottom: 1px solid #b2b2b2;
+
+  border-right: 1px dotted var(--text-mute-color);
+  border-bottom: 1px dotted var(--text-mute-color);
 }
 
 .badgeText {
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
-
-  color: var(--text-focal-color);
 }
 
 .icon {
   margin-top: -2px;
   font-size: var(--fs-sm);
+}
+
+.success {
+  background: var(--success-color);
+  color: var(--success-text-color);
+}
+
+.warning {
+  background: var(--warning-color);
+  color: var(--warning-text-color);
+}
+
+.danger {
+  background: var(--danger-color);
+  color: var(--danger-text-color);
 }
 
 @media (hover: hover) {

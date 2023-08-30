@@ -16,35 +16,18 @@ const RatioBadge = ({ ratio }: Props) => {
     return 'Bad';
   };
 
+  const status = () => {
+    if (ratio >= 12) return styles.success;
+    if (ratio >= 2.5 && ratio < 12) return styles.warning;
+    return styles.danger;
+  };
+
   return (
-    <div className={styles.ratioBadge}>
+    <div className={`${styles.ratioBadge} ${status()}`}>
+      {ratio >= 12 && <BsStarFill className={styles.icon} />}
+      {ratio >= 2.5 && ratio < 12 && <BsStarHalf className={styles.icon} />}
+      {ratio < 2.5 && <BsStar className={styles.icon} />}
       <span className={styles.badgeText}>{getTextByRatio(ratio)}</span>
-      {ratio >= 12 && (
-        <BsStarFill
-          className={styles.icon}
-          style={{
-            color: 'var(--success-color)',
-          }}
-        />
-      )}
-
-      {ratio >= 2.5 && ratio < 12 && (
-        <BsStarHalf
-          className={styles.icon}
-          style={{
-            color: 'var(--warning-color)',
-          }}
-        />
-      )}
-
-      {ratio < 2.5 && (
-        <BsStar
-          className={styles.icon}
-          style={{
-            color: 'var(--danger-color)',
-          }}
-        />
-      )}
     </div>
   );
 };
