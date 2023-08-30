@@ -1,8 +1,7 @@
 'use client';
 
-import React, { Fragment, useCallback, useMemo } from 'react';
+import React, { Fragment, useCallback, useMemo, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import Carousel, { InternalCarouselProps } from 'nuka-carousel';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
@@ -20,6 +19,7 @@ import IllustrationOneSVG from '@/src/elements/IllustrationOneSVG/IllustrationOn
 import IllustrationTwoSVG from '@/src/elements/IllustrationTwoSVG/IllustrationTwoSVG';
 import IllustrationThreeSVG from '@/src/elements/IllustrationThreeSVG/IllustrationThreeSVG';
 import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
+import SlideButton from '@/src/elements/SlideButton/SlideButton';
 import IndicatorSlider from '@/src/elements/IndicatorSlider/IndicatorSlider';
 
 import styles from './Card.module.css';
@@ -30,8 +30,13 @@ type Props = {
 };
 
 const Card = ({ data, index }: Props) => {
+  const maxSlide = 3;
   const { loading } = useAppSelector((state) => state.combination);
   const { value: cover } = useAppSelector((state) => state.cover);
+
+  const [slideIllustration, setSlideIllustration] = useState(index % maxSlide);
+  const [slidePattern, setSlidePattern] = useState(index % maxSlide);
+  const [slideGradient, setSlideGradient] = useState(index % maxSlide);
 
   const primary = data.primary;
   const secondary = data.secondary;
@@ -53,26 +58,47 @@ const Card = ({ data, index }: Props) => {
       });
   }, []);
 
-  const carouselSettings: Partial<InternalCarouselProps> = useMemo(() => {
-    return {
-      wrapAround: true,
-      slideIndex: index % 3,
-      renderCenterRightControls: null,
-      renderCenterLeftControls: null,
-      renderBottomCenterControls: null,
-      renderBottomLeftControls: ({
-        currentSlide,
-        pagingDotsIndices,
-        goToSlide,
-      }) => (
-        <IndicatorSlider
-          currentSlide={currentSlide}
-          pagingDotsIndices={pagingDotsIndices}
-          goToSlide={goToSlide}
-        />
-      ),
-    };
-  }, [index]);
+  const goToSlide = (slideName: string, slideIndex: number) => {
+    if (slideName === 'illustration') {
+      setSlideIllustration(slideIndex);
+    }
+    if (slideName === 'pattern') {
+      setSlidePattern(slideIndex);
+    }
+    if (slideName === 'gradient') {
+      setSlideGradient(slideIndex);
+    }
+  };
+
+  const nextSlide = (slideName: string) => {
+    if (slideName === 'illustration') {
+      const afterSlide = slideIllustration + 1;
+      setSlideIllustration(afterSlide % maxSlide);
+    }
+    if (slideName === 'pattern') {
+      const afterSlide = slidePattern + 1;
+      setSlidePattern(afterSlide % maxSlide);
+    }
+    if (slideName === 'gradient') {
+      const afterSlide = slideGradient + 1;
+      setSlideGradient(afterSlide % maxSlide);
+    }
+  };
+
+  const prevSlide = (slideName: string) => {
+    if (slideName === 'illustration') {
+      const afterSlide = slideIllustration - 1;
+      setSlideIllustration(afterSlide < 0 ? maxSlide - 1 : afterSlide);
+    }
+    if (slideName === 'pattern') {
+      const afterSlide = slidePattern - 1;
+      setSlidePattern(afterSlide < 0 ? maxSlide - 1 : afterSlide);
+    }
+    if (slideName === 'gradient') {
+      const afterSlide = slideGradient - 1;
+      setSlideGradient(afterSlide < 0 ? maxSlide - 1 : afterSlide);
+    }
+  };
 
   return (
     <div className={styles.card}>
@@ -104,58 +130,111 @@ const Card = ({ data, index }: Props) => {
             )}
 
             {cover === 1 && (
-              <Carousel {...carouselSettings}>
-                <div className={styles.cardPairPreview}>
-                  <IllustrationOneSVG
-                    mainColor={primary.hex}
-                    accentColor={secondary.hex}
+              <>
+                <div className={styles.slide}>
+                  {slideIllustration === 0 && (
+                    <div className={styles.cardPairPreview}>
+                      <IllustrationOneSVG
+                        mainColor={primary.hex}
+                        accentColor={secondary.hex}
+                      />
+                    </div>
+                  )}
+                  {slideIllustration === 1 && (
+                    <div className={styles.cardPairPreview}>
+                      <IllustrationTwoSVG
+                        mainColor={primary.hex}
+                        accentColor={secondary.hex}
+                      />
+                    </div>
+                  )}
+                  {slideIllustration === 2 && (
+                    <div className={styles.cardPairPreview}>
+                      <IllustrationThreeSVG
+                        mainColor={primary.hex}
+                        accentColor={secondary.hex}
+                      />
+                    </div>
+                  )}
+                </div>
+                <div className={styles.indicator}>
+                  <IndicatorSlider
+                    currentSlide={slideIllustration}
+                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    slideName="illustration"
+                    goToSlide={goToSlide}
                   />
                 </div>
-                <div className={styles.cardPairPreview}>
-                  <IllustrationTwoSVG
-                    mainColor={primary.hex}
-                    accentColor={secondary.hex}
+                <div className={styles.slideButton}>
+                  <SlideButton
+                    direction="prev"
+                    onClick={() => prevSlide('illustration')}
+                  />
+                  <SlideButton
+                    direction="next"
+                    onClick={() => nextSlide('illustration')}
                   />
                 </div>
-                <div className={styles.cardPairPreview}>
-                  <IllustrationThreeSVG
-                    mainColor={primary.hex}
-                    accentColor={secondary.hex}
-                  />
-                </div>
-              </Carousel>
+              </>
             )}
 
             {cover === 2 && (
-              <Carousel {...carouselSettings}>
-                <div
-                  className={styles.cardPatternZigzag}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                />
-                <div
-                  className={styles.cardPatternWindmill}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                />
-                <div
-                  className={styles.cardPatternCircledot}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                />
-              </Carousel>
+              <div className={styles.slide}>
+                {slidePattern === 0 && (
+                  <div
+                    className={styles.cardPatternZigzag}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                {slidePattern === 1 && (
+                  <div
+                    className={styles.cardPatternWindmill}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                {slidePattern === 2 && (
+                  <div
+                    className={styles.cardPatternCircledot}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                <div className={styles.indicator}>
+                  <IndicatorSlider
+                    currentSlide={slidePattern}
+                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    slideName="pattern"
+                    goToSlide={goToSlide}
+                  />
+                </div>
+                <div className={styles.slideButton}>
+                  <SlideButton
+                    direction="prev"
+                    onClick={() => prevSlide('pattern')}
+                  />
+                  <SlideButton
+                    direction="next"
+                    onClick={() => nextSlide('pattern')}
+                  />
+                </div>
+              </div>
             )}
 
             {cover === 3 && (
@@ -191,35 +270,62 @@ const Card = ({ data, index }: Props) => {
             )}
 
             {cover === 4 && (
-              <Carousel {...carouselSettings}>
-                <div
-                  className={styles.cardLinearGradient}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                />
-                <div
-                  className={styles.cardRadialGradient}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                />
-                <div
-                  className={styles.cardConicGradient}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                />
-              </Carousel>
+              <div className={styles.slide}>
+                {slideGradient === 0 && (
+                  <div
+                    className={styles.cardLinearGradient}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                {slideGradient === 1 && (
+                  <div
+                    className={styles.cardRadialGradient}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                {slideGradient === 2 && (
+                  <div
+                    className={styles.cardConicGradient}
+                    style={
+                      {
+                        '--first-color': `#${primary.hex}`,
+                        '--second-color': `#${secondary.hex}`,
+                      } as CustomColorType
+                    }
+                  />
+                )}
+
+                <div className={styles.indicator}>
+                  <IndicatorSlider
+                    currentSlide={slideGradient}
+                    pagingDotsIndices={Array.from({ length: 3 }, (x, i) => i)}
+                    slideName="gradient"
+                    goToSlide={goToSlide}
+                  />
+                </div>
+                <div className={styles.slideButton}>
+                  <SlideButton
+                    direction="prev"
+                    onClick={() => prevSlide('gradient')}
+                  />
+                  <SlideButton
+                    direction="next"
+                    onClick={() => nextSlide('gradient')}
+                  />
+                </div>
+              </div>
             )}
           </>
         )}
