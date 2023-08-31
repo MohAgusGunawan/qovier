@@ -1,6 +1,7 @@
 import { TbHeartFilled } from 'react-icons/tb';
 
 import ColorwheelSlider from '@/src/components/ColorwheelSlider/ColorwheelSlider';
+import ColorHarmonySlider from '@/src/components/ColorHarmonySlider/ColorHarmonySlider';
 
 import styles from './Footer.module.css';
 
@@ -13,15 +14,19 @@ const Footer = () => {
           <p className={styles.aboutParagraph}>
             Qovier is an online color pair generator tool to help you choose
             beautiful color pairs for your design projects. You can also filter
-            colors by hue range to get more specific color pairs.
+            colors by hue range to get more specific color pairs. See the
+            display of color combinations in the form of text, patterns, color
+            gradations and also some illustrations. Copy color codes in various
+            formats including HEX, RGB, and HSL
           </p>
+          <ColorwheelSlider />
           <p className={styles.aboutParagraph}>
             Each color family has a hue range of 30, taken from a 360 degree
             color wheel to produce 12 color families. Dim Color has a low
             brightness value. Moderate color has a low saturation value and
             medium brightness level. Bright color has a high brightness value.
           </p>
-          <ColorwheelSlider />
+          <ColorHarmonySlider />
           <p className={styles.aboutParagraph}>
             Qovier uses the RGB (Red, Green, Blue) format on the color wheel,
             thus producing complementary colors that are different from the RYB
