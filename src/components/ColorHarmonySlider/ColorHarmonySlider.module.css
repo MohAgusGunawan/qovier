@@ -1,0 +1,39 @@
+.sliderWrapper {
+  margin: 2em auto;
+
+  width: 100%;
+  max-width: 360px;
+
+  aspect-ratio: 4 / 5;
+
+  box-shadow: var(--shadow-bottom);
+}
+
+.responsiveImageWrapper {
+  position: relative;
+
+  width: 100%;
+  max-width: 480px;
+
+  aspect-ratio: 4 / 5;
+}
+
+.pagingDotsContainer {
+  gap: 0.5em;
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
