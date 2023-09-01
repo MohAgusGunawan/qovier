@@ -15,7 +15,7 @@ const ColorHarmonySlider = () => {
   const settings = {
     wrapAround: true,
     autoplay: true,
-    autoplayInterval: 5000,
+    autoplayInterval: 7000,
     renderCenterRightControls: null,
     renderCenterLeftControls: null,
     defaultControlsConfig: {
