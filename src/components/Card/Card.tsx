@@ -2,7 +2,7 @@
 
 import React, { Fragment, useCallback, useMemo, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
-import { IoIosArrowDown } from 'react-icons/io';
+import { IoIosArrowDown, IoIosSwap } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import { getContrast } from 'accessible-colors';
@@ -40,6 +40,10 @@ const Card = ({ data, index }: Props) => {
   const [slideIllustration, setSlideIllustration] = useState(index % maxSlide);
   const [slidePattern, setSlidePattern] = useState(index % maxSlide);
   const [slideGradient, setSlideGradient] = useState(index % maxSlide);
+
+  const [isIllustrationSwap, setIsIllustrationSwap] = useState(false);
+  const [isPatternSwap, setIsPatternSwap] = useState(false);
+  const [isGradientSwap, setIsGradientSwap] = useState(false);
 
   const preview = coverPreview[cover];
 
@@ -140,35 +144,64 @@ const Card = ({ data, index }: Props) => {
                   {slideIllustration === 0 && (
                     <div className={styles.cardPairPreview}>
                       <IllustrationOneSVG
-                        mainColor={primary.hex}
-                        accentColor={secondary.hex}
+                        mainColor={
+                          isIllustrationSwap ? secondary.hex : primary.hex
+                        }
+                        accentColor={
+                          isIllustrationSwap ? primary.hex : secondary.hex
+                        }
                       />
                     </div>
                   )}
                   {slideIllustration === 1 && (
                     <div className={styles.cardPairPreview}>
                       <IllustrationTwoSVG
-                        mainColor={primary.hex}
-                        accentColor={secondary.hex}
+                        mainColor={
+                          isIllustrationSwap ? secondary.hex : primary.hex
+                        }
+                        accentColor={
+                          isIllustrationSwap ? primary.hex : secondary.hex
+                        }
                       />
                     </div>
                   )}
                   {slideIllustration === 2 && (
                     <div className={styles.cardPairPreview}>
                       <IllustrationThreeSVG
-                        mainColor={primary.hex}
-                        accentColor={secondary.hex}
+                        mainColor={
+                          isIllustrationSwap ? secondary.hex : primary.hex
+                        }
+                        accentColor={
+                          isIllustrationSwap ? primary.hex : secondary.hex
+                        }
                       />
                     </div>
                   )}
                   {slideIllustration === 3 && (
                     <div className={styles.cardPairPreview}>
                       <IllustrationFourSVG
-                        mainColor={primary.hex}
-                        accentColor={secondary.hex}
+                        mainColor={
+                          isIllustrationSwap ? secondary.hex : primary.hex
+                        }
+                        accentColor={
+                          isIllustrationSwap ? primary.hex : secondary.hex
+                        }
                       />
                     </div>
                   )}
+                </div>
+
+                <div className={styles.topleftFloat}>
+                  <button
+                    aria-label="Swap Color"
+                    className={`${styles.swapButton} ${
+                      isIllustrationSwap ? styles.swapButtonActive : null
+                    }`}
+                    onClick={() => setIsIllustrationSwap((prev) => !prev)}
+                    title="Swap Color"
+                  >
+                    <IoIosSwap />
+                  </button>
                 </div>
                 <div className={styles.indicator}>
                   <IndicatorSlider
@@ -201,8 +234,12 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardPatternZigzag}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isPatternSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isPatternSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
@@ -213,8 +250,12 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardPatternWindmill}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isPatternSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isPatternSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
@@ -225,8 +266,12 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardPatternCircledot}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isPatternSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isPatternSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
@@ -237,13 +282,29 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardPatternCircleWave}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isPatternSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isPatternSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
                 )}
 
+                <div className={styles.topleftFloat}>
+                  <button
+                    aria-label="Swap Color"
+                    className={`${styles.swapButton} ${
+                      isPatternSwap ? styles.swapButtonActive : null
+                    }`}
+                    onClick={() => setIsPatternSwap((prev) => !prev)}
+                    title="Swap Color"
+                  >
+                    <IoIosSwap />
+                  </button>
+                </div>
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slidePattern}
@@ -307,8 +368,12 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardLinearGradient}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isGradientSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isGradientSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
@@ -319,8 +384,12 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardRadialGradient}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isGradientSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isGradientSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
@@ -331,8 +400,12 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardLinearGradientRepeat}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isGradientSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isGradientSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
@@ -343,13 +416,29 @@ const Card = ({ data, index }: Props) => {
                     className={styles.cardConicGradient}
                     style={
                       {
-                        '--first-color': `#${primary.hex}`,
-                        '--second-color': `#${secondary.hex}`,
+                        '--first-color': `#${
+                          isGradientSwap ? secondary.hex : primary.hex
+                        }`,
+                        '--second-color': `#${
+                          isGradientSwap ? primary.hex : secondary.hex
+                        }`,
                       } as CustomColorType
                     }
                   />
                 )}
 
+                <div className={styles.topleftFloat}>
+                  <button
+                    aria-label="Swap Color"
+                    className={`${styles.swapButton} ${
+                      isGradientSwap ? styles.swapButtonActive : null
+                    }`}
+                    onClick={() => setIsGradientSwap((prev) => !prev)}
+                    title="Swap Color"
+                  >
+                    <IoIosSwap />
+                  </button>
+                </div>
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slideGradient}
