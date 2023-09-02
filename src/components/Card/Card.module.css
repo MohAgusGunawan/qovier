@@ -38,6 +38,42 @@
   border-bottom: 1px solid rgb(194, 194, 194);
 }
 
+.topleftFloat {
+  position: absolute;
+
+  top: 0.875em;
+  left: 0.875em;
+}
+
+.swapButton {
+  padding: 0.5em;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+
+  background: var(--surface-color);
+  color: var(--text-mute-color);
+
+  font-size: var(--fs-lg);
+
+  box-shadow: var(--shadow-top), var(--shadow-bottom);
+
+  border-radius: 8px;
+}
+
+.swapButton:focus-visible {
+  outline: 2px solid var(--text-common-color);
+}
+
+.swapButtonActive {
+  background: var(--text-focal-color);
+  color: var(--surface-color);
+}
+
 .indicator {
   position: absolute;
 
@@ -424,6 +460,10 @@
 
   .cardTypoText,
   .cardTypoTextBold {
+    font-size: var(--fs-md);
+  }
+
+  .swapButton {
     font-size: var(--fs-md);
   }
 }
