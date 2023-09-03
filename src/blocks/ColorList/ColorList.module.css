@@ -41,7 +41,7 @@
   margin-top: 2em;
 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 1em;
 
   padding-bottom: 2em;
@@ -78,7 +78,7 @@
   box-shadow: var(--shadow-bottom);
   background: var(--surface-color);
 
-  transform: rotate(30deg);
+  transform: rotate(35deg);
 }
 
 .colorCard {
@@ -89,11 +89,11 @@
 
   background: gray;
   border: 1px solid #808080;
+
+  margin-bottom: 0.5em;
 }
 
 .colorName {
-  margin-top: 1rem;
-
   font-size: var(--fs-sm);
   font-weight: var(--fw-semibold);
 }
