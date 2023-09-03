@@ -16,7 +16,11 @@ const ColorList = () => {
 
         {colorList.map((color, index) => {
           return (
-            <div key={index} className={styles.containerList}>
+            <div
+              key={index}
+              className={styles.containerList}
+              id={color.range.toLocaleLowerCase().replace(' ', '-')}
+            >
               <h3 className={styles.title}>▪ {color.range} Range ▪</h3>
               <ul className={styles.boxColor}>
                 {color.list.map((item, index) => {
