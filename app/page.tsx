@@ -10,6 +10,7 @@ import { setCover } from '@/src/redux/features/coverSlice';
 import Header from '@/src/blocks/Header/Header';
 import FormFilter from '@/src//blocks/FormFilter/FormFilter';
 import Footer from '@/src/blocks/Footer/Footer';
+import ColorList from '@/src/blocks/ColorList/ColorList';
 
 import Card from '@/src/components/Card/Card';
 import SelectCover from '@/src/components/SelectCover/SelectCover';
@@ -66,6 +67,8 @@ export default function Home() {
 
           <FormFilter elementRef={scollToRef} />
         </div>
+
+        <ColorList />
       </main>
 
       <Footer />
