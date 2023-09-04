@@ -119,6 +119,7 @@
   background: var(--body-background-color);
 
   box-shadow: var(--shadow-top);
+
   height: 40px;
 
   border-top-left-radius: 16px;
@@ -143,6 +144,7 @@
   box-shadow: var(--shadow-top);
 
   border-radius: 8px;
+  border: 0.875em solid var(--body-background-color);
 
   cursor: pointer;
 }

@@ -1,7 +1,7 @@
 .disclosureButton {
   width: 100%;
 
-  padding: 0.875rem;
+  padding: 1rem;
   padding-left: 0.5em;
 
   border-radius: 8px;
@@ -22,7 +22,7 @@
 
 .disclosurePanel {
   margin-top: 0.4em;
-  padding: 0.875em 1em;
+  padding: 1em 1.5em;
 
   border-radius: 8px;
 
@@ -189,12 +189,8 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
-  .colorTitle {
-    gap: 0.5em;
-  }
-
   .colorIcon {
-    width: 32px;
+    width: 40px;
   }
 
   .colorCode {

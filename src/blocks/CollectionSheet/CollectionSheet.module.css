@@ -31,6 +31,26 @@
   gap: 1em;
 }
 
+.footer {
+  padding: 1em;
+}
+
+.closeButton {
+  width: 100%;
+  padding: 0.5em 0.875em;
+
+  text-align: center;
+
+  background: var(--text-common-color);
+  color: var(--surface-color);
+
+  font-weight: var(--fw-medium);
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
 @media (hover: hover) {
   /* when supported */
 }

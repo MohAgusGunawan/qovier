@@ -40,6 +40,15 @@ const CollectionSheet = ({ isOpenSheet, setIsOpenSheet }: Props) => {
               <CollectionItem />
             </div>
           </div>
+
+          <div className={styles.footer}>
+            <button
+              className={styles.closeButton}
+              onClick={() => setIsOpenSheet(false)}
+            >
+              Close
+            </button>
+          </div>
         </Sheet.Content>
       </Sheet.Container>
       <Sheet.Backdrop />

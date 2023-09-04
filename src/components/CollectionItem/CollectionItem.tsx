@@ -30,7 +30,7 @@ function CollectionItem() {
                 }
               ></span>
               <span className={styles.colorCode}>
-                FFDEA2 <b>\</b> CCDE2A
+                #FFDEA2 <b>\</b> #CCDE2A
               </span>
             </span>
             <IoIosArrowDown
