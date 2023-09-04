@@ -71,6 +71,34 @@
   padding: 1em 0;
 }
 
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggleWrapper {
+  display: none;
+}
+
+.toggleDrawer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5em 0.875em;
+  gap: 0.5em;
+
+  font-weight: var(--fw-medium);
+  color: var(--text-common-color);
+
+  cursor: pointer;
+}
+
+.toggleDrawer:focus-visible {
+  outline: 2px solid var(--text-common-color);
+}
+
 .cardContainer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -81,8 +109,50 @@
   padding-bottom: 1rem;
 }
 
+.bottomBar {
+  position: sticky;
+  bottom: 0;
+
+  display: block;
+
+  margin-top: 5em;
+  background: var(--body-background-color);
+
+  box-shadow: var(--shadow-top);
+  height: 40px;
+
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+
+  display: flex;
+  justify-content: center;
+}
+
+.mobileCollectionButton {
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  padding: 1.5em 2em;
+
+  background: var(--text-focal-color);
+  color: var(--surface-color);
+
+  box-shadow: var(--shadow-top);
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
 @media (hover: hover) {
   /* when supported */
+
+  .toggleDrawer:hover > span {
+    text-decoration: underline;
+  }
 }
 
 /* ================================================ */
@@ -91,6 +161,14 @@
 @media only screen and (min-width: 768px) {
   .cardContainer {
     grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  }
+
+  .bottomBar {
+    display: none;
+  }
+
+  .toggleWrapper {
+    display: block;
   }
 }
 

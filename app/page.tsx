@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
+import { BsCollectionFill } from 'react-icons/bs';
 
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import { receiveColors } from '@/src/redux/features/combinationSlice';
@@ -11,6 +12,8 @@ import Header from '@/src/blocks/Header/Header';
 import FormFilter from '@/src//blocks/FormFilter/FormFilter';
 import Footer from '@/src/blocks/Footer/Footer';
 import ColorList from '@/src/blocks/ColorList/ColorList';
+import CollectionDrawer from '@/src/blocks/CollectionDrawer/CollectionDrawer';
+import CollectionSheet from '@/src/blocks/CollectionSheet/CollectionSheet';
 
 import Card from '@/src/components/Card/Card';
 import SelectCover from '@/src/components/SelectCover/SelectCover';
@@ -22,6 +25,9 @@ import { coverPreview } from '@/src/data/coverPreview';
 import styles from './page.module.css';
 
 export default function Home() {
+  const [isOpenDrawer, setIsOpenDrawer] = useState(false);
+  const [isOpenSheet, setIsOpenSheet] = useState(false);
+
   const scollToRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
@@ -42,13 +48,22 @@ export default function Home() {
       <main className={styles.main}>
         <section aria-label="Result color pair" id="result" ref={scollToRef}>
           <div className={styles.selectBox}>
-            <div className="wrapper">
+            <div className={`wrapper ${styles.topBar}`}>
               <SelectCover
                 value={cover}
                 onChange={handleCoverChange}
                 list={coverPreview}
                 name="Change Preview"
               />
+              <div className={styles.toggleWrapper}>
+                <button
+                  onClick={() => setIsOpenDrawer(true)}
+                  className={styles.toggleDrawer}
+                >
+                  <BsCollectionFill />
+                  <span>My Collection (0)</span>
+                </button>
+              </div>
             </div>
           </div>
           <div className="wrapper">
@@ -60,6 +75,15 @@ export default function Home() {
           </div>
         </section>
 
+        <div className={styles.bottomBar}>
+          <button
+            className={styles.mobileCollectionButton}
+            onClick={() => setIsOpenSheet(true)}
+          >
+            <BsCollectionFill /> <span>My Collection - (0)</span>
+          </button>
+        </div>
+
         <div className="wrapper">
           <div className={styles.divider}>
             <HiChevronDoubleUp className={styles.arrowUp} />
@@ -70,6 +94,16 @@ export default function Home() {
 
         <ColorList />
       </main>
+
+      <CollectionDrawer
+        isOpenDrawer={isOpenDrawer}
+        setIsOpenDrawer={setIsOpenDrawer}
+      />
+
+      <CollectionSheet
+        isOpenSheet={isOpenSheet}
+        setIsOpenSheet={setIsOpenSheet}
+      />
 
       <Footer />
     </>

@@ -1,0 +1,48 @@
+.container {
+  background: var(--body-background-color) !important;
+}
+
+.haeder {
+  position: sticky;
+  top: 0;
+  z-index: 101;
+
+  padding: 1.2em 0.875em;
+
+  background: var(--body-background-color);
+  box-shadow: var(--shadow-bottom);
+}
+
+.title {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-lg);
+  text-align: center;
+}
+
+.content {
+  overflow-y: auto;
+
+  padding: 1em 0.875em;
+}
+
+.boxList {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
