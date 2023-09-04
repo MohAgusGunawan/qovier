@@ -1,5 +1,6 @@
 import React, { SetStateAction } from 'react';
 import Sheet from 'react-modal-sheet';
+import { BsFolderFill } from 'react-icons/bs';
 
 import CollectionItem from '@/src/components/CollectionItem/CollectionItem';
 
@@ -21,7 +22,10 @@ const CollectionSheet = ({ isOpenSheet, setIsOpenSheet }: Props) => {
         <Sheet.Header />
         <Sheet.Content disableDrag={true}>
           <div className={styles.haeder}>
-            <h2 className={styles.title}>My Collection - (43)</h2>
+            <h2 className={styles.title}>
+              <BsFolderFill />
+              <span>My Collection (43)</span>
+            </h2>
           </div>
           <div className={styles.content}>
             {/* <div className={styles.emptyData}>

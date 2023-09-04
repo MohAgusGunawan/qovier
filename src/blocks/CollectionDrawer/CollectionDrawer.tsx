@@ -1,6 +1,7 @@
 import React, { Fragment, SetStateAction } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
 import { AiOutlineClose } from 'react-icons/ai';
+import { BsFolderFill } from 'react-icons/bs';
 
 import CollectionItem from '@/src/components/CollectionItem/CollectionItem';
 
@@ -43,8 +44,9 @@ const CollectionDrawer = ({ isOpenDrawer, setIsOpenDrawer }: Props) => {
         >
           <Dialog.Panel className={styles.drawerPanel}>
             <div className={styles.panelHeader}>
-              <h2>
-                <span className={styles.panelTitle}>My Collection</span> - (4)
+              <h2 className={styles.panelTitle}>
+                <BsFolderFill />
+                <span>My Collection (4)</span>
               </h2>
               <button
                 onClick={() => setIsOpenDrawer(false)}

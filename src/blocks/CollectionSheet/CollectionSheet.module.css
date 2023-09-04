@@ -16,7 +16,12 @@
 .title {
   font-weight: var(--fw-bold);
   font-size: var(--fs-lg);
-  text-align: center;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.5em;
 }
 
 .content {

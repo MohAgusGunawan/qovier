@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
-import { BsCollectionFill } from 'react-icons/bs';
+import { BsFolderFill } from 'react-icons/bs';
 
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import { receiveColors } from '@/src/redux/features/combinationSlice';
@@ -60,7 +60,7 @@ export default function Home() {
                   onClick={() => setIsOpenDrawer(true)}
                   className={styles.toggleDrawer}
                 >
-                  <BsCollectionFill />
+                  <BsFolderFill />
                   <span>My Collection (0)</span>
                 </button>
               </div>
@@ -80,7 +80,7 @@ export default function Home() {
             className={styles.mobileCollectionButton}
             onClick={() => setIsOpenSheet(true)}
           >
-            <BsCollectionFill /> <span>My Collection - (0)</span>
+            <BsFolderFill /> <span>My Collection (0)</span>
           </button>
         </div>
 

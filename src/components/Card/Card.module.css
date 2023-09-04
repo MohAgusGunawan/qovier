@@ -38,6 +38,36 @@
   border-bottom: 1px solid rgb(194, 194, 194);
 }
 
+.addButtonWrapper {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+}
+
+.addButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5em;
+
+  font-size: var(--fs-lg);
+
+  background: var(--surface-color);
+  color: var(--text-mute-color);
+
+  box-shadow: var(--shadow-bottom), var(--shadow-top);
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.addButton:focus-visible {
+  outline: 2px solid var(--text-common-color);
+  outline-offset: 2px;
+}
+
 .topleftFloat {
   position: absolute;
 
@@ -463,7 +493,8 @@
     font-size: var(--fs-md);
   }
 
-  .swapButton {
+  .swapButton,
+  .addButton {
     font-size: var(--fs-md);
   }
 }

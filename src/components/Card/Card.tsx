@@ -3,9 +3,16 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { IoIosArrowDown, IoIosSwap } from 'react-icons/io';
-import { TbCopy } from 'react-icons/tb';
+import {
+  TbCopy,
+  TbFolderPlus,
+  TbHeartPlus,
+  TbSquareRoundedPlus,
+  TbSquareRoundedPlusFilled,
+} from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import { getContrast } from 'accessible-colors';
+import { BsBookmarkPlus, BsFolderPlus } from 'react-icons/bs';
 
 import { useAppSelector } from '@/src/redux/hooks';
 
@@ -124,6 +131,16 @@ const Card = ({ data, index }: Props) => {
           />
         ) : (
           <>
+            <div className={styles.addButtonWrapper}>
+              <button
+                className={styles.addButton}
+                aria-label="Add to My Collection"
+                title="Add to My Collection"
+              >
+                <BsFolderPlus />
+              </button>
+            </div>
+
             {(cover === 0 || cover > 5) && (
               <div>
                 <div

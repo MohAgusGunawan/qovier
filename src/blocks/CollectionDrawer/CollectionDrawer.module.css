@@ -57,6 +57,10 @@
   font-size: var(--fs-lg);
   font-weight: var(--fw-bold);
   color: var(--text-focal-color);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
 }
 
 .panelCloseButton {
