@@ -33,6 +33,7 @@
 
 .footer {
   padding: 1em;
+  padding-top: 1.5em;
 }
 
 .closeButton {
@@ -59,6 +60,9 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
+  .sheet {
+    display: none;
+  }
 }
 
 /* ================================================ */

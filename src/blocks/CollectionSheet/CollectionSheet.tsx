@@ -12,7 +12,11 @@ interface Props {
 
 const CollectionSheet = ({ isOpenSheet, setIsOpenSheet }: Props) => {
   return (
-    <Sheet isOpen={isOpenSheet} onClose={() => setIsOpenSheet(false)}>
+    <Sheet
+      isOpen={isOpenSheet}
+      onClose={() => setIsOpenSheet(false)}
+      className={styles.sheet}
+    >
       <Sheet.Container className={styles.container}>
         <Sheet.Header />
         <Sheet.Content disableDrag={true}>
