@@ -3,18 +3,13 @@
 import React, { Fragment, useCallback, useMemo, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { IoIosArrowDown, IoIosSwap } from 'react-icons/io';
-import {
-  TbCopy,
-  TbFolderPlus,
-  TbHeartPlus,
-  TbSquareRoundedPlus,
-  TbSquareRoundedPlusFilled,
-} from 'react-icons/tb';
+import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 import { getContrast } from 'accessible-colors';
-import { BsBookmarkPlus, BsFolderPlus } from 'react-icons/bs';
+import { BsFolderPlus, BsFillFolderFill } from 'react-icons/bs';
 
-import { useAppSelector } from '@/src/redux/hooks';
+import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
+import { addItem, removeItem } from '@/src/redux/features/collectionSlice';
 
 import {
   ColorPair,
@@ -41,8 +36,12 @@ type Props = {
 
 const Card = ({ data, index }: Props) => {
   const maxSlide = 4;
+
+  const dispatch = useAppDispatch();
+
   const { loading } = useAppSelector((state) => state.combination);
   const { value: cover } = useAppSelector((state) => state.cover);
+  const { value: collection } = useAppSelector((state) => state.collection);
 
   const [slideIllustration, setSlideIllustration] = useState(index % maxSlide);
   const [slidePattern, setSlidePattern] = useState(index % maxSlide);
@@ -56,6 +55,9 @@ const Card = ({ data, index }: Props) => {
 
   const primary = data.primary;
   const secondary = data.secondary;
+
+  const customId = `${primary.hex}${secondary.hex}`;
+  const isAdded = collection.find((item) => item.id === customId);
 
   const contrastRatio = useMemo(() => {
     return getContrast(primary.hex, secondary.hex);
@@ -73,6 +75,26 @@ const Card = ({ data, index }: Props) => {
         window.alert('Copy failed, please update your browser!');
       });
   }, []);
+
+  const addToCollection = () => {
+    const payload = {
+      id: customId,
+      createdAt: new Date().getTime(),
+      colorPair: data,
+    };
+
+    if (isAdded === undefined) {
+      if (collection.length <= 99) {
+        dispatch(addItem(payload));
+      } else {
+        window.alert('Has reached the maximum limit');
+      }
+    }
+  };
+
+  const removeFromCollection = () => {
+    dispatch(removeItem(customId));
+  };
 
   const goToSlide = (slideName: string, slideIndex: number) => {
     if (slideName === 'illustration') {
@@ -132,13 +154,25 @@ const Card = ({ data, index }: Props) => {
         ) : (
           <>
             <div className={styles.addButtonWrapper}>
-              <button
-                className={styles.addButton}
-                aria-label="Add to My Collection"
-                title="Add to My Collection"
-              >
-                <BsFolderPlus />
-              </button>
+              {isAdded ? (
+                <button
+                  className={styles.addButton}
+                  aria-label="Remove from My Collection"
+                  title="Remove from My Collection"
+                  onClick={() => removeFromCollection()}
+                >
+                  <BsFillFolderFill />
+                </button>
+              ) : (
+                <button
+                  className={styles.addButton}
+                  aria-label="Add to My Collection"
+                  title="Add to My Collection"
+                  onClick={() => addToCollection()}
+                >
+                  <BsFolderPlus />
+                </button>
+              )}
             </div>
 
             {(cover === 0 || cover > 5) && (

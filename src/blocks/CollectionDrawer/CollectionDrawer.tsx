@@ -3,6 +3,8 @@ import { Dialog, Transition } from '@headlessui/react';
 import { AiOutlineClose } from 'react-icons/ai';
 import { BsFolderFill } from 'react-icons/bs';
 
+import { useAppSelector } from '@/src/redux/hooks';
+
 import CollectionItem from '@/src/components/CollectionItem/CollectionItem';
 
 import styles from './CollectionDrawer.module.css';
@@ -13,6 +15,8 @@ interface Props {
 }
 
 const CollectionDrawer = ({ isOpenDrawer, setIsOpenDrawer }: Props) => {
+  const { value: collection } = useAppSelector((state) => state.collection);
+
   return (
     <Transition appear show={isOpenDrawer} as={Fragment}>
       <Dialog
@@ -46,7 +50,7 @@ const CollectionDrawer = ({ isOpenDrawer, setIsOpenDrawer }: Props) => {
             <div className={styles.panelHeader}>
               <h2 className={styles.panelTitle}>
                 <BsFolderFill />
-                <span>My Collection (4)</span>
+                <span>My Collection ({collection.length})</span>
               </h2>
               <button
                 onClick={() => setIsOpenDrawer(false)}
@@ -57,23 +61,19 @@ const CollectionDrawer = ({ isOpenDrawer, setIsOpenDrawer }: Props) => {
               </button>
             </div>
             <div className={styles.panelBody}>
-              {/* <div className={styles.emptyData}>
-                <p>You have not saved any color pairs yet</p>
-              </div> */}
-              <div className={styles.boxList}>
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-                <CollectionItem />
-              </div>
+              {collection.length >= 1 ? (
+                <div className={styles.boxList}>
+                  {collection.map((item, index) => {
+                    return (
+                      <CollectionItem key={item.id} data={item} num={index} />
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className={styles.emptyData}>
+                  <p>You have not saved any color pairs yet</p>
+                </div>
+              )}
             </div>
           </Dialog.Panel>
         </Transition.Child>

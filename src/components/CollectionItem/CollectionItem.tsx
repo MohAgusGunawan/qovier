@@ -1,15 +1,46 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
+import { toast } from 'react-toastify';
 import { IoIosArrowDown } from 'react-icons/io';
-import { BsDot } from 'react-icons/bs';
 import { TbCopy } from 'react-icons/tb';
 
-import { CustomColorType } from '@/src/types/ColorType';
+import { useAppDispatch } from '@/src/redux/hooks';
+import { removeItem } from '@/src/redux/features/collectionSlice';
+
+import { Collection, CustomColorType } from '@/src/types/ColorType';
 
 import styles from './CollectionItem.module.css';
 
-function CollectionItem() {
+interface Props {
+  data: Collection;
+  num: number;
+}
+
+const CollectionItem = ({ data, num }: Props) => {
   const [confirm, setConfirm] = useState(false);
+
+  const dispatch = useAppDispatch();
+
+  const primary = data.colorPair.primary;
+  const secondary = data.colorPair.secondary;
+
+  const handleCopy = useCallback((text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        toast(`"${text}" copied`, {
+          icon: <TbCopy />,
+        });
+      })
+      .catch(() => {
+        window.alert('Copy failed, please update your browser!');
+      });
+  }, []);
+
+  const removeFromCollection = () => {
+    dispatch(removeItem(data.id));
+  };
+
   return (
     <Disclosure>
       {({ open }) => (
@@ -19,18 +50,18 @@ function CollectionItem() {
             onClick={() => setConfirm(false)}
           >
             <span className={styles.colorTitle}>
-              <BsDot />
+              <span className={styles.colorIndexNumber}>{num + 1}</span>
               <span
                 className={styles.colorIcon}
                 style={
                   {
-                    '--first-color': `#FFDEA2`,
-                    '--second-color': `#CCDE2A`,
+                    '--first-color': `#${primary.hex}`,
+                    '--second-color': `#${secondary.hex}`,
                   } as CustomColorType
                 }
               ></span>
               <span className={styles.colorCode}>
-                #FFDEA2 <b>\</b> #CCDE2A
+                #{primary.hex} <b>\</b> #{secondary.hex}
               </span>
             </span>
             <IoIosArrowDown
@@ -45,36 +76,44 @@ function CollectionItem() {
                 <ul className={styles.colorGroup}>
                   <li className={styles.colorList}>
                     <span>
-                      <b>Hex</b> : FFDEA2
+                      <b>Hex</b> : {primary.hex}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy Hex"
+                      onClick={() => handleCopy(primary.hex)}
                     >
                       <TbCopy />
                     </button>
                   </li>
                   <li className={styles.colorList}>
                     <span>
-                      <b>RGB</b> : 191,165,248
+                      <b>RGB</b> : {String(primary.rgb)}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy RGB"
+                      onClick={() => handleCopy(String(primary.rgb))}
                     >
                       <TbCopy />
                     </button>
                   </li>
                   <li className={styles.colorList}>
                     <span>
-                      <b>HSL</b> : 297°,91%,9%
+                      <b>HSL</b> :{' '}
+                      {`${primary.hsl[0]}°,${primary.hsl[1]}%,${primary.hsl[2]}%`}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy HSL"
+                      onClick={() =>
+                        handleCopy(
+                          `${primary.hsl[0]}°,${primary.hsl[1]}%,${primary.hsl[2]}%`
+                        )
+                      }
                     >
                       <TbCopy />
                     </button>
@@ -83,36 +122,44 @@ function CollectionItem() {
                 <ul className={styles.colorGroup}>
                   <li className={styles.colorList}>
                     <span>
-                      <b>Hex</b> : CCDE2A
+                      <b>Hex</b> : {secondary.hex}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy Hex"
+                      onClick={() => handleCopy(secondary.hex)}
                     >
                       <TbCopy />
                     </button>
                   </li>
                   <li className={styles.colorList}>
                     <span>
-                      <b>RGB</b> : 191,165,248
+                      <b>RGB</b> : {String(secondary.rgb)}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy RGB"
+                      onClick={() => handleCopy(String(secondary.rgb))}
                     >
                       <TbCopy />
                     </button>
                   </li>
                   <li className={styles.colorList}>
                     <span>
-                      <b>HSL</b> : 297°,91%,9%
+                      <b>HSL</b> :{' '}
+                      {`${secondary.hsl[0]}°,${secondary.hsl[1]}%,${secondary.hsl[2]}%`}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy HSL"
+                      onClick={() =>
+                        handleCopy(
+                          `${secondary.hsl[0]}°,${secondary.hsl[1]}%,${secondary.hsl[2]}%`
+                        )
+                      }
                     >
                       <TbCopy />
                     </button>
@@ -130,7 +177,10 @@ function CollectionItem() {
                 )}
                 {confirm === true && (
                   <>
-                    <button className={styles.removeButtonConfirm}>
+                    <button
+                      className={styles.removeButtonConfirm}
+                      onClick={() => removeFromCollection()}
+                    >
                       Yes, remove it!
                     </button>
                     <button
@@ -148,6 +198,6 @@ function CollectionItem() {
       )}
     </Disclosure>
   );
-}
+};
 
 export default CollectionItem;

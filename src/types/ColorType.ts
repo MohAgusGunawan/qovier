@@ -29,3 +29,9 @@ export interface ColorPair {
   primary: ColorDetail;
   secondary: ColorDetail;
 }
+
+export interface Collection {
+  id: string;
+  createdAt: number;
+  colorPair: ColorPair;
+}

@@ -2,11 +2,13 @@ import { configureStore } from '@reduxjs/toolkit';
 
 import combinationReducer from '@/src/redux/features/combinationSlice';
 import coverReducer from '@/src/redux/features/coverSlice';
+import collectionReducer from '@/src/redux/features/collectionSlice';
 
 export const store = configureStore({
   reducer: {
     combination: combinationReducer,
     cover: coverReducer,
+    collection: collectionReducer,
   },
   devTools: process.env.NODE_ENV !== 'production',
 });

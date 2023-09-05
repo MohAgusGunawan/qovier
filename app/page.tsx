@@ -33,6 +33,7 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const { value: combination } = useAppSelector((state) => state.combination);
   const { value: cover } = useAppSelector((state) => state.cover);
+  const { value: collection } = useAppSelector((state) => state.collection);
 
   const handleCoverChange = (number: number) => {
     dispatch(setCover(number));
@@ -61,7 +62,7 @@ export default function Home() {
                   className={styles.toggleDrawer}
                 >
                   <BsFolderFill />
-                  <span>My Collection (0)</span>
+                  <span>My Collection ({collection.length})</span>
                 </button>
               </div>
             </div>
@@ -80,7 +81,7 @@ export default function Home() {
             className={styles.mobileCollectionButton}
             onClick={() => setIsOpenSheet(true)}
           >
-            <BsFolderFill /> <span>My Collection (0)</span>
+            <BsFolderFill /> <span>My Collection ({collection.length})</span>
           </button>
         </div>
 

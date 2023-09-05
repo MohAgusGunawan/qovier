@@ -2,7 +2,6 @@
   width: 100%;
 
   padding: 1rem;
-  padding-left: 0.5em;
 
   border-radius: 8px;
 
@@ -35,6 +34,17 @@
   align-items: center;
 
   gap: 1em;
+}
+
+.colorIndexNumber {
+  display: inline-block;
+
+  width: 16px;
+
+  font-size: var(--fs-md);
+  color: var(--text-mute-color);
+
+  text-align: end;
 }
 
 .colorIcon {
@@ -189,6 +199,10 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
+  .colorIndexNumber {
+    font-size: var(--fs-sm);
+  }
+
   .colorIcon {
     width: 40px;
   }
