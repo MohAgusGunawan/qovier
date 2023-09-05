@@ -8,7 +8,7 @@ const initialState = {
   value: 0,
 } as CoverState;
 
-export const cover = createSlice({
+const cover = createSlice({
   name: 'cover',
   initialState,
   reducers: {

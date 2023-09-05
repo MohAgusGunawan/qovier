@@ -14,7 +14,7 @@ const initialState = {
   loading: true,
 } as CombinationState;
 
-export const combination = createSlice({
+const combination = createSlice({
   name: 'combination',
   initialState,
   reducers: {

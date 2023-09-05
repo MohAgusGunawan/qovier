@@ -10,7 +10,7 @@ const initialState = {
   value: [],
 } as CollectionState;
 
-export const collection = createSlice({
+const collection = createSlice({
   name: 'collection',
   initialState,
   reducers: {
@@ -24,4 +24,5 @@ export const collection = createSlice({
 });
 
 export const { addItem, removeItem } = collection.actions;
+
 export default collection.reducer;
