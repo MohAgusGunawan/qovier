@@ -85,7 +85,7 @@ const Card = ({ data, index }: Props) => {
         timestamp: now.getTime(),
         monthYear: now.toLocaleDateString('en-us', {
           year: 'numeric',
-          month: 'short',
+          month: 'long',
         }),
       },
       colorPair: data,
