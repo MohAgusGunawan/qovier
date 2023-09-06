@@ -15,7 +15,7 @@ const collection = createSlice({
   initialState,
   reducers: {
     addItem: (state, action: PayloadAction<Collection>) => {
-      state.value.push(action.payload);
+      state.value.unshift(action.payload);
     },
     removeItem: (state, action: PayloadAction<string>) => {
       state.value = state.value.filter((value) => value.id !== action.payload);
