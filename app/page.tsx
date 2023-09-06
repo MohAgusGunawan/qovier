@@ -3,10 +3,12 @@
 import { useEffect, useRef, useState } from 'react';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
 import { BsFolderFill } from 'react-icons/bs';
+import { TbLoader2 } from 'react-icons/tb';
 
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import { receiveColors } from '@/src/redux/features/combinationSlice';
 import { setCover } from '@/src/redux/features/coverSlice';
+import { receiveItems } from '@/src/redux/features/collectionSlice';
 
 import Header from '@/src/blocks/Header/Header';
 import FormFilter from '@/src//blocks/FormFilter/FormFilter';
@@ -33,7 +35,9 @@ export default function Home() {
   const dispatch = useAppDispatch();
   const { value: combination } = useAppSelector((state) => state.combination);
   const { value: cover } = useAppSelector((state) => state.cover);
-  const { value: collection } = useAppSelector((state) => state.collection);
+  const { value: collection, loading: gettingCollection } = useAppSelector(
+    (state) => state.collection
+  );
 
   const handleCoverChange = (number: number) => {
     dispatch(setCover(number));
@@ -41,6 +45,14 @@ export default function Home() {
 
   useEffect(() => {
     dispatch(receiveColors(generateCombination()));
+  }, [dispatch]);
+
+  useEffect(() => {
+    const collectionStorage = localStorage.getItem('qovier-collection');
+    const localData =
+      collectionStorage !== null ? JSON.parse(collectionStorage) : [];
+
+    dispatch(receiveItems(localData));
   }, [dispatch]);
 
   return (
@@ -60,9 +72,19 @@ export default function Home() {
                 <button
                   onClick={() => setIsOpenDrawer(true)}
                   className={styles.toggleDrawer}
+                  disabled={gettingCollection}
                 >
-                  <BsFolderFill />
-                  <span>My Collection ({collection.length})</span>
+                  {gettingCollection ? (
+                    <>
+                      <TbLoader2 />
+                      <span>Loading ...</span>
+                    </>
+                  ) : (
+                    <>
+                      <BsFolderFill />
+                      <span>My Collection ({collection.length})</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
@@ -80,8 +102,19 @@ export default function Home() {
           <button
             className={styles.mobileCollectionButton}
             onClick={() => setIsOpenSheet(true)}
+            disabled={gettingCollection}
           >
-            <BsFolderFill /> <span>My Collection ({collection.length})</span>
+            {gettingCollection ? (
+              <>
+                <TbLoader2 />
+                <span>Loading ...</span>
+              </>
+            ) : (
+              <>
+                <BsFolderFill />{' '}
+                <span>My Collection ({collection.length})</span>
+              </>
+            )}
           </button>
         </div>
 

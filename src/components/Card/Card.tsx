@@ -77,9 +77,17 @@ const Card = ({ data, index }: Props) => {
   }, []);
 
   const addToCollection = () => {
+    const now = new Date();
+
     const payload = {
       id: customId,
-      createdAt: new Date().getTime(),
+      createdAt: {
+        timestamp: now.getTime(),
+        monthYear: now.toLocaleDateString('en-us', {
+          year: 'numeric',
+          month: 'short',
+        }),
+      },
       colorPair: data,
     };
 
