@@ -53,6 +53,26 @@ img {
   opacity: 1;
 }
 
+.at-drawerTransition {
+  transition: all 0.3s ease-in-out;
+}
+
+.at-fadeIn {
+  opacity: 1;
+}
+
+.at-fadeOut {
+  opacity: 0;
+}
+
+.at-slideFromRight {
+  transform: translateX(0);
+}
+
+.at-slideToRight {
+  transform: translateX(100%);
+}
+
 .colorIcon {
   --color: transparent;
 

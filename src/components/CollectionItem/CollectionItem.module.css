@@ -1,0 +1,235 @@
+.disclosureButton {
+  width: 100%;
+
+  padding: 1rem;
+
+  border-radius: 8px;
+
+  background: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.disclosureButton:focus-visible {
+  outline: 2px solid black;
+}
+
+.disclosurePanel {
+  margin-top: 0.4em;
+  padding: 1em 1.5em;
+
+  border-radius: 8px;
+
+  background: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
+}
+
+.colorTitle {
+  display: inline-flex;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.colorIndexNumber {
+  display: inline-block;
+
+  width: 16px;
+
+  font-size: var(--fs-md);
+  color: var(--text-mute-color);
+
+  text-align: end;
+}
+
+.colorIcon {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  display: inline-block;
+
+  width: 48px;
+  aspect-ratio: 16 / 9;
+
+  border-radius: 4px;
+  border: 1px solid #808080;
+
+  background: linear-gradient(
+    45deg,
+    var(--first-color) 55%,
+    var(--second-color) 55%
+  );
+}
+
+.colorCode {
+  color: var(--text-focal-color);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+}
+
+.colorCode > b {
+  font-weight: var(--fw-reguler);
+  color: var(--text-mute-color);
+
+  opacity: 0.4;
+}
+
+.arrowIcon {
+  transform: rotate(0deg);
+  transition: transform 0.2s ease-in-out;
+}
+
+.arrowIconOpen {
+  transform: rotate(-180deg);
+}
+
+.colorGroupWrapper {
+  margin: 0.5em auto;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 2em;
+}
+
+.colorGroup {
+  flex-grow: 1;
+
+  font-size: var(--fs-md);
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 0.5em;
+}
+
+.colorList {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5em;
+}
+
+.colorList > span > b {
+  font-weight: var(--fw-semibold);
+}
+
+.colorCopyButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+
+  color: var(--text-mute-color);
+}
+
+.colorCopyButton:focus-visible {
+  outline: 1px solid black;
+}
+
+.deleteWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 0.5em;
+
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.removeButton {
+  width: 100%;
+  padding: 0.5em 0.875em;
+
+  font-size: var(--fs-md);
+  text-align: center;
+
+  color: var(--danger-text-color);
+  background: var(--danger-color);
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.removeButtonConfirm {
+  padding: 0.5em 1.5em;
+
+  font-size: var(--fs-md);
+  text-align: center;
+
+  color: var(--danger-text-color);
+  background: var(--danger-color);
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+.cancelButton {
+  padding: 0.5em 0.875em;
+
+  font-size: var(--fs-md);
+  font-weight: var(--fw-medium);
+
+  color: var(--text-mute-color);
+
+  cursor: pointer;
+}
+
+.removeButtonConfirm:focus-visible,
+.removeButton:focus-visible,
+.cancelButton:focus-visible {
+  outline: 2px solid var(--danger-text-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .colorIndexNumber {
+    font-size: var(--fs-sm);
+  }
+
+  .colorIcon {
+    width: 40px;
+  }
+
+  .colorCode {
+    font-size: var(--fs-sm);
+  }
+
+  .colorGroup {
+    font-size: var(--fs-sm);
+  }
+
+  .removeButton {
+    font-size: var(--fs-sm);
+  }
+
+  .removeButtonConfirm {
+    font-size: var(--fs-sm);
+  }
+
+  .cancelButton {
+    font-size: var(--fs-sm);
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

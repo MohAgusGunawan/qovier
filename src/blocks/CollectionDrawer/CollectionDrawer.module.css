@@ -1,0 +1,110 @@
+.drawer {
+  display: none;
+
+  position: relative;
+  z-index: 100;
+}
+
+.drawerBackdrop {
+  position: fixed;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100dvh;
+
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.drawerPanel {
+  position: fixed;
+
+  top: 0;
+  right: 0;
+
+  width: 45%;
+  max-width: 460px;
+  height: 100dvh;
+
+  background-color: var(--body-background-color);
+
+  overflow-y: auto;
+}
+
+.panelHeader {
+  position: sticky;
+  top: 0;
+
+  z-index: 101;
+
+  padding: 1em 1.125em;
+  margin-bottom: 1em;
+  padding-bottom: 1em;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 40px;
+  gap: 1em;
+
+  background: var(--body-background-color);
+  box-shadow: var(--shadow-bottom);
+}
+
+.panelTitle {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--text-focal-color);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
+.panelCloseButton {
+  color: var(--text-mute-color);
+
+  display: flex;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.panelCloseButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 2px;
+}
+
+.panelBody {
+  padding: 1em;
+}
+
+.boxList {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+@media (hover: hover) {
+  /* when supported */
+  .panelCloseButton:hover {
+    color: var(--text-focal-color);
+  }
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .drawer {
+    display: block;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

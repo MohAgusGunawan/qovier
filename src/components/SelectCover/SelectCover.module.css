@@ -1,5 +1,7 @@
 .selectWrap {
   position: relative;
+
+  width: 100%;
 }
 
 .selectButton {
@@ -86,6 +88,10 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
+  .selectWrap {
+    width: unset;
+  }
+
   .selectButton {
     width: fit-content;
   }

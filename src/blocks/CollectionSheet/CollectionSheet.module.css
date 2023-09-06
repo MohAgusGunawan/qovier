@@ -1,0 +1,89 @@
+.container {
+  position: relative;
+
+  background: var(--body-background-color) !important;
+}
+
+.haeder {
+  position: sticky;
+  top: 0;
+  z-index: 101;
+
+  padding: 1.2em 0.875em;
+
+  background: var(--body-background-color);
+  box-shadow: var(--shadow-bottom);
+}
+
+.title {
+  font-weight: var(--fw-bold);
+  font-size: var(--fs-lg);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 0.5em;
+}
+
+.content {
+  overflow-y: auto;
+
+  padding: 1em 0.875em;
+}
+
+.boxList {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+
+  margin-bottom: 72px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+
+  background: var(--body-background-color);
+  box-shadow: var(--shadow-top);
+
+  width: 100%;
+
+  padding: 1em;
+  padding-top: 1.5em;
+}
+
+.closeButton {
+  width: 100%;
+  padding: 0.5em 0.875em;
+
+  text-align: center;
+
+  background: var(--text-common-color);
+  color: var(--surface-color);
+
+  font-weight: var(--fw-medium);
+
+  border-radius: 8px;
+
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .sheet {
+    display: none;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
