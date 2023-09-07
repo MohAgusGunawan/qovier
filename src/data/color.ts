@@ -137,3 +137,5 @@ export const harmonyColor = [
   'Analogous',
   'Monochromatic',
 ];
+
+export const lolSecretMessage = 'XR46SPOV89DE2AQ65';

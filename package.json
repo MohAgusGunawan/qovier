@@ -17,6 +17,7 @@
     "@types/react-dom": "18.2.7",
     "accessible-colors": "^1.0.4",
     "color-convert": "^2.0.1",
+    "crypto-js": "^4.1.1",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
     "font-color-contrast": "^11.1.0",
@@ -33,6 +34,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "@types/crypto-js": "^4.1.2",
     "eslint-config-prettier": "^9.0.0",
     "prettier": "3.0.2"
   }
