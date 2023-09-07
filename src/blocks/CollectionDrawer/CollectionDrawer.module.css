@@ -79,12 +79,25 @@
 
 .panelBody {
   padding: 1em;
+  padding-bottom: 2em;
 }
 
-.boxList {
+.boxList,
+.boxListGroup {
   display: flex;
   flex-direction: column;
+
   gap: 1em;
+}
+
+.monthYear {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--text-focal-color);
+}
+
+.boxListGroup:not(:first-child) > .monthYear {
+  margin-top: 1em;
 }
 
 @media (hover: hover) {

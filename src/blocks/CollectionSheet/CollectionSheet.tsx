@@ -17,6 +17,24 @@ interface Props {
 const CollectionSheet = ({ isOpenSheet, setIsOpenSheet }: Props) => {
   const { value: collection } = useAppSelector((state) => state.collection);
 
+  const groupByMonthYear = collection.map((item) => {
+    const date = new Date(item.createdAt);
+    return {
+      ...item,
+      monthYear: date.toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'long',
+      }),
+    };
+  });
+
+  const collectionSort = Array.from(new Set(groupByMonthYear)).sort((a, b) => {
+    const aDate = new Date(a.monthYear).getTime();
+    const bDate = new Date(b.monthYear).getTime();
+
+    return bDate - aDate;
+  });
+
   return (
     <Sheet
       isOpen={isOpenSheet}
@@ -35,9 +53,23 @@ const CollectionSheet = ({ isOpenSheet, setIsOpenSheet }: Props) => {
           <div className={styles.content}>
             {collection.length >= 1 ? (
               <div className={styles.boxList}>
-                {collection.map((item, index) => {
+                {collectionSort.map((item, index) => {
+                  const currentMonthYear = item.monthYear;
+                  const prevMonthYear =
+                    index === 0 ? 'First' : collectionSort[index - 1].monthYear;
+
                   return (
-                    <CollectionItem key={item.id} data={item} num={index} />
+                    <div className={styles.boxListGroup} key={item.id}>
+                      {currentMonthYear !== prevMonthYear && (
+                        <time
+                          dateTime={currentMonthYear}
+                          className={styles.monthYear}
+                        >
+                          {currentMonthYear}
+                        </time>
+                      )}
+                      <CollectionItem data={item} num={index} />
+                    </div>
                   );
                 })}
               </div>

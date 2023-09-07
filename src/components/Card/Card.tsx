@@ -90,13 +90,7 @@ const Card = ({ data, index }: Props) => {
 
     const payload = {
       id: customId,
-      createdAt: {
-        timestamp: now.getTime(),
-        monthYear: now.toLocaleDateString('en-us', {
-          year: 'numeric',
-          month: 'long',
-        }),
-      },
+      createdAt: now.getTime(),
       colorPair: data,
     };
 

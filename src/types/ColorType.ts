@@ -32,9 +32,6 @@ export interface ColorPair {
 
 export interface Collection {
   id: string;
-  createdAt: {
-    timestamp: number;
-    monthYear: string;
-  };
+  createdAt: number;
   colorPair: ColorPair;
 }
