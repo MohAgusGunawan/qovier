@@ -4,6 +4,7 @@ import { BsFolderFill } from 'react-icons/bs';
 
 import { useAppSelector } from '@/src/redux/hooks';
 
+import EmptyCollection from '@/src/components/EmptyCollection/EmptyCollection';
 import CollectionItem from '@/src/components/CollectionItem/CollectionItem';
 
 import styles from './CollectionSheet.module.css';
@@ -41,9 +42,7 @@ const CollectionSheet = ({ isOpenSheet, setIsOpenSheet }: Props) => {
                 })}
               </div>
             ) : (
-              <div className={styles.emptyData}>
-                <p>You have not saved any color pairs yet</p>
-              </div>
+              <EmptyCollection />
             )}
           </div>
 

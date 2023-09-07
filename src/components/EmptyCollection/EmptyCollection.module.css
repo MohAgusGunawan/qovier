@@ -1,0 +1,35 @@
+.emptyData {
+  margin-top: 2em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 1em;
+}
+
+.boxImage {
+  position: relative;
+
+  width: 100%;
+  max-width: 326px;
+
+  aspect-ratio: 4 / 3;
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

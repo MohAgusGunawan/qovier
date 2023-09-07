@@ -5,6 +5,7 @@ import { BsFolderFill } from 'react-icons/bs';
 
 import { useAppSelector } from '@/src/redux/hooks';
 
+import EmptyCollection from '@/src/components/EmptyCollection/EmptyCollection';
 import CollectionItem from '@/src/components/CollectionItem/CollectionItem';
 
 import styles from './CollectionDrawer.module.css';
@@ -70,9 +71,7 @@ const CollectionDrawer = ({ isOpenDrawer, setIsOpenDrawer }: Props) => {
                   })}
                 </div>
               ) : (
-                <div className={styles.emptyData}>
-                  <p>You have not saved any color pairs yet</p>
-                </div>
+                <EmptyCollection />
               )}
             </div>
           </Dialog.Panel>
