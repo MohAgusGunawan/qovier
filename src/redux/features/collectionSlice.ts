@@ -1,6 +1,9 @@
 import { createSlice, isAnyOf, PayloadAction } from '@reduxjs/toolkit';
+import AES from 'crypto-js/aes';
 
 import { AppStartListening } from '../listenerMiddleware';
+
+import { lolSecretMessage } from '@/src/data/color';
 
 import { Collection } from '@/src/types/ColorType';
 
@@ -40,7 +43,12 @@ export const collectionFeatureListeners = (
     matcher: isAnyOf(addItem, removeItem),
     effect: (_action, listenerAPI) => {
       const collectionData = listenerAPI.getState().collection.value;
-      localStorage.setItem('qovier-collection', JSON.stringify(collectionData));
+      const encryptData = AES.encrypt(
+        JSON.stringify(collectionData),
+        lolSecretMessage
+      ).toString();
+
+      localStorage.setItem('qovier-collection', encryptData);
     },
   });
 };

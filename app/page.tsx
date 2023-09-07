@@ -1,6 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import AES from 'crypto-js/aes';
+import { enc } from 'crypto-js';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
 import { BsFolderFill } from 'react-icons/bs';
 import { TbLoader2 } from 'react-icons/tb';
@@ -9,6 +11,8 @@ import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import { receiveColors } from '@/src/redux/features/combinationSlice';
 import { setCover } from '@/src/redux/features/coverSlice';
 import { receiveItems } from '@/src/redux/features/collectionSlice';
+
+import { lolSecretMessage } from '@/src/data/color';
 
 import Header from '@/src/blocks/Header/Header';
 import FormFilter from '@/src//blocks/FormFilter/FormFilter';
@@ -49,10 +53,17 @@ export default function Home() {
 
   useEffect(() => {
     const collectionStorage = localStorage.getItem('qovier-collection');
-    const localData =
-      collectionStorage !== null ? JSON.parse(collectionStorage) : [];
 
-    dispatch(receiveItems(localData));
+    const localData = collectionStorage !== null ? collectionStorage : '';
+
+    if (localData !== '') {
+      const bytes = AES.decrypt(localData, lolSecretMessage);
+      const decryptedData = JSON.parse(bytes.toString(enc.Utf8));
+
+      dispatch(receiveItems(decryptedData));
+    } else {
+      dispatch(receiveItems([]));
+    }
   }, [dispatch]);
 
   return (

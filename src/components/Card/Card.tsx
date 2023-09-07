@@ -1,7 +1,14 @@
 'use client';
 
-import React, { Fragment, useCallback, useMemo, useState } from 'react';
+import React, {
+  useEffect,
+  Fragment,
+  useCallback,
+  useMemo,
+  useState,
+} from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import ConfettiExplosion from 'react-confetti-explosion';
 import { IoIosArrowDown, IoIosSwap } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
 import { toast } from 'react-toastify';
@@ -43,6 +50,14 @@ const Card = ({ data, index }: Props) => {
   const { value: cover } = useAppSelector((state) => state.cover);
   const { value: collection } = useAppSelector((state) => state.collection);
 
+  const primary = data.primary;
+  const secondary = data.secondary;
+
+  const preview = coverPreview[cover];
+
+  const customId = `${primary.hex}${secondary.hex}`;
+  const isAdded = collection.find((item) => item.id === customId);
+
   const [slideIllustration, setSlideIllustration] = useState(index % maxSlide);
   const [slidePattern, setSlidePattern] = useState(index % maxSlide);
   const [slideGradient, setSlideGradient] = useState(index % maxSlide);
@@ -51,13 +66,7 @@ const Card = ({ data, index }: Props) => {
   const [isPatternSwap, setIsPatternSwap] = useState(false);
   const [isGradientSwap, setIsGradientSwap] = useState(false);
 
-  const preview = coverPreview[cover];
-
-  const primary = data.primary;
-  const secondary = data.secondary;
-
-  const customId = `${primary.hex}${secondary.hex}`;
-  const isAdded = collection.find((item) => item.id === customId);
+  const [isExploding, setIsExploding] = useState(isAdded !== undefined);
 
   const contrastRatio = useMemo(() => {
     return getContrast(primary.hex, secondary.hex);
@@ -81,13 +90,7 @@ const Card = ({ data, index }: Props) => {
 
     const payload = {
       id: customId,
-      createdAt: {
-        timestamp: now.getTime(),
-        monthYear: now.toLocaleDateString('en-us', {
-          year: 'numeric',
-          month: 'long',
-        }),
-      },
+      createdAt: now.getTime(),
       colorPair: data,
     };
 
@@ -146,6 +149,10 @@ const Card = ({ data, index }: Props) => {
     }
   };
 
+  useEffect(() => {
+    setIsExploding(isAdded !== undefined);
+  }, [isAdded]);
+
   return (
     <div className={styles.card}>
       <div className={styles.cardDisplay}>
@@ -180,6 +187,24 @@ const Card = ({ data, index }: Props) => {
                 >
                   <BsFolderPlus />
                 </button>
+              )}
+
+              {isExploding && (
+                <ConfettiExplosion
+                  force={0.5}
+                  duration={2500}
+                  particleCount={15}
+                  width={400}
+                  colors={[
+                    '#000000',
+                    '#808080',
+                    '#FFFFFF',
+                    `#${primary.hex}`,
+                    `#${secondary.hex}`,
+                    `#${primary.hex}`,
+                    `#${secondary.hex}`,
+                  ]}
+                />
               )}
             </div>
 
