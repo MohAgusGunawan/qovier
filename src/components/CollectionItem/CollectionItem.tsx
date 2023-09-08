@@ -49,7 +49,7 @@ const CollectionItem = ({ data, num }: Props) => {
             className={styles.disclosureButton}
             onClick={() => setConfirm(false)}
           >
-            <span className={styles.colorTitle}>
+            <span className={styles.colorDescription}>
               <span className={styles.colorIndexNumber}>{num + 1}</span>
               <span
                 className={styles.colorIcon}
@@ -64,11 +64,18 @@ const CollectionItem = ({ data, num }: Props) => {
                 #{primary.hex} <b>\</b> #{secondary.hex}
               </span>
             </span>
-            <IoIosArrowDown
-              className={`${styles.arrowIcon} ${
-                open ? styles.arrowIconOpen : null
-              }`}
-            />
+
+            <span className={styles.colorAction}>
+              {data.target !== 'Default' && (
+                <span className={styles.colorTarget}>{data.target}</span>
+              )}
+
+              <IoIosArrowDown
+                className={`${styles.arrowIcon} ${
+                  open ? styles.arrowIconOpen : null
+                }`}
+              />
+            </span>
           </Disclosure.Button>
           <Disclosure.Panel>
             <div className={styles.disclosurePanel}>

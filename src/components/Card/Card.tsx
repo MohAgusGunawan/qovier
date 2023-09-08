@@ -18,11 +18,7 @@ import { BsFolderPlus, BsFillFolderFill } from 'react-icons/bs';
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import { addItem, removeItem } from '@/src/redux/features/collectionSlice';
 
-import {
-  ColorPair,
-  CustomColorType,
-  ColorIconType,
-} from '@/src/types/ColorType';
+import { coverPreview } from '@/src/data/coverPreview';
 
 import IllustrationOneSVG from '@/src/elements/IllustrationOneSVG/IllustrationOneSVG';
 import IllustrationTwoSVG from '@/src/elements/IllustrationTwoSVG/IllustrationTwoSVG';
@@ -32,7 +28,11 @@ import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
 import SlideButton from '@/src/elements/SlideButton/SlideButton';
 import IndicatorSlider from '@/src/elements/IndicatorSlider/IndicatorSlider';
 
-import { coverPreview } from '@/src/data/coverPreview';
+import {
+  ColorPair,
+  CustomColorType,
+  ColorIconType,
+} from '@/src/types/ColorType';
 
 import styles from './Card.module.css';
 
@@ -91,6 +91,7 @@ const Card = ({ data, index }: Props) => {
     const payload = {
       id: customId,
       createdAt: now.getTime(),
+      target: coverPreview[cover],
       colorPair: data,
     };
 
