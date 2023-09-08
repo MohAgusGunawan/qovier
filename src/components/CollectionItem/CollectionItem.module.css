@@ -29,7 +29,8 @@
   box-shadow: var(--shadow-bottom);
 }
 
-.colorTitle {
+.colorDescription,
+.colorAction {
   display: inline-flex;
   align-items: center;
 
@@ -77,6 +78,14 @@
   color: var(--text-mute-color);
 
   opacity: 0.4;
+}
+
+.colorTarget {
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--text-mute-color);
+
+  opacity: 0.6;
 }
 
 .arrowIcon {
@@ -209,6 +218,10 @@
 
   .colorCode {
     font-size: var(--fs-sm);
+  }
+
+  .colorTarget {
+    font-size: var(--fs-xs);
   }
 
   .colorGroup {
