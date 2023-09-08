@@ -57,10 +57,14 @@ export default function Home() {
     const localData = collectionStorage !== null ? collectionStorage : '';
 
     if (localData !== '') {
-      const bytes = AES.decrypt(localData, lolSecretMessage);
-      const decryptedData = JSON.parse(bytes.toString(enc.Utf8));
+      try {
+        const bytes = AES.decrypt(localData, lolSecretMessage);
+        const decryptedData = JSON.parse(bytes.toString(enc.Utf8));
 
-      dispatch(receiveItems(decryptedData));
+        dispatch(receiveItems(decryptedData));
+      } catch {
+        dispatch(receiveItems([]));
+      }
     } else {
       dispatch(receiveItems([]));
     }
