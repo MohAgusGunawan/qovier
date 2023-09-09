@@ -1,83 +1,3 @@
-.colorList {
-  margin: 7em auto;
-  padding: 1em 0;
-}
-
-.heading {
-  text-align: center;
-
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
-
-  color: var(--text-focal-color);
-
-  margin-bottom: 1em;
-}
-
-.paragraph {
-  text-wrap: balance;
-  text-align: center;
-}
-
-.colorContainer {
-  margin: 0 auto;
-  margin-top: 4em;
-
-  width: 100%;
-  max-width: 980px;
-
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 1em;
-}
-
-.colorGroup {
-  padding: 0.5em;
-
-  aspect-ratio: 1 / 1;
-
-  background: var(--surface-color);
-  box-shadow: var(--shadow-bottom);
-
-  border-radius: 1em;
-}
-
-.colorGroupButton {
-  width: 100%;
-  height: 100%;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 0.5em;
-
-  overflow: hidden;
-
-  cursor: pointer;
-}
-
-.colorGroupButton:focus-visible {
-  outline: 2px solid black;
-  outline-offset: 4px;
-}
-
-.colorGroupButtonLabel {
-  padding: 0.5em;
-
-  font-weight: var(--fw-black);
-  font-size: var(--fs-md);
-
-  white-space: nowrap;
-
-  text-align: center;
-
-  transform: rotate(-30deg) scale(5);
-  opacity: 0.4;
-
-  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
-}
-
 .modalBackdrop {
   position: fixed;
   z-index: 9999;
@@ -100,7 +20,7 @@
 
   transform: translate(-50%, -40%);
 
-  width: 92%;
+  width: 95%;
   max-width: 840px;
   height: fit-content;
 
@@ -142,7 +62,7 @@
 }
 
 .modalContent {
-  padding: 1em;
+  padding: 0.5em;
   padding-bottom: 2em;
 
   max-height: 65dvh;
@@ -166,7 +86,7 @@
 .boxColor {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 0.875em;
+  gap: 0.5em;
 }
 
 .itemColor {
@@ -231,12 +151,6 @@
 
 @media (hover: hover) {
   /* when supported */
-  .colorGroupButton:hover .colorGroupButtonLabel {
-    white-space: normal;
-
-    transform: rotate(0deg) scale(1);
-    opacity: 0.4;
-  }
 
   .buttonClose:hover {
     opacity: 1;
@@ -247,20 +161,13 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
-  .boxColor {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  .modalContent {
+    padding: 1em;
   }
 
-  .colorContainer {
-    margin: 0 auto;
-    margin-top: 4em;
-
-    width: 100%;
-    max-width: 980px;
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1.6em;
+  .boxColor {
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1em;
   }
 }
 
