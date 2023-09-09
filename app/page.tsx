@@ -6,6 +6,7 @@ import { enc } from 'crypto-js';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
 import { BsFolderFill } from 'react-icons/bs';
 import { TbLoader2 } from 'react-icons/tb';
+import fontColorContrast from 'font-color-contrast';
 
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import { receiveColors } from '@/src/redux/features/combinationSlice';
@@ -17,7 +18,7 @@ import { lolSecretMessage } from '@/src/data/color';
 import Header from '@/src/blocks/Header/Header';
 import FormFilter from '@/src//blocks/FormFilter/FormFilter';
 import Footer from '@/src/blocks/Footer/Footer';
-import ColorList from '@/src/blocks/ColorList/ColorList';
+import ColorListModal from '@/src/blocks/ColorListModal/ColorListModal';
 import CollectionDrawer from '@/src/blocks/CollectionDrawer/CollectionDrawer';
 import CollectionSheet from '@/src/blocks/CollectionSheet/CollectionSheet';
 
@@ -26,6 +27,7 @@ import SelectCover from '@/src/components/SelectCover/SelectCover';
 
 import { generateCombination } from '@/src/utils/generateCombination';
 
+import { colorList } from '@/src/data/colorList';
 import { coverPreview } from '@/src/data/coverPreview';
 
 import styles from './page.module.css';
@@ -33,6 +35,8 @@ import styles from './page.module.css';
 export default function Home() {
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const [isOpenSheet, setIsOpenSheet] = useState(false);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [rangeModal, setRangeModal] = useState('Neutral');
 
   const scollToRef = useRef<HTMLDivElement>(null);
 
@@ -45,6 +49,16 @@ export default function Home() {
 
   const handleCoverChange = (number: number) => {
     dispatch(setCover(number));
+  };
+
+  const openModal = (range: string) => {
+    setRangeModal(range);
+    setIsOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setIsOpenModal(false);
+    setRangeModal('Neutral');
   };
 
   useEffect(() => {
@@ -141,8 +155,46 @@ export default function Home() {
           <FormFilter elementRef={scollToRef} />
         </div>
 
-        <ColorList />
+        <div className={styles.colorList}>
+          <div className="wrapper">
+            <h2 className={styles.colorListHeading}>Color List</h2>
+            <p className={styles.colorListParagraph}>
+              Among the millions of colors available, here are some colors that
+              we may already recognize based on their hue range. These colors
+              can be used as color references the most likely filter to appear
+              in the color results above. Click the card to see all color list!
+            </p>
+
+            <div className={styles.colorContainer}>
+              {colorList.map((color, index) => {
+                return (
+                  <div className={styles.colorGroup} key={index}>
+                    <button
+                      className={styles.colorGroupButton}
+                      style={{
+                        background: color.hexCode,
+                        color: fontColorContrast(color.hexCode),
+                      }}
+                      title={`${color.range} range`}
+                      onClick={() => openModal(color.range)}
+                    >
+                      <span className={styles.colorGroupButtonLabel}>
+                        {color.range}
+                      </span>
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </main>
+
+      <ColorListModal
+        isOpenModal={isOpenModal}
+        closeModal={closeModal}
+        range={rangeModal}
+      />
 
       <CollectionDrawer
         isOpenDrawer={isOpenDrawer}
