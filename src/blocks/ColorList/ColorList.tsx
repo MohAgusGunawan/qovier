@@ -14,7 +14,6 @@ const ColorList = () => {
   const filteredList = colorList.filter((color) => color.range === range);
 
   const openModal = (rangeColor: string) => {
-    console.log(rangeColor);
     setRange(rangeColor);
     setIsOpen(true);
   };
