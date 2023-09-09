@@ -23,8 +23,8 @@
   margin: 0 auto;
   margin-top: 4em;
 
-  width: 100%;
-  max-width: 980px;
+  width: 90%;
+  max-width: 864px;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
@@ -100,7 +100,7 @@
 
   transform: translate(-50%, -40%);
 
-  width: 92%;
+  width: 95%;
   max-width: 840px;
   height: fit-content;
 
@@ -142,7 +142,7 @@
 }
 
 .modalContent {
-  padding: 1em;
+  padding: 0.5em;
   padding-bottom: 2em;
 
   max-height: 65dvh;
@@ -166,7 +166,7 @@
 .boxColor {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 0.875em;
+  gap: 0.5em;
 }
 
 .itemColor {
@@ -247,20 +247,18 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
+  .modalContent {
+    padding: 1em;
+  }
+
   .boxColor {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1em;
   }
 
   .colorContainer {
-    margin: 0 auto;
-    margin-top: 4em;
-
-    width: 100%;
-    max-width: 980px;
-
-    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-    gap: 1.6em;
+    gap: 1em;
   }
 }
 
