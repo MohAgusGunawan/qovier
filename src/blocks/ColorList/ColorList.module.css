@@ -100,7 +100,7 @@
 
   transform: translate(-50%, -40%);
 
-  width: 90%;
+  width: 92%;
   max-width: 840px;
   height: fit-content;
 
@@ -165,8 +165,8 @@
 
 .boxColor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-  gap: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.875em;
 }
 
 .itemColor {
