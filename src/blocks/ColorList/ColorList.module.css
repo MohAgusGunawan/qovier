@@ -1,4 +1,5 @@
 .colorList {
+  margin: 7em auto;
   padding: 1em 0;
 }
 
@@ -18,12 +19,139 @@
   text-align: center;
 }
 
-.containerList {
+.colorContainer {
   margin: 0 auto;
   margin-top: 4em;
-  padding-top: 2em;
 
+  width: 100%;
   max-width: 980px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 1em;
+}
+
+.colorGroup {
+  padding: 0.5em;
+
+  aspect-ratio: 1 / 1;
+
+  background: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
+
+  border-radius: 1em;
+}
+
+.colorGroupButton {
+  width: 100%;
+  height: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.5em;
+
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.colorGroupButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 4px;
+}
+
+.colorGroupButtonLabel {
+  padding: 0.5em;
+
+  font-weight: var(--fw-black);
+  font-size: var(--fs-md);
+
+  white-space: nowrap;
+
+  text-align: center;
+
+  transform: rotate(-30deg) scale(5);
+  opacity: 0.4;
+
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.modalBackdrop {
+  position: fixed;
+  z-index: 9999;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100dvh;
+
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modalPanel {
+  position: fixed;
+  z-index: 99999;
+
+  top: 40%;
+  left: 50%;
+
+  transform: translate(-50%, -40%);
+
+  width: 90%;
+  max-width: 840px;
+  height: fit-content;
+
+  background-color: var(--body-background-color);
+
+  border-radius: 1em;
+}
+
+.modalHeader {
+  position: relative;
+
+  padding: 1em;
+  padding-top: 2em;
+  padding-bottom: 1.5em;
+}
+
+.buttonClose {
+  position: absolute;
+
+  top: 1em;
+  right: 1em;
+
+  width: 2em;
+  height: 2em;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  opacity: 0.5;
+
+  transition: all 0.2s ease-in-out;
+
+  cursor: pointer;
+}
+
+.buttonClose:focus-visible {
+  outline: 1px solid black;
+}
+
+.modalContent {
+  padding: 1em;
+  padding-bottom: 2em;
+
+  max-height: 65dvh;
+
+  overflow-y: auto;
+}
+
+.modalFooterBorder {
+  height: 40px;
 }
 
 .title {
@@ -33,19 +161,12 @@
   font-weight: var(--fw-bold);
 
   color: var(--text-focal-color);
-
-  margin-bottom: 1em;
 }
 
 .boxColor {
-  margin-top: 2em;
-
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
   gap: 1em;
-
-  padding-bottom: 2em;
-  border-bottom: 1px solid #d0d0d0;
 }
 
 .itemColor {
@@ -110,6 +231,16 @@
 
 @media (hover: hover) {
   /* when supported */
+  .colorGroupButton:hover .colorGroupButtonLabel {
+    white-space: normal;
+
+    transform: rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+
+  .buttonClose:hover {
+    opacity: 1;
+  }
 }
 
 /* ================================================ */
@@ -118,6 +249,18 @@
 @media only screen and (min-width: 768px) {
   .boxColor {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  }
+
+  .colorContainer {
+    margin: 0 auto;
+    margin-top: 4em;
+
+    width: 100%;
+    max-width: 980px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1.6em;
   }
 }
 
