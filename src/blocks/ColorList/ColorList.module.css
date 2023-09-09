@@ -28,13 +28,13 @@
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
-  gap: 1em;
+  gap: 0.5em;
 }
 
 .colorGroup {
   padding: 0.5em;
 
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 5 / 4;
 
   background: var(--surface-color);
   box-shadow: var(--shadow-bottom);
@@ -259,6 +259,10 @@
   .colorContainer {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: 1em;
+  }
+
+  .colorGroup {
+    aspect-ratio: 1 / 1;
   }
 }
 
