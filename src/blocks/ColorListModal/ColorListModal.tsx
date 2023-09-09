@@ -16,7 +16,7 @@ const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
   const filteredList = colorList.filter((color) => color.range === range);
 
   return (
-    <Dialog open={isOpenModal} onClose={() => closeModal()} as="div">
+    <Dialog open={isOpenModal} onClose={() => closeModal()}>
       <div className={styles.modalBackdrop} aria-hidden="true" />
 
       <Dialog.Panel className={styles.modalPanel}>
