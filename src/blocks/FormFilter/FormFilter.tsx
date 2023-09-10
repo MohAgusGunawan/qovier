@@ -1,6 +1,6 @@
 'use client';
 
-import { RefObject, useEffect, useRef, useState } from 'react';
+import { RefObject, useEffect, useMemo, useRef, useState } from 'react';
 import { TbRefresh, TbFilterCog, TbCheck } from 'react-icons/tb';
 
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
@@ -37,7 +37,7 @@ const FormFilter = ({ elementRef }: Props) => {
   const [selectedPrimary, setSelectedPrimary] = useState<ColorType>(colors[0]);
   const [selectedSecondary, setSelectedSecondary] = useState<ColorType[]>([]);
 
-  const codeColorFamily = getColorFamily(codeColor);
+  const codeColorFamily = useMemo(() => getColorFamily(codeColor), [codeColor]);
 
   const excludeList = secondaryColors.filter((color) => {
     const isExcludeColor = excludeColors.includes(selectedPrimary.name);
@@ -69,7 +69,11 @@ const FormFilter = ({ elementRef }: Props) => {
         selected.name.toLowerCase().replace(' ', '')
       );
 
-      dispatch(receiveColors(generateCombination(firstFilter, secondFilter)));
+      dispatch(
+        receiveColors(
+          generateCombination(isCode ? codeColor : firstFilter, secondFilter)
+        )
+      );
       elementRef.current?.scrollIntoView({ behavior: 'smooth' });
     }, 1500);
   };

@@ -3,6 +3,7 @@ import convert from 'color-convert';
 import { rangeColor } from '@/src/data/color';
 
 import { ColorDetail, ColorPair } from '@/src/types/ColorType';
+import { getColorFamily } from './getColorFamily';
 
 const group = Object.keys(rangeColor);
 
@@ -68,14 +69,28 @@ const generateColor = (filter: string[]) => {
   };
 };
 
+const getDetailColor = (colorString: string) => {
+  return {
+    range: getColorFamily(colorString),
+    name: convert.hex.keyword(colorString),
+    hex: colorString.replace('#', ''),
+    hsl: convert.hex.hsl(colorString),
+    rgb: convert.hex.rgb(colorString),
+  };
+};
+
 export const generateCombination = (
-  filterPrimary: string[] = [],
+  filterPrimary: string[] | string = [],
   filterSecondary: string[] = []
 ) => {
   const colorPair = new Array<ColorPair>();
 
   while (colorPair.length < maxList) {
-    const primary = generateColor(filterPrimary);
+    const primary =
+      typeof filterPrimary === 'string'
+        ? getDetailColor(filterPrimary)
+        : generateColor(filterPrimary);
+
     let secondary;
 
     do {
