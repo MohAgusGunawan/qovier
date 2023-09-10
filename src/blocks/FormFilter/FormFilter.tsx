@@ -1,7 +1,7 @@
 'use client';
 
 import { RefObject, useEffect, useRef, useState } from 'react';
-import { TbRefresh, TbFilterCog } from 'react-icons/tb';
+import { TbRefresh, TbFilterCog, TbCheck } from 'react-icons/tb';
 
 import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import {
@@ -10,6 +10,7 @@ import {
 } from '@/src/redux/features/combinationSlice';
 
 import SelectColor from '@/src/components/SelectColor/SelectColor';
+import ColorPicker from '@/src/components/ColorPicker/ColorPicker';
 
 import Button from '@/src/elements/Button/Button';
 
@@ -29,6 +30,9 @@ const FormFilter = ({ elementRef }: Props) => {
   const { loading } = useAppSelector((state) => state.combination);
   const dispatch = useAppDispatch();
 
+  const [isCode, setIsCode] = useState(false);
+
+  const [codeColor, setCodeColor] = useState('#808080');
   const [selectedPrimary, setSelectedPrimary] = useState<ColorType>(colors[0]);
   const [selectedSecondary, setSelectedSecondary] = useState<ColorType[]>([]);
 
@@ -43,6 +47,10 @@ const FormFilter = ({ elementRef }: Props) => {
   });
 
   const timerRef = useRef<ReturnType<typeof setTimeout>>();
+
+  const switchColorType = () => {
+    setIsCode((prev) => !prev);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -86,16 +94,38 @@ const FormFilter = ({ elementRef }: Props) => {
         Select the range of colors you want to generate!
       </p>
 
+      <div className={styles.selectTypeForm}>
+        <input
+          type="checkbox"
+          checked={isCode}
+          onChange={() => switchColorType()}
+          id="select-type-color"
+          className={styles.inputCheck}
+        />
+        <label className={styles.specificLabel} htmlFor="select-type-color">
+          <span>Use specific main colors : </span>
+          <span className={styles.checkBox}>{isCode && <TbCheck />}</span>
+        </label>
+      </div>
+
       <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.groupSelect}>
-          <SelectColor
-            label="Main"
-            name="primary-color"
-            list={colors}
-            value={selectedPrimary}
-            onChange={setSelectedPrimary}
-            multiple={false}
-          />
+          {isCode ? (
+            <ColorPicker
+              label="Main"
+              codeColor={codeColor}
+              setCodeColor={setCodeColor}
+            />
+          ) : (
+            <SelectColor
+              label="Main"
+              name="primary-color"
+              list={colors}
+              value={selectedPrimary}
+              onChange={setSelectedPrimary}
+              multiple={false}
+            />
+          )}
 
           <SelectColor
             label="Accent"
