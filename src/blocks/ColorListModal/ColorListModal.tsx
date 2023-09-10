@@ -1,6 +1,9 @@
+import { useCallback } from 'react';
 import { Dialog } from '@headlessui/react';
+import { toast } from 'react-toastify';
 
 import { AiOutlineClose } from 'react-icons/ai';
+import { TbCopy } from 'react-icons/tb';
 
 import { colorList } from '@/src/data/colorList';
 
@@ -14,6 +17,19 @@ interface Props {
 
 const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
   const filteredList = colorList.filter((color) => color.range === range);
+
+  const handleCopy = useCallback((text: string) => {
+    navigator.clipboard
+      .writeText(text)
+      .then(() => {
+        toast(`"${text}" copied`, {
+          icon: <TbCopy />,
+        });
+      })
+      .catch(() => {
+        window.alert('Copy failed, please update your browser!');
+      });
+  }, []);
 
   return (
     <Dialog open={isOpenModal} onClose={() => closeModal()}>
@@ -36,25 +52,34 @@ const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
               return (
                 <li key={index} className={styles.itemColor}>
                   {item.popular && <span className={styles.colorRibbon}></span>}
-
-                  <div
-                    className={styles.colorCard}
-                    style={{ background: item.hexCode }}
-                  ></div>
-                  <p
-                    className={`${styles.colorName} ${
-                      item.popular ? styles.colorNameBold : null
-                    }`}
+                  <button
+                    className={styles.colorButton}
+                    title={`Copy ${item.hexCode}`}
+                    onClick={() => handleCopy(item.hexCode.replace('#', ''))}
                   >
-                    {item.name}
-                  </p>
-                  <p className={styles.colorCode}>{item.hexCode}</p>
+                    <span
+                      className={styles.colorCard}
+                      style={{ background: item.hexCode }}
+                    ></span>
+                    <span
+                      className={`${styles.colorName} ${
+                        item.popular ? styles.colorNameBold : null
+                      }`}
+                    >
+                      {item.name}
+                    </span>
+                    <span className={styles.colorCode}>{item.hexCode}</span>
+                  </button>
                 </li>
               );
             })}
           </ul>
         </div>
-        <div className={styles.modalFooterBorder}></div>
+        <div className={styles.modalFooterBorder}>
+          <p className={styles.modalFooterHint}>
+            *Click the card to copy the color code!
+          </p>
+        </div>
       </Dialog.Panel>
     </Dialog>
   );

@@ -65,13 +65,21 @@
   padding: 0.5em;
   padding-bottom: 2em;
 
-  max-height: 65dvh;
+  max-height: 55dvh;
 
   overflow-y: auto;
 }
 
 .modalFooterBorder {
-  height: 40px;
+  padding: 1em 0;
+  height: 56px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: var(--shadow-top);
 }
 
 .title {
@@ -92,6 +100,27 @@
 .itemColor {
   position: relative;
 
+  overflow: hidden;
+}
+
+.colorRibbon {
+  position: absolute;
+
+  top: 0%;
+  right: -25%;
+
+  width: 100%;
+  height: 0.875em;
+
+  box-shadow: var(--shadow-bottom);
+  background: var(--surface-color);
+
+  transform: rotate(35deg);
+}
+
+.colorButton {
+  width: 100%;
+
   background: var(--surface-color);
   box-shadow: var(--shadow-bottom);
 
@@ -104,22 +133,12 @@
   align-items: center;
   flex-direction: column;
 
-  overflow: hidden;
+  cursor: pointer;
 }
 
-.colorRibbon {
-  position: absolute;
-
-  top: -5%;
-  right: -10%;
-
-  width: 100%;
-  height: 0.875em;
-
-  box-shadow: var(--shadow-bottom);
-  background: var(--surface-color);
-
-  transform: rotate(35deg);
+.colorButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 4px;
 }
 
 .colorCard {
@@ -140,13 +159,23 @@
 }
 
 .colorNameBold {
-  font-size: var(--fs-md);
   font-weight: var(--fw-black);
   color: var(--text-focal-color);
 }
 
 .colorCode {
   font-size: var(--fs-xs);
+}
+
+.modalFooterHint {
+  width: 100%;
+
+  padding: 0 0.875em;
+
+  font-size: var(--fs-sm);
+  text-align: center;
+
+  color: var(--text-mute-color);
 }
 
 @media (hover: hover) {
@@ -163,6 +192,8 @@
 @media only screen and (min-width: 768px) {
   .modalContent {
     padding: 1em;
+
+    max-height: 65dvh;
   }
 
   .boxColor {
