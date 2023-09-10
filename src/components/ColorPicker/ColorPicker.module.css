@@ -1,0 +1,108 @@
+.inputColorWrap {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+
+  position: relative;
+}
+
+.inputColorLabel {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+}
+
+.inputColor {
+  display: flex;
+  align-items: center;
+
+  gap: 0.5em;
+}
+
+.buttonColorPicker {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 100%;
+
+  background: var(--surface-color);
+  color: var(--text-focal-color);
+
+  padding: 0.5em;
+  border-radius: 8px;
+
+  box-shadow: var(--shadow-bottom);
+
+  cursor: pointer;
+}
+
+.buttonColorPicker:focus-visible {
+  outline: 2px solid black;
+}
+
+.thumbnailColor {
+  display: inline-block;
+
+  border: 1px solid #808080;
+
+  border-radius: 4px;
+
+  aspect-ratio: 5 / 4;
+  height: var(--fs-xl);
+}
+
+.inputColorText {
+  flex-grow: 1;
+
+  background: var(--surface-color);
+  color: var(--text-focal-color);
+
+  padding: 0.5em 0.875em;
+  border-radius: 8px;
+
+  font-size: var(--fs-md);
+  color: var(--text-common-color);
+
+  text-transform: uppercase;
+
+  box-shadow: var(--shadow-bottom);
+}
+
+.inputColorText:focus-visible {
+  outline: 2px solid black;
+}
+
+.popoverPanel {
+  position: absolute;
+  z-index: 999;
+
+  top: 100%;
+  margin-top: 1em;
+
+  padding: 0.5em;
+
+  width: 100%;
+
+  border-radius: 8px;
+
+  box-shadow: var(--shadow-bottom);
+  background: var(--surface-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

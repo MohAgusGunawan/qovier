@@ -87,6 +87,14 @@ img {
   background: var(--color);
 }
 
+.customColorPicker .react-colorful {
+  width: 100%;
+}
+
+.customColorPicker .react-colorful__hue {
+  margin-top: 0.5em;
+}
+
 @media (hover: hover) {
   /* when supported */
 }

@@ -1,226 +1,9 @@
 import convert from 'color-convert';
 
+import { rangeColor } from '@/src/data/color';
+
 import { ColorDetail, ColorPair } from '@/src/types/ColorType';
-
-const hueSaturationMin = 30;
-const hueLightnessMin = 30;
-const hueLightnessMax = 85;
-
-const rangeColor = {
-  red: {
-    hue: {
-      min: 345,
-      max: 375,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  orange: {
-    hue: {
-      min: 15,
-      max: 45,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  yellow: {
-    hue: {
-      min: 45,
-      max: 75,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  chartreuse: {
-    hue: {
-      min: 75,
-      max: 105,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  green: {
-    hue: {
-      min: 105,
-      max: 135,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  springgreen: {
-    hue: {
-      min: 135,
-      max: 165,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  cyan: {
-    hue: {
-      min: 165,
-      max: 195,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  azure: {
-    hue: {
-      min: 195,
-      max: 225,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  blue: {
-    hue: {
-      min: 225,
-      max: 255,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  violet: {
-    hue: {
-      min: 255,
-      max: 285,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  magenta: {
-    hue: {
-      min: 285,
-      max: 315,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  rose: {
-    hue: {
-      min: 315,
-      max: 345,
-    },
-    saturation: {
-      min: hueSaturationMin,
-      max: 101,
-    },
-    lightness: {
-      min: hueLightnessMin,
-      max: hueLightnessMax,
-    },
-  },
-  dim: {
-    // Black
-    hue: {
-      min: 0,
-      max: 360,
-    },
-    saturation: {
-      min: 0,
-      max: 100,
-    },
-    lightness: {
-      min: 0,
-      max: 21,
-    },
-  },
-  moderate: {
-    // Gray
-    hue: {
-      min: 0,
-      max: 360,
-    },
-    saturation: {
-      min: 0,
-      max: 10,
-    },
-    lightness: {
-      min: 30,
-      max: 71,
-    },
-  },
-  bright: {
-    // White
-    hue: {
-      min: 0,
-      max: 360,
-    },
-    saturation: {
-      min: 0,
-      max: 100,
-    },
-    lightness: {
-      min: 80,
-      max: 101,
-    },
-  },
-};
+import { getColorFamily } from './getColorFamily';
 
 const group = Object.keys(rangeColor);
 
@@ -286,14 +69,28 @@ const generateColor = (filter: string[]) => {
   };
 };
 
+const getDetailColor = (colorString: string) => {
+  return {
+    range: getColorFamily(colorString),
+    name: convert.hex.keyword(colorString),
+    hex: colorString.replace('#', ''),
+    hsl: convert.hex.hsl(colorString),
+    rgb: convert.hex.rgb(colorString),
+  };
+};
+
 export const generateCombination = (
-  filterPrimary: string[] = [],
+  filterPrimary: string[] | string = [],
   filterSecondary: string[] = []
 ) => {
   const colorPair = new Array<ColorPair>();
 
   while (colorPair.length < maxList) {
-    const primary = generateColor(filterPrimary);
+    const primary =
+      typeof filterPrimary === 'string'
+        ? getDetailColor(filterPrimary)
+        : generateColor(filterPrimary);
+
     let secondary;
 
     do {

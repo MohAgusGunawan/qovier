@@ -30,6 +30,7 @@ span,
 input,
 textarea,
 button,
+label,
 a {
   line-height: var(--lh-paragraph);
 }
