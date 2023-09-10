@@ -40,10 +40,14 @@ const FormFilter = ({ elementRef }: Props) => {
   const codeColorFamily = useMemo(() => getColorFamily(codeColor), [codeColor]);
 
   const excludeList = secondaryColors.filter((color) => {
-    const isExcludeColor = excludeColors.includes(selectedPrimary.name);
+    const isExcludeColor = isCode
+      ? excludeColors.includes(codeColorFamily)
+      : excludeColors.includes(selectedPrimary.name);
 
     if (isExcludeColor) {
-      return color.name !== selectedPrimary.name;
+      return isCode
+        ? color.name !== codeColorFamily
+        : color.name !== selectedPrimary.name;
     }
 
     return true;
@@ -89,7 +93,13 @@ const FormFilter = ({ elementRef }: Props) => {
         return prev.filter((color) => color.name !== selectedPrimary.name);
       });
     }
-  }, [selectedPrimary]);
+
+    if (excludeColors.includes(codeColorFamily)) {
+      setSelectedSecondary((prev) => {
+        return prev.filter((color) => color.name !== codeColorFamily);
+      });
+    }
+  }, [selectedPrimary, codeColorFamily, isCode]);
 
   return (
     <div className={styles.customize}>
