@@ -16,6 +16,7 @@ import Button from '@/src/elements/Button/Button';
 
 import { colors, excludeColors, secondaryColors } from '@/src/data/color';
 
+import { getColorFamily } from '@/src/utils/getColorFamily';
 import { generateCombination } from '@/src/utils/generateCombination';
 
 import { ColorType } from '@/src/types/ColorType';
@@ -35,6 +36,8 @@ const FormFilter = ({ elementRef }: Props) => {
   const [codeColor, setCodeColor] = useState('#808080');
   const [selectedPrimary, setSelectedPrimary] = useState<ColorType>(colors[0]);
   const [selectedSecondary, setSelectedSecondary] = useState<ColorType[]>([]);
+
+  const codeColorFamily = getColorFamily(codeColor);
 
   const excludeList = secondaryColors.filter((color) => {
     const isExcludeColor = excludeColors.includes(selectedPrimary.name);
@@ -134,7 +137,7 @@ const FormFilter = ({ elementRef }: Props) => {
             value={selectedSecondary}
             onChange={setSelectedSecondary}
             multiple={true}
-            mainColor={selectedPrimary.name}
+            mainColor={isCode ? codeColorFamily : selectedPrimary.name}
           />
         </div>
 
