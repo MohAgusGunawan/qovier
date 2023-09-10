@@ -1,5 +1,5 @@
 const hueSaturationMin = 30;
-const hueLightnessMin = 30;
+const hueLightnessMin = 15;
 const hueLightnessMax = 85;
 
 export const rangeColor = {
@@ -175,11 +175,11 @@ export const rangeColor = {
     // Black
     hue: {
       min: 0,
-      max: 360,
+      max: 361,
     },
     saturation: {
       min: 0,
-      max: 100,
+      max: 101,
     },
     lightness: {
       min: 0,
@@ -190,11 +190,11 @@ export const rangeColor = {
     // Gray
     hue: {
       min: 0,
-      max: 360,
+      max: 361,
     },
     saturation: {
       min: 0,
-      max: 10,
+      max: 11,
     },
     lightness: {
       min: 30,
@@ -205,11 +205,11 @@ export const rangeColor = {
     // White
     hue: {
       min: 0,
-      max: 360,
+      max: 361,
     },
     saturation: {
       min: 0,
-      max: 100,
+      max: 101,
     },
     lightness: {
       min: 80,
