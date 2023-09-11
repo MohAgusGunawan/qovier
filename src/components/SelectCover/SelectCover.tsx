@@ -10,12 +10,18 @@ interface Props {
   onChange: (number: number) => void;
   list: String[];
   name?: string;
+  disabled?: boolean;
 }
 
-function SelectCover({ value, onChange, list, name }: Props) {
+function SelectCover({ value, onChange, list, name, disabled }: Props) {
   return (
     <div className={styles.selectWrap}>
-      <Listbox value={value} onChange={onChange} name={name}>
+      <Listbox
+        value={value}
+        onChange={onChange}
+        name={name}
+        disabled={disabled}
+      >
         <Listbox.Button className={styles.selectButton}>
           <CgDisplayGrid />
           <span className={styles.selectLabel}>
