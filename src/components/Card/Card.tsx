@@ -2,7 +2,13 @@
 
 // Please refactor this soon!!
 
-import React, { Fragment, useCallback, useMemo, useState } from 'react';
+import React, {
+  Fragment,
+  useCallback,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { toast } from 'react-toastify';
 import ConfettiExplosion from 'react-confetti-explosion';
@@ -176,6 +182,10 @@ const Card = ({ data, index }: Props) => {
       setSlideGradient(afterSlide < 0 ? maxSlide - 1 : afterSlide);
     }
   };
+
+  useEffect(() => {
+    setIsExploding(false);
+  }, [loading]);
 
   return (
     <div className={styles.card}>

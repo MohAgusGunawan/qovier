@@ -1,8 +1,6 @@
 .svg {
   width: 100%;
   height: 75%;
-
-  box-shadow: var(--shadow-bottom);
 }
 
 @media (hover: hover) {
