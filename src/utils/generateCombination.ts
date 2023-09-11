@@ -70,12 +70,15 @@ const generateColor = (filter: string[]) => {
 };
 
 const getDetailColor = (colorString: string) => {
+  const rgb = convert.hex.rgb(colorString);
+  const fixedHexCode = convert.rgb.hex(rgb);
+
   return {
     range: getColorFamily(colorString),
     name: convert.hex.keyword(colorString),
-    hex: colorString.replace('#', ''),
+    hex: fixedHexCode,
     hsl: convert.hex.hsl(colorString),
-    rgb: convert.hex.rgb(colorString),
+    rgb: rgb,
   };
 };
 

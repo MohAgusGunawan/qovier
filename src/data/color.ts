@@ -1,5 +1,5 @@
 const hueSaturationMin = 30;
-const hueLightnessMin = 15;
+const hueLightnessMin = 20;
 const hueLightnessMax = 85;
 
 export const rangeColor = {
