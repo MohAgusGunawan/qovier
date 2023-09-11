@@ -108,7 +108,7 @@ export default function Home() {
                 >
                   {gettingCollection ? (
                     <>
-                      <TbLoader2 />
+                      <TbLoader2 className="rotateAnimation" />
                       <span>Loading ...</span>
                     </>
                   ) : (
@@ -138,7 +138,7 @@ export default function Home() {
           >
             {gettingCollection ? (
               <>
-                <TbLoader2 />
+                <TbLoader2 className="rotateAnimation" />
                 <span>Loading ...</span>
               </>
             ) : (

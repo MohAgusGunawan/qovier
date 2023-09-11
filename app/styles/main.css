@@ -9,3 +9,6 @@
 
 /* Import Global Styles */
 @import url('./globals.css');
+
+/* Import Animation  */
+@import url('./_animation.css');
