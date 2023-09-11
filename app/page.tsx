@@ -41,7 +41,9 @@ export default function Home() {
   const scollToRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
-  const { value: combination } = useAppSelector((state) => state.combination);
+  const { value: combination, loading: gettingCombination } = useAppSelector(
+    (state) => state.combination
+  );
   const { value: cover } = useAppSelector((state) => state.cover);
   const { value: collection, loading: gettingCollection } = useAppSelector(
     (state) => state.collection
@@ -96,6 +98,7 @@ export default function Home() {
                 onChange={handleCoverChange}
                 list={coverPreview}
                 name="Change Preview"
+                disabled={gettingCombination}
               />
               <div className={styles.toggleWrapper}>
                 <button

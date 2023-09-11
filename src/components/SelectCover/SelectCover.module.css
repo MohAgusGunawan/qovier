@@ -25,6 +25,10 @@
   cursor: pointer;
 }
 
+.selectButton:disabled {
+  cursor: wait;
+}
+
 .selectLabel {
   color: var(--text-mute-color);
 }

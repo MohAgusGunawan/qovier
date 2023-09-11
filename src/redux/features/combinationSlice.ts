@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { loadingCombination } from '@/src/data/loadingCombination';
 
-import { ColorPair } from '@/src/types/ColorType';
+import { ColorPair, Conserved } from '@/src/types/ColorType';
 
 type CombinationState = {
   value: ColorPair[];
@@ -22,8 +22,8 @@ const combination = createSlice({
       state.value = action.payload;
       state.loading = false;
     },
-    refreshColors: (state) => {
-      state.value = loadingCombination();
+    refreshColors: (state, action: PayloadAction<Conserved[]>) => {
+      state.value = loadingCombination(action.payload);
       state.loading = true;
     },
   },

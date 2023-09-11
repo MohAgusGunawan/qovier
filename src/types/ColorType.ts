@@ -1,5 +1,4 @@
 import { CSSProperties } from 'react';
-import { coverPreview } from '@/src/data/coverPreview';
 
 export interface ColorIconType extends CSSProperties {
   '--color': string;
@@ -36,4 +35,11 @@ export interface Collection {
   createdAt: number;
   target: string;
   colorPair: ColorPair;
+}
+
+export interface Conserved {
+  id: string;
+  index: number;
+  primary: ColorDetail;
+  secondary: ColorDetail;
 }

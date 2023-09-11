@@ -28,8 +28,10 @@ type Props = {
 };
 
 const FormFilter = ({ elementRef }: Props) => {
-  const { loading } = useAppSelector((state) => state.combination);
   const dispatch = useAppDispatch();
+
+  const { loading } = useAppSelector((state) => state.combination);
+  const { value: conserved } = useAppSelector((state) => state.conserved);
 
   const [isCode, setIsCode] = useState(false);
 
@@ -62,7 +64,7 @@ const FormFilter = ({ elementRef }: Props) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    dispatch(refreshColors());
+    dispatch(refreshColors(conserved));
 
     timerRef.current = setTimeout(() => {
       const firstFilter =
@@ -75,7 +77,11 @@ const FormFilter = ({ elementRef }: Props) => {
 
       dispatch(
         receiveColors(
-          generateCombination(isCode ? codeColor : firstFilter, secondFilter)
+          generateCombination(
+            isCode ? codeColor : firstFilter,
+            secondFilter,
+            conserved
+          )
         )
       );
       elementRef.current?.scrollIntoView({ behavior: 'smooth' });

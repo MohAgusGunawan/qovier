@@ -1,9 +1,10 @@
 import convert from 'color-convert';
 
+import { getColorFamily } from '@/src/utils/getColorFamily';
+
 import { rangeColor } from '@/src/data/color';
 
-import { ColorDetail, ColorPair } from '@/src/types/ColorType';
-import { getColorFamily } from './getColorFamily';
+import { ColorDetail, ColorPair, Conserved } from '@/src/types/ColorType';
 
 const group = Object.keys(rangeColor);
 
@@ -82,11 +83,45 @@ const getDetailColor = (colorString: string) => {
   };
 };
 
+const getRestoreCombination = (
+  combination: ColorPair[],
+  conserved: Conserved[]
+): ColorPair[] => {
+  if (conserved.length <= 0) return combination;
+
+  const colorPairs = combination.slice(conserved.length);
+
+  const sortedConserved = [...conserved].sort((a, b) => {
+    const indexA = a.index;
+    const indexB = b.index;
+
+    return indexA - indexB;
+  });
+
+  sortedConserved.forEach((pair) => {
+    colorPairs.splice(pair.index, 0, {
+      primary: pair.primary,
+      secondary: pair.secondary,
+    });
+  });
+
+  return colorPairs;
+};
+
 export const generateCombination = (
   filterPrimary: string[] | string = [],
-  filterSecondary: string[] = []
+  filterSecondary: string[] = [],
+  conserved: Conserved[] = []
 ) => {
   const colorPair = new Array<ColorPair>();
+  const fixedConserved = conserved.map((pair) => {
+    return {
+      primary: pair.primary,
+      secondary: pair.secondary,
+    };
+  });
+
+  colorPair.push(...fixedConserved);
 
   while (colorPair.length < maxList) {
     const primary =
@@ -110,5 +145,5 @@ export const generateCombination = (
     }
   }
 
-  return colorPair;
+  return getRestoreCombination(colorPair, conserved);
 };
