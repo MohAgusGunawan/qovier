@@ -71,15 +71,22 @@ const FormFilter = ({ elementRef }: Props) => {
         selectedPrimary.name === 'All'
           ? []
           : [selectedPrimary.name.toLowerCase().replace(' ', '')];
+
       const secondFilter = selectedSecondary.map((selected) =>
         selected.name.toLowerCase().replace(' ', '')
+      );
+
+      const excludeFilter = excludeList.map((range) => range.name);
+
+      const excludeSecondFilter = excludeFilter.map((name) =>
+        name.toLowerCase().replace(' ', '')
       );
 
       dispatch(
         receiveColors(
           generateCombination(
             isCode ? codeColor : firstFilter,
-            secondFilter,
+            secondFilter.length <= 0 ? excludeSecondFilter : secondFilter,
             conserved
           )
         )
