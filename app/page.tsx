@@ -154,6 +154,10 @@ export default function Home() {
           </div>
         </section>
 
+        <div className={styles.divider}>
+          <HiChevronDoubleUp className={styles.arrowUp} />
+        </div>
+
         <div className={styles.bottomBar}>
           {gettingCollection ? (
             <button className={styles.mobileCollectionButton} disabled={true}>
@@ -199,11 +203,7 @@ export default function Home() {
 
         <span className={styles.mobileLineDivider}></span>
 
-        <div className="wrapper" id="form-filter">
-          <div className={styles.divider}>
-            <HiChevronDoubleUp className={styles.arrowUp} />
-          </div>
-
+        <div className="wrapper">
           <FormFilter elementRef={scollToRef} formFilterRef={formFilterRef} />
         </div>
 
