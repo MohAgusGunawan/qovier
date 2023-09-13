@@ -114,7 +114,7 @@ export default function Home() {
                   ) : (
                     <>
                       <BsFolderFill />
-                      <span>My Collection ({collection.length})</span>
+                      <span>Collection ({collection.length})</span>
                     </>
                   )}
                 </button>
@@ -143,8 +143,7 @@ export default function Home() {
               </>
             ) : (
               <>
-                <BsFolderFill />{' '}
-                <span>My Collection ({collection.length})</span>
+                <BsFolderFill /> <span>Collection ({collection.length})</span>
               </>
             )}
           </button>

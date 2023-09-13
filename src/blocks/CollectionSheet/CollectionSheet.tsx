@@ -47,7 +47,7 @@ const CollectionSheet = ({ isOpenSheet, setIsOpenSheet }: Props) => {
           <div className={styles.haeder}>
             <h2 className={styles.title}>
               <BsFolderFill />
-              <span>My Collection ({collection.length})</span>
+              <span>Collection ({collection.length})</span>
             </h2>
           </div>
           <div className={styles.content}>

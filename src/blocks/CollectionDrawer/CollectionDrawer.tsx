@@ -69,7 +69,7 @@ const CollectionDrawer = ({ isOpenDrawer, setIsOpenDrawer }: Props) => {
             <div className={styles.panelHeader}>
               <h2 className={styles.panelTitle}>
                 <BsFolderFill />
-                <span>My Collection ({collection.length})</span>
+                <span>Collection ({collection.length})</span>
               </h2>
               <button
                 onClick={() => setIsOpenDrawer(false)}
