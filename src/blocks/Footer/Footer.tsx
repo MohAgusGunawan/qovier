@@ -16,8 +16,8 @@ const Footer = () => {
             beautiful color pairs for your design projects. You can also filter
             colors by hue range to get more specific color pairs. See the
             display of color combinations in the form of text, patterns, color
-            gradations and also some illustrations. Copy color codes in various
-            formats including HEX, RGB, and HSL
+            gradients and also some illustrations. Copy color codes in various
+            formats including HEX, RGB, and HSL.
           </p>
           <ColorwheelSlider />
           <p className={styles.aboutParagraph}>
