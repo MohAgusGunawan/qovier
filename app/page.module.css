@@ -124,8 +124,6 @@
 
   font-weight: var(--fw-medium);
   color: var(--text-common-color);
-
-  cursor: pointer;
 }
 
 .mobileMenuButton {
@@ -163,15 +161,10 @@
 
   display: block;
 
-  margin-top: 10em;
+  margin-top: 7em;
   background: var(--body-background-color);
 
-  box-shadow: var(--shadow-top);
-
-  height: 48px;
-
-  border-top-left-radius: 16px;
-  border-top-right-radius: 16px;
+  height: 56px;
 
   display: flex;
   align-items: center;
@@ -179,7 +172,7 @@
 }
 
 .mobileCollectionButton {
-  transform: translateY(-40%);
+  transform: translateY(-1em);
 
   display: flex;
   align-items: center;
@@ -201,12 +194,14 @@
 .mobileLineDivider {
   display: block;
 
-  margin-top: 1em;
+  margin: 0 auto;
+  margin-top: 6em;
 
   width: 100%;
+  max-width: 240px;
   height: 1px;
 
-  border-bottom: 2px dashed #d9d9d9;
+  border-bottom: 8px dotted #d8d8d8;
 }
 
 .colorList {
