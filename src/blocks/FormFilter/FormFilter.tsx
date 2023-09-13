@@ -25,9 +25,10 @@ import styles from './FormFilter.module.css';
 
 type Props = {
   elementRef: RefObject<HTMLDivElement>;
+  formFilterRef: RefObject<HTMLDivElement>;
 };
 
-const FormFilter = ({ elementRef }: Props) => {
+const FormFilter = ({ elementRef, formFilterRef }: Props) => {
   const dispatch = useAppDispatch();
 
   const { loading } = useAppSelector((state) => state.combination);
@@ -115,7 +116,7 @@ const FormFilter = ({ elementRef }: Props) => {
   }, [selectedPrimary, codeColorFamily, isCode]);
 
   return (
-    <div className={styles.customize}>
+    <div className={styles.customize} ref={formFilterRef} tabIndex={-1}>
       <h2 className={styles.headingCustomize}>
         <TbFilterCog />
         <span>Filter Color</span>
