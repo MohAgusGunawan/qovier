@@ -8,11 +8,11 @@
   justify-content: center;
 
   margin-bottom: 1rem;
+}
 
-  .logo {
-    width: 33px;
-    height: 28px;
-  }
+.logo {
+  width: 33px;
+  height: 28px;
 }
 
 .headline {
@@ -42,11 +42,9 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
-  .logoWrapper {
-    .logo {
-      width: 44px;
-      height: 49px;
-    }
+  .logo {
+    width: 44px;
+    height: 49px;
   }
 }
 
@@ -54,10 +52,8 @@
 /* Desktop Responsive */
 
 @media only screen and (min-width: 1024px) {
-  .logoWrapper {
-    .logo {
-      width: 60px;
-      height: 65px;
-    }
+  .logo {
+    width: 60px;
+    height: 65px;
   }
 }
