@@ -8,21 +8,21 @@
   padding: 1.6em 1em;
 
   max-width: 960px;
+}
 
-  .headingCustomize {
-    font-size: var(--fs-lg);
-    font-weight: var(--fw-bold);
+.headingCustomize {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
 
-    display: flex;
-    align-items: center;
-    gap: 0.4em;
-  }
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+}
 
-  .paragraph {
-    margin-top: 1em;
-    text-align: left;
-    font-size: var(--fs-md);
-  }
+.paragraph {
+  margin-top: 1em;
+  text-align: left;
+  font-size: var(--fs-md);
 }
 
 .form {
@@ -31,13 +31,13 @@
   display: flex;
   flex-direction: column;
   gap: 1em;
+}
 
-  .groupSelect {
-    display: flex;
-    flex-direction: column;
+.groupSelect {
+  display: flex;
+  flex-direction: column;
 
-    gap: inherit;
-  }
+  gap: inherit;
 }
 
 .buttonWrapper {
@@ -99,9 +99,7 @@
 /* Desktop Responsive */
 
 @media only screen and (min-width: 1024px) {
-  .form {
-    .groupSelect {
-      flex-direction: row;
-    }
+  .groupSelect {
+    flex-direction: row;
   }
 }

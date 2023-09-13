@@ -6,125 +6,125 @@
   gap: 0.5em;
 
   position: relative;
+}
 
-  .selectLabel {
-    font-size: var(--fs-md);
-    font-weight: var(--fw-semibold);
-  }
+.selectButton {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 
-  .selectButton {
-    display: flex;
-    align-items: center;
-    gap: 1em;
+  background: var(--surface-color);
+  color: var(--text-focal-color);
 
-    background: var(--surface-color);
-    color: var(--text-focal-color);
+  padding: 0.5em 0.875em;
+  border-radius: 8px;
 
-    padding: 0.5em 0.875em;
-    border-radius: 8px;
+  font-size: var(--fs-md);
 
-    font-size: var(--fs-md);
+  box-shadow: var(--shadow-bottom);
 
-    box-shadow: var(--shadow-bottom);
+  cursor: pointer;
+}
 
-    cursor: pointer;
+.selectButton:focus-visible {
+  outline: 2px solid var(--text-common-color);
+}
 
-    .selectChips {
-      flex-grow: 1;
+.selectOptionBox {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
 
-      display: flex;
+  top: 100%;
+  margin-top: 1em;
 
-      border-radius: 4px;
-      overflow: hidden;
+  width: 100%;
+  max-height: 240px;
+  border-radius: 8px;
 
-      .selectChip {
-        --color: transparent;
+  overflow-y: auto;
 
-        display: flex;
-        flex-grow: 1;
+  z-index: 99;
 
-        height: var(--fs-md);
+  box-shadow: var(--shadow-bottom);
+}
 
-        background: var(--color);
-        border: 0.5px solid gray;
-      }
-    }
-  }
+.selectOption {
+  font-size: var(--fs-md);
 
-  .selectButton:focus-visible {
-    outline: 2px solid var(--text-common-color);
-  }
+  padding: 0.5em 0.875em;
+  background: var(--surface-color);
 
-  .selectOptionBox {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  align-items: center;
+  gap: 1em;
 
-    top: 100%;
-    margin-top: 1em;
+  user-select: none;
+  cursor: pointer;
+}
 
-    width: 100%;
-    max-height: 240px;
-    border-radius: 8px;
+.selectOptionFocus {
+  --color: transparent;
 
-    overflow-y: auto;
+  font-size: var(--fs-md);
 
-    z-index: 99;
+  padding: 0.5em 0.875em;
 
-    box-shadow: var(--shadow-bottom);
-  }
+  background: linear-gradient(
+    120deg,
+    var(--surface-color) 0%,
+    var(--surface-color) 20%,
+    var(--color) 100%
+  );
 
-  .selectOption {
-    font-size: var(--fs-md);
+  display: flex;
+  align-items: center;
+  gap: 1em;
 
-    padding: 0.5em 0.875em;
-    background: var(--surface-color);
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
 
-    display: flex;
-    align-items: center;
-    gap: 1em;
+.selectOption:not(:last-child),
+.selectOptionFocus:not(:last-child) {
+  border-bottom: 1px solid var(--line-color);
+}
 
-    user-select: none;
-    cursor: pointer;
-  }
+.selectSelected {
+  display: block;
+  width: 16px;
+}
 
-  .selectOptionFocus {
-    --color: transparent;
+.harmonyInfo {
+  font-size: var(--fs-xs);
+  color: var(--text-mute-color);
+}
 
-    font-size: var(--fs-md);
+.selectChips {
+  flex-grow: 1;
 
-    padding: 0.5em 0.875em;
+  display: flex;
 
-    background: linear-gradient(
-      120deg,
-      var(--surface-color) 0%,
-      var(--surface-color) 20%,
-      var(--color) 100%
-    );
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-    display: flex;
-    align-items: center;
-    gap: 1em;
+.selectChip {
+  --color: transparent;
 
-    user-select: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-  }
+  display: flex;
+  flex-grow: 1;
 
-  .selectOption:not(:last-child),
-  .selectOptionFocus:not(:last-child) {
-    border-bottom: 1px solid var(--line-color);
-  }
+  height: var(--fs-md);
 
-  .selectSelected {
-    display: block;
-    width: 16px;
-  }
+  background: var(--color);
+  border: 0.5px solid gray;
+}
 
-  .harmonyInfo {
-    font-size: var(--fs-xs);
-    color: var(--text-mute-color);
-  }
+.selectLabel {
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
 }
 
 @media (hover: hover) {
