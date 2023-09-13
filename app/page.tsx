@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import AES from 'crypto-js/aes';
 import { enc } from 'crypto-js';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
+import { HiFilter, HiOutlineLockOpen } from 'react-icons/hi';
 import { BsFolderFill } from 'react-icons/bs';
 import { TbLoader2 } from 'react-icons/tb';
 import fontColorContrast from 'font-color-contrast';
@@ -39,6 +40,7 @@ export default function Home() {
   const [rangeModal, setRangeModal] = useState('Neutral');
 
   const scollToRef = useRef<HTMLDivElement>(null);
+  const formFilterRef = useRef<HTMLDivElement>(null);
 
   const dispatch = useAppDispatch();
   const { value: combination, loading: gettingCombination } = useAppSelector(
@@ -48,6 +50,7 @@ export default function Home() {
   const { value: collection, loading: gettingCollection } = useAppSelector(
     (state) => state.collection
   );
+  const { value: conserved } = useAppSelector((state) => state.conserved);
 
   const handleCoverChange = (number: number) => {
     dispatch(setCover(number));
@@ -61,6 +64,10 @@ export default function Home() {
   const closeModal = () => {
     setIsOpenModal(false);
     setRangeModal('Neutral');
+  };
+
+  const scrollToFormFilter = (e: React.MouseEvent<HTMLButtonElement>) => {
+    formFilterRef.current?.focus();
   };
 
   useEffect(() => {
@@ -91,7 +98,7 @@ export default function Home() {
       <Header />
       <main className={styles.main}>
         <section aria-label="Result color pair" id="result" ref={scollToRef}>
-          <div className={styles.selectBox}>
+          <div className={styles.bar}>
             <div className={`wrapper ${styles.topBar}`}>
               <SelectCover
                 value={cover}
@@ -100,24 +107,41 @@ export default function Home() {
                 name="Change Preview"
                 disabled={gettingCombination}
               />
-              <div className={styles.toggleWrapper}>
-                <button
-                  onClick={() => setIsOpenDrawer(true)}
-                  className={styles.toggleDrawer}
-                  disabled={gettingCollection}
-                >
-                  {gettingCollection ? (
-                    <>
-                      <TbLoader2 className="rotateAnimation" />
-                      <span>Loading ...</span>
-                    </>
-                  ) : (
-                    <>
+              <div className={styles.menuWrapper}>
+                {gettingCollection ? (
+                  <button
+                    className={styles.menuButton}
+                    disabled={gettingCollection}
+                  >
+                    <TbLoader2 className="rotateAnimation" />
+                    <span>Loading ...</span>
+                  </button>
+                ) : (
+                  <>
+                    <span className={styles.menuConserved}>
+                      <HiOutlineLockOpen />
+                      <span>{6 - conserved.length}</span>
+                    </span>
+
+                    <button
+                      className={styles.menuButton}
+                      disabled={gettingCombination}
+                      onClick={(e) => scrollToFormFilter(e)}
+                    >
+                      <HiFilter />
+                      <span>Filter</span>
+                    </button>
+
+                    <button
+                      onClick={() => setIsOpenDrawer(true)}
+                      className={styles.menuButton}
+                      disabled={gettingCollection}
+                    >
                       <BsFolderFill />
                       <span>Collection ({collection.length})</span>
-                    </>
-                  )}
-                </button>
+                    </button>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -131,30 +155,56 @@ export default function Home() {
         </section>
 
         <div className={styles.bottomBar}>
-          <button
-            className={styles.mobileCollectionButton}
-            onClick={() => setIsOpenSheet(true)}
-            disabled={gettingCollection}
-          >
-            {gettingCollection ? (
-              <>
-                <TbLoader2 className="rotateAnimation" />
-                <span>Loading ...</span>
-              </>
-            ) : (
-              <>
-                <BsFolderFill /> <span>Collection ({collection.length})</span>
-              </>
-            )}
-          </button>
+          {gettingCollection ? (
+            <button className={styles.mobileCollectionButton} disabled={true}>
+              <TbLoader2 className="rotateAnimation" />
+              <span>Loading ...</span>
+            </button>
+          ) : (
+            <>
+              <span className={styles.mobileMenuConserved}>
+                <HiOutlineLockOpen />
+                <span>{6 - conserved.length}</span>
+              </span>
+
+              <button
+                className={styles.mobileCollectionButton}
+                onClick={() => setIsOpenSheet(true)}
+                disabled={gettingCollection}
+              >
+                {gettingCollection ? (
+                  <>
+                    <TbLoader2 className="rotateAnimation" />
+                    <span>Loading ...</span>
+                  </>
+                ) : (
+                  <>
+                    <BsFolderFill />{' '}
+                    <span>Collection ({collection.length})</span>
+                  </>
+                )}
+              </button>
+
+              <button
+                className={styles.mobileMenuButton}
+                disabled={gettingCombination}
+                onClick={(e) => scrollToFormFilter(e)}
+                aria-label="Filter"
+              >
+                <HiFilter />
+              </button>
+            </>
+          )}
         </div>
 
-        <div className="wrapper">
+        <span className={styles.mobileLineDivider}></span>
+
+        <div className="wrapper" id="form-filter">
           <div className={styles.divider}>
             <HiChevronDoubleUp className={styles.arrowUp} />
           </div>
 
-          <FormFilter elementRef={scollToRef} />
+          <FormFilter elementRef={scollToRef} formFilterRef={formFilterRef} />
         </div>
 
         <div className={styles.colorList}>
