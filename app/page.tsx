@@ -209,12 +209,13 @@ export default function Home() {
 
         <div className={styles.colorList}>
           <div className="wrapper">
-            <h2 className={styles.colorListHeading}>Color List</h2>
+            <h2 className={styles.colorListHeading}>List of Colors</h2>
             <p className={styles.colorListParagraph}>
-              Among the millions of colors available, here are some colors that
+              Among the millions of available colors, here are some colors that
               we may already recognize based on their hue range. These colors
-              can be used as color references the most likely filter to appear
-              in the color results above. Click the card to see all color list!
+              can be used as the most likely color references to appear in the
+              color results above. Click the card to see the full list of
+              colors!
             </p>
 
             <div className={styles.colorContainer}>

@@ -24,8 +24,8 @@ const Header = () => {
 
         <h1 className={styles.headline}>Qovier</h1>
         <p className={styles.paragraph}>
-          Generator of beautiful two color combinations, explore color pairs for
-          your designs.
+          Discover stunning two-color combinations, and explore mesmerizing
+          color pairs for your designs.
         </p>
       </div>
     </header>
