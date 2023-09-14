@@ -3,6 +3,7 @@ import Carousel from 'nuka-carousel';
 
 import styles from './ColorHarmonySlider.module.css';
 
+import harmonyPNG from '@/src/assets/images/color-harmony.png';
 import analogusPNG from '@/src/assets/images/color-harmony-analogous.png';
 import complementaryPNG from '@/src/assets/images/color-harmony-complementary.png';
 import monochromaticPNG from '@/src/assets/images/color-harmony-monochromatic.png';
@@ -26,6 +27,15 @@ const ColorHarmonySlider = () => {
   return (
     <div className={styles.sliderWrapper}>
       <Carousel {...settings}>
+        <div className={styles.responsiveImageWrapper}>
+          <Image
+            src={harmonyPNG}
+            alt="Color Harmony"
+            fill
+            sizes="480px"
+            priority
+          />
+        </div>
         <div className={styles.responsiveImageWrapper}>
           <Image
             src={analogusPNG}

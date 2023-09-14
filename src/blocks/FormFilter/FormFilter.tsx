@@ -122,7 +122,7 @@ const FormFilter = ({ elementRef, formFilterRef }: Props) => {
         <span>Filter Color</span>
       </h2>
       <p className={styles.paragraph}>
-        Select the range of colors you want to generate!
+        Choose the color range you wish to generate!
       </p>
 
       <div className={styles.selectTypeForm}>
@@ -134,7 +134,7 @@ const FormFilter = ({ elementRef, formFilterRef }: Props) => {
           className={styles.inputCheck}
         />
         <label className={styles.specificLabel} htmlFor="select-type-color">
-          <span>Use specific main colors : </span>
+          <span>Use specific main colors: </span>
           <span className={styles.checkBox}>{isCode && <TbCheck />}</span>
         </label>
       </div>
