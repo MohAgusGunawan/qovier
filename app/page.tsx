@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 import AES from 'crypto-js/aes';
 import { enc } from 'crypto-js';
 import { HiChevronDoubleUp } from 'react-icons/hi2';
-import { HiFilter, HiOutlineLockOpen } from 'react-icons/hi';
+import { HiFilter } from 'react-icons/hi';
 import { BsFolderFill } from 'react-icons/bs';
 import { TbLoader2 } from 'react-icons/tb';
 import fontColorContrast from 'font-color-contrast';
@@ -25,6 +25,7 @@ import CollectionSheet from '@/src/blocks/CollectionSheet/CollectionSheet';
 
 import Card from '@/src/components/Card/Card';
 import SelectCover from '@/src/components/SelectCover/SelectCover';
+import Padlock from '@/src/components/Padlock/Padlock';
 
 import { generateCombination } from '@/src/utils/generateCombination';
 
@@ -118,10 +119,7 @@ export default function Home() {
                   </button>
                 ) : (
                   <>
-                    <span className={styles.menuConserved}>
-                      <HiOutlineLockOpen />
-                      <span>{6 - conserved.length}</span>
-                    </span>
+                    <Padlock num={conserved.length} />
 
                     <button
                       className={styles.menuButton}
@@ -166,10 +164,7 @@ export default function Home() {
             </button>
           ) : (
             <>
-              <span className={styles.mobileMenuConserved}>
-                <HiOutlineLockOpen />
-                <span>{6 - conserved.length}</span>
-              </span>
+              <Padlock num={conserved.length} />
 
               <button
                 className={styles.mobileCollectionButton}

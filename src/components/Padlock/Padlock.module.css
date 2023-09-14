@@ -1,0 +1,70 @@
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 rgba(89, 89, 89, 0.4);
+  }
+  70% {
+    -webkit-box-shadow: 0 0 0 15px rgba(48, 48, 48, 0);
+  }
+  100% {
+    -webkit-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -moz-box-shadow: 0 0 0 0 rgba(89, 89, 89, 0.4);
+    box-shadow: 0 0 0 0 rgba(89, 89, 89, 0.4);
+  }
+  70% {
+    -moz-box-shadow: 0 0 0 15px rgba(48, 48, 48, 0);
+    box-shadow: 0 0 0 15px rgba(48, 48, 48, 0);
+  }
+  100% {
+    -moz-box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+    box-shadow: 0 0 0 30px rgba(0, 0, 0, 0);
+  }
+}
+
+.menuConserved {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5em;
+  gap: 0.2em;
+
+  width: 40px;
+
+  border-radius: 50% / 50%;
+
+  font-weight: var(--fw-medium);
+  color: var(--text-common-color);
+}
+
+.pulseAnimation {
+  animation: pulse 2.5s;
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .menuConserved {
+    width: unset;
+
+    padding: 0.5em 0.875em;
+    gap: 0.5em;
+
+    border-radius: 25% / 50%;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
