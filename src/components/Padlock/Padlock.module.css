@@ -43,6 +43,7 @@
 
 .pulseAnimation {
   animation: pulse 2.5s;
+  animation-iteration-count: 2;
 }
 
 @media (hover: hover) {
