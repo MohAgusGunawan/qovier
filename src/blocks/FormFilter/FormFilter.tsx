@@ -134,7 +134,7 @@ const FormFilter = ({ elementRef, formFilterRef }: Props) => {
           className={styles.inputCheck}
         />
         <label className={styles.specificLabel} htmlFor="select-type-color">
-          <span>Use specific main colors: </span>
+          <span>Use specific primary colors: </span>
           <span className={styles.checkBox}>{isCode && <TbCheck />}</span>
         </label>
       </div>
@@ -143,13 +143,13 @@ const FormFilter = ({ elementRef, formFilterRef }: Props) => {
         <div className={styles.groupSelect}>
           {isCode ? (
             <ColorPicker
-              label="Main"
+              label="Primary"
               codeColor={codeColor}
               setCodeColor={setCodeColor}
             />
           ) : (
             <SelectColor
-              label="Main"
+              label="Primary"
               name="primary-color"
               list={colors}
               value={selectedPrimary}
@@ -159,7 +159,7 @@ const FormFilter = ({ elementRef, formFilterRef }: Props) => {
           )}
 
           <SelectColor
-            label="Accent"
+            label="Secondary"
             name="secondary-color"
             list={excludeList}
             value={selectedSecondary}
