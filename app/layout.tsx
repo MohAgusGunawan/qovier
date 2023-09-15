@@ -16,7 +16,7 @@ const sourceSans3 = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: 'Qovier - Explore Color Pair',
+  title: 'Qovier - Explore Color Pairs',
   description:
     'With Qovier you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!',
 };

@@ -62,7 +62,8 @@
 }
 
 .modalContent {
-  padding: 0.5em;
+  padding-left: 0.875em;
+  padding-right: 0.875em;
   padding-bottom: 2em;
 
   max-height: 55dvh;
@@ -93,8 +94,8 @@
 
 .boxColor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-  gap: 0.5em;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.875em;
 }
 
 .itemColor {
@@ -143,7 +144,7 @@
 
 .colorCard {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 2.39 / 1;
 
   border-radius: 4px;
 
@@ -199,6 +200,10 @@
   .boxColor {
     grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 1em;
+  }
+
+  .colorCard {
+    aspect-ratio: 16 / 9;
   }
 }
 
