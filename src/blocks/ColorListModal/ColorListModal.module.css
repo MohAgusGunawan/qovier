@@ -64,7 +64,6 @@
 .modalContent {
   padding-left: 0.875em;
   padding-right: 0.875em;
-  padding-bottom: 2em;
 
   max-height: 55dvh;
 
@@ -73,7 +72,7 @@
 
 .modalFooterBorder {
   padding: 1em 0;
-  height: 56px;
+  height: 64px;
 
   display: flex;
   flex-direction: column;
@@ -92,9 +91,26 @@
   color: var(--text-focal-color);
 }
 
+.sectionColors {
+  position: relative;
+
+  margin-bottom: 2em;
+}
+
+.sectionColorsTitle {
+  font-weight: var(--fw-semibold);
+  color: var(--text-focal-color);
+
+  padding: 0.875em 0;
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+
 .boxColor {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 0.875em;
 }
 
@@ -192,13 +208,11 @@
 
 @media only screen and (min-width: 768px) {
   .modalContent {
-    padding: 1em;
-
     max-height: 65dvh;
   }
 
   .boxColor {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 1em;
   }
 

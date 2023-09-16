@@ -14,7 +14,8 @@ import { receiveColors } from '@/src/redux/features/combinationSlice';
 import { setCover } from '@/src/redux/features/coverSlice';
 import { receiveItems } from '@/src/redux/features/collectionSlice';
 
-import { lolSecretMessage } from '@/src/data/color';
+import { colorThumbnail, lolSecretMessage } from '@/src/data/color';
+import { coverPreview } from '@/src/data/coverPreview';
 
 import Header from '@/src/blocks/Header/Header';
 import FormFilter from '@/src//blocks/FormFilter/FormFilter';
@@ -28,9 +29,6 @@ import SelectCover from '@/src/components/SelectCover/SelectCover';
 import Padlock from '@/src/components/Padlock/Padlock';
 
 import { generateCombination } from '@/src/utils/generateCombination';
-
-import { colorList } from '@/src/data/colorList';
-import { coverPreview } from '@/src/data/coverPreview';
 
 import styles from './page.module.css';
 
@@ -214,20 +212,20 @@ export default function Home() {
             </p>
 
             <div className={styles.colorContainer}>
-              {colorList.map((color, index) => {
+              {colorThumbnail.map((color, index) => {
                 return (
                   <div className={styles.colorGroup} key={index}>
                     <button
                       className={styles.colorGroupButton}
                       style={{
-                        background: color.hexCode,
-                        color: fontColorContrast(color.hexCode),
+                        background: color.hexcode,
+                        color: fontColorContrast(color.hexcode),
                       }}
-                      title={`${color.range} range`}
-                      onClick={() => openModal(color.range)}
+                      title={`${color.name} range`}
+                      onClick={() => openModal(color.name)}
                     >
                       <span className={styles.colorGroupButtonLabel}>
-                        {color.range}
+                        {color.name}
                       </span>
                     </button>
                   </div>
