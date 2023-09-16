@@ -1,5 +1,5 @@
 const hueSaturationMin = 30;
-const hueLightnessMin = 20;
+const hueLightnessMin = 25;
 const hueLightnessMax = 85;
 
 export const rangeColor = {
@@ -183,7 +183,7 @@ export const rangeColor = {
     },
     lightness: {
       min: 0,
-      max: 21,
+      max: hueLightnessMin,
     },
   },
   moderate: {
@@ -194,11 +194,11 @@ export const rangeColor = {
     },
     saturation: {
       min: 0,
-      max: 11,
+      max: hueSaturationMin,
     },
     lightness: {
-      min: 30,
-      max: 71,
+      min: hueLightnessMin,
+      max: hueLightnessMax,
     },
   },
   bright: {
@@ -212,7 +212,22 @@ export const rangeColor = {
       max: 101,
     },
     lightness: {
-      min: 80,
+      min: hueLightnessMax,
+      max: 101,
+    },
+  },
+  neutral: {
+    // Neutral
+    hue: {
+      min: 0,
+      max: 1,
+    },
+    saturation: {
+      min: 0,
+      max: 1,
+    },
+    lightness: {
+      min: 0,
       max: 101,
     },
   },
@@ -331,6 +346,71 @@ export const colors = [
       circle: '#FFFFFF',
       gradientEnd: '#dadada',
     },
+  },
+];
+
+export const colorThumbnail = [
+  {
+    name: 'Red',
+    hexcode: '#FF0000',
+  },
+  {
+    name: 'Orange',
+    hexcode: '#FF8000',
+  },
+  {
+    name: 'Yellow',
+    hexcode: '#FFFF00',
+  },
+
+  {
+    name: 'Chartreuse',
+    hexcode: '#80FF00',
+  },
+
+  {
+    name: 'Green',
+    hexcode: '#00FF00',
+  },
+
+  {
+    name: 'Spring Green',
+    hexcode: '#00FF80',
+  },
+
+  {
+    name: 'Cyan',
+    hexcode: '#00FFFF',
+  },
+
+  {
+    name: 'Azure',
+    hexcode: '#007FFF',
+  },
+
+  {
+    name: 'Blue',
+    hexcode: '#0000FF',
+  },
+
+  {
+    name: 'Violet',
+    hexcode: '#8000FF',
+  },
+
+  {
+    name: 'Magenta',
+    hexcode: '#FF00FF',
+  },
+
+  {
+    name: 'Rose',
+    hexcode: '#FF0080',
+  },
+
+  {
+    name: 'Neutral',
+    hexcode: '#808080',
   },
 ];
 
