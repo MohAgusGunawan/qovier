@@ -29,6 +29,53 @@
   box-shadow: var(--shadow-bottom);
 }
 
+.tintShadeWrapper {
+  margin-top: 0.5em;
+  margin-bottom: 1.5em;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.875em;
+}
+
+.tintShadeColors {
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+
+  height: 36px;
+
+  border: 1px solid #808080;
+}
+
+.tintShadeSelect {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  cursor: pointer;
+}
+
+.tintShadeSelect > input[type='radio'] {
+  width: 0;
+  height: 0;
+}
+
+.radioSpan {
+  position: absolute;
+  z-index: 90;
+  display: inline-block;
+
+  width: 100%;
+  height: 100%;
+}
+
+.tintShadeSelect > input[type='radio']:focus-visible ~ .radioSpan {
+  outline: 2px solid #808080;
+  outline-offset: 2px;
+}
+
 .colorDescription,
 .colorAction {
   display: inline-flex;
@@ -108,7 +155,7 @@
 }
 
 .colorGroup {
-  flex-grow: 1;
+  width: 100%;
 
   font-size: var(--fs-md);
 

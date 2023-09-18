@@ -11,11 +11,13 @@
   "dependencies": {
     "@headlessui/react": "^1.7.16",
     "@reduxjs/toolkit": "^1.9.5",
+    "@types/color": "^3.0.4",
     "@types/color-convert": "^2.0.0",
     "@types/node": "20.5.0",
     "@types/react": "18.2.20",
     "@types/react-dom": "18.2.7",
     "accessible-colors": "^1.0.4",
+    "color": "^4.2.3",
     "color-convert": "^2.0.1",
     "crypto-js": "^4.1.1",
     "eslint": "8.47.0",
