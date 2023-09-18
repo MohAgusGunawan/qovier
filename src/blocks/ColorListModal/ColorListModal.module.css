@@ -142,6 +142,7 @@
   box-shadow: var(--shadow-bottom);
 
   border-radius: 8px;
+  border: 2px solid transparent;
 
   padding: 0.5em;
 
@@ -154,8 +155,7 @@
 }
 
 .colorButton:focus-visible {
-  outline: 2px solid black;
-  outline-offset: 4px;
+  border: 2px solid black;
 }
 
 .colorCard {
