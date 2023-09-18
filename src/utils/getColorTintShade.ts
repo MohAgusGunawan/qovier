@@ -23,6 +23,13 @@ export const getColorTintShade = (colorDetail: ColorDetail): Props => {
   };
 
   for (let index = 0; index < 9; index++) {
+    const percentageLightness = (index + 1) * 10 + Math.round(lightness % 10);
+
+    const percentage =
+      percentageLightness === Math.round(lightness)
+        ? percentageLightness - Math.round(lightness % 10)
+        : percentageLightness;
+
     if (index + 1 === currentIndex()) {
       tintShadeColors.push({
         range: colorDetail.range,
@@ -33,19 +40,16 @@ export const getColorTintShade = (colorDetail: ColorDetail): Props => {
       });
     } else {
       tintShadeColors.push({
-        range: getColorFamily(color.lightness((index + 1) * 10).hex()),
-        name: color.lightness((index + 1) * 10).keyword(),
-        hex: color
-          .lightness((index + 1) * 10)
-          .hex()
-          .replace('#', ''),
+        range: getColorFamily(color.lightness(percentage).hex()),
+        name: color.lightness(percentage).keyword(),
+        hex: color.lightness(percentage).hex().replace('#', ''),
         hsl: color
-          .lightness((index + 1) * 10)
+          .lightness(percentage)
           .hsl()
           .array()
           .map((number) => Math.round(number)),
         rgb: color
-          .lightness((index + 1) * 10)
+          .lightness(percentage)
           .rgb()
           .array()
           .map((number) => Math.round(number)),
