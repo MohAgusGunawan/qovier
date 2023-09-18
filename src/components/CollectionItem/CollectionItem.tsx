@@ -1,11 +1,14 @@
 import { useCallback, useState } from 'react';
 import { Disclosure } from '@headlessui/react';
 import { toast } from 'react-toastify';
+import fontColorContrast from 'font-color-contrast';
 import { IoIosArrowDown } from 'react-icons/io';
-import { TbCopy } from 'react-icons/tb';
+import { TbCheck, TbCopy } from 'react-icons/tb';
 
 import { useAppDispatch } from '@/src/redux/hooks';
 import { removeItem } from '@/src/redux/features/collectionSlice';
+
+import { getColorTintShade } from '@/src/utils/getColorTintShade';
 
 import { Collection, CustomColorType } from '@/src/types/ColorType';
 
@@ -17,12 +20,21 @@ interface Props {
 }
 
 const CollectionItem = ({ data, num }: Props) => {
-  const [confirm, setConfirm] = useState(false);
-
-  const dispatch = useAppDispatch();
-
   const primary = data.colorPair.primary;
   const secondary = data.colorPair.secondary;
+
+  const colorPrimary = getColorTintShade(primary);
+  const colorSecondary = getColorTintShade(secondary);
+
+  const [confirm, setConfirm] = useState(false);
+  const [selectPrimary, setSelectPrimary] = useState(
+    () => colorPrimary.currentIndex
+  );
+  const [selectSecondary, setSelectSecondary] = useState(
+    () => colorSecondary.currentIndex
+  );
+
+  const dispatch = useAppDispatch();
 
   const handleCopy = useCallback((text: string) => {
     navigator.clipboard
@@ -37,6 +49,12 @@ const CollectionItem = ({ data, num }: Props) => {
       });
   }, []);
 
+  const closeDisclosure = () => {
+    setConfirm(false);
+    setSelectPrimary(colorPrimary.currentIndex);
+    setSelectSecondary(colorSecondary.currentIndex);
+  };
+
   const removeFromCollection = () => {
     dispatch(removeItem(data.id));
   };
@@ -47,7 +65,7 @@ const CollectionItem = ({ data, num }: Props) => {
         <div className={styles.boxItem}>
           <Disclosure.Button
             className={styles.disclosureButton}
-            onClick={() => setConfirm(false)}
+            onClick={() => closeDisclosure()}
           >
             <span className={styles.colorDescription}>
               <span className={styles.colorIndexNumber}>{num + 1}</span>
@@ -79,30 +97,110 @@ const CollectionItem = ({ data, num }: Props) => {
           </Disclosure.Button>
           <Disclosure.Panel>
             <div className={styles.disclosurePanel}>
+              <div className={styles.tintShadeWrapper}>
+                <div className={styles.tintShadeColors}>
+                  {colorPrimary.tintShadeColors.map((color, index) => {
+                    return (
+                      <label
+                        key={index + 1}
+                        className={`${styles.tintShadeSelect} ${
+                          index + 1 === selectPrimary
+                            ? styles.tintShadeSelectActive
+                            : null
+                        }`}
+                        style={{ background: `#${color.hex}` }}
+                      >
+                        <input
+                          type="radio"
+                          name="select-primary"
+                          id={`color-${color.hex}`}
+                          defaultChecked={index + 1 === selectPrimary}
+                          onChange={() => setSelectPrimary(index + 1)}
+                          value={index + 1}
+                        />
+
+                        {index + 1 === selectPrimary && (
+                          <TbCheck
+                            style={{ color: fontColorContrast(color.hex) }}
+                          />
+                        )}
+
+                        <span className={styles.radioSpan}></span>
+                      </label>
+                    );
+                  })}
+                </div>
+                <div className={styles.tintShadeColors}>
+                  {colorSecondary.tintShadeColors.map((color, index) => {
+                    return (
+                      <label
+                        key={index + 1}
+                        className={`${styles.tintShadeSelect} ${
+                          index + 1 === selectPrimary
+                            ? styles.tintShadeSelectActive
+                            : null
+                        }`}
+                        style={{ background: `#${color.hex}` }}
+                      >
+                        <input
+                          type="radio"
+                          name="select-secondary"
+                          id={`color-${color.hex}`}
+                          defaultChecked={index + 1 === selectSecondary}
+                          onChange={() => setSelectSecondary(index + 1)}
+                          value={index + 1}
+                        />
+
+                        {index + 1 === selectSecondary && (
+                          <TbCheck
+                            style={{ color: fontColorContrast(color.hex) }}
+                          />
+                        )}
+
+                        <span className={styles.radioSpan}></span>
+                      </label>
+                    );
+                  })}
+                </div>
+              </div>
               <div className={styles.colorGroupWrapper}>
                 <ul className={styles.colorGroup}>
                   <li className={styles.colorList}>
                     <span>
-                      <b>Hex</b> : {primary.hex}
+                      <b>Hex</b> :{' '}
+                      {colorPrimary.tintShadeColors[selectPrimary - 1].hex}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy Hex"
-                      onClick={() => handleCopy(primary.hex)}
+                      onClick={() =>
+                        handleCopy(
+                          colorPrimary.tintShadeColors[selectPrimary - 1].hex
+                        )
+                      }
                     >
                       <TbCopy />
                     </button>
                   </li>
                   <li className={styles.colorList}>
                     <span>
-                      <b>RGB</b> : {String(primary.rgb)}
+                      <b>RGB</b> :{' '}
+                      {String(
+                        colorPrimary.tintShadeColors[selectPrimary - 1].rgb
+                      )}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy RGB"
-                      onClick={() => handleCopy(String(primary.rgb))}
+                      onClick={() =>
+                        handleCopy(
+                          String(
+                            colorPrimary.tintShadeColors[selectPrimary - 1].rgb
+                          )
+                        )
+                      }
                     >
                       <TbCopy />
                     </button>
@@ -110,7 +208,13 @@ const CollectionItem = ({ data, num }: Props) => {
                   <li className={styles.colorList}>
                     <span>
                       <b>HSL</b> :{' '}
-                      {`${primary.hsl[0]}°,${primary.hsl[1]}%,${primary.hsl[2]}%`}
+                      {`${
+                        colorPrimary.tintShadeColors[selectPrimary - 1].hsl[0]
+                      }°,${
+                        colorPrimary.tintShadeColors[selectPrimary - 1].hsl[1]
+                      }%,${
+                        colorPrimary.tintShadeColors[selectPrimary - 1].hsl[2]
+                      }%`}
                     </span>
                     <button
                       aria-label="copy"
@@ -118,7 +222,16 @@ const CollectionItem = ({ data, num }: Props) => {
                       title="Copy HSL"
                       onClick={() =>
                         handleCopy(
-                          `${primary.hsl[0]}°,${primary.hsl[1]}%,${primary.hsl[2]}%`
+                          `${
+                            colorPrimary.tintShadeColors[selectPrimary - 1]
+                              .hsl[0]
+                          }°,${
+                            colorPrimary.tintShadeColors[selectPrimary - 1]
+                              .hsl[1]
+                          }%,${
+                            colorPrimary.tintShadeColors[selectPrimary - 1]
+                              .hsl[2]
+                          }%`
                         )
                       }
                     >
@@ -129,26 +242,42 @@ const CollectionItem = ({ data, num }: Props) => {
                 <ul className={styles.colorGroup}>
                   <li className={styles.colorList}>
                     <span>
-                      <b>Hex</b> : {secondary.hex}
+                      <b>Hex</b> :{' '}
+                      {colorSecondary.tintShadeColors[selectSecondary - 1].hex}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy Hex"
-                      onClick={() => handleCopy(secondary.hex)}
+                      onClick={() =>
+                        handleCopy(
+                          colorSecondary.tintShadeColors[selectSecondary - 1]
+                            .hex
+                        )
+                      }
                     >
                       <TbCopy />
                     </button>
                   </li>
                   <li className={styles.colorList}>
                     <span>
-                      <b>RGB</b> : {String(secondary.rgb)}
+                      <b>RGB</b> :{' '}
+                      {String(
+                        colorSecondary.tintShadeColors[selectSecondary - 1].rgb
+                      )}
                     </span>
                     <button
                       aria-label="copy"
                       className={styles.colorCopyButton}
                       title="Copy RGB"
-                      onClick={() => handleCopy(String(secondary.rgb))}
+                      onClick={() =>
+                        handleCopy(
+                          String(
+                            colorSecondary.tintShadeColors[selectSecondary - 1]
+                              .rgb
+                          )
+                        )
+                      }
                     >
                       <TbCopy />
                     </button>
@@ -156,7 +285,16 @@ const CollectionItem = ({ data, num }: Props) => {
                   <li className={styles.colorList}>
                     <span>
                       <b>HSL</b> :{' '}
-                      {`${secondary.hsl[0]}°,${secondary.hsl[1]}%,${secondary.hsl[2]}%`}
+                      {`${
+                        colorSecondary.tintShadeColors[selectSecondary - 1]
+                          .hsl[0]
+                      }°,${
+                        colorSecondary.tintShadeColors[selectSecondary - 1]
+                          .hsl[1]
+                      }%,${
+                        colorSecondary.tintShadeColors[selectSecondary - 1]
+                          .hsl[2]
+                      }%`}
                     </span>
                     <button
                       aria-label="copy"
@@ -164,7 +302,16 @@ const CollectionItem = ({ data, num }: Props) => {
                       title="Copy HSL"
                       onClick={() =>
                         handleCopy(
-                          `${secondary.hsl[0]}°,${secondary.hsl[1]}%,${secondary.hsl[2]}%`
+                          `${
+                            colorSecondary.tintShadeColors[selectSecondary - 1]
+                              .hsl[0]
+                          }°,${
+                            colorSecondary.tintShadeColors[selectSecondary - 1]
+                              .hsl[1]
+                          }%,${
+                            colorSecondary.tintShadeColors[selectSecondary - 1]
+                              .hsl[2]
+                          }%`
                         )
                       }
                     >
