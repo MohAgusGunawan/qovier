@@ -4,6 +4,24 @@ import { getColorFamily } from '@/src/utils/getColorFamily';
 
 import { ColorDetail } from '@/src/types/ColorType';
 
+const generateNumberArray = (startValue: number): number[] => {
+  const result = [startValue];
+
+  for (let i = 0; i < 8; i++) {
+    if (result[i] + 10 < 100) {
+      if (result[i] + 10 <= 20) {
+        result.push(result[i] + 20);
+      } else {
+        result.push(result[i] + 10);
+      }
+    } else {
+      result.unshift(result[0] - 10);
+    }
+  }
+
+  return result;
+};
+
 type Props = {
   currentIndex: number;
   tintShadeColors: ColorDetail[];
@@ -11,26 +29,15 @@ type Props = {
 
 export const getColorTintShade = (colorDetail: ColorDetail): Props => {
   const color = Color(colorDetail.rgb);
-  const lightness = color.lightness();
-  const tintShadeColors = [];
+  const lightness = Math.round(color.lightness());
+  const arrayLightness = generateNumberArray(lightness);
 
-  let currentIndex = () => {
-    const index = Math.round(lightness / 10);
+  const tintShadeColors: ColorDetail[] = [];
 
-    if (index < 2) return 1;
-    if (index > 8) return 9;
-    return index;
-  };
+  const currentIndex = arrayLightness.findIndex((num) => num === lightness);
 
-  for (let index = 0; index < 9; index++) {
-    const percentageLightness = (index + 1) * 10 + Math.round(lightness % 10);
-
-    const percentage =
-      percentageLightness === Math.round(lightness)
-        ? percentageLightness - Math.round(lightness % 10)
-        : percentageLightness;
-
-    if (index + 1 === currentIndex()) {
+  arrayLightness.forEach((value) => {
+    if (value === lightness) {
       tintShadeColors.push({
         range: colorDetail.range,
         name: colorDetail.name,
@@ -40,25 +47,25 @@ export const getColorTintShade = (colorDetail: ColorDetail): Props => {
       });
     } else {
       tintShadeColors.push({
-        range: getColorFamily(color.lightness(percentage).hex()),
-        name: color.lightness(percentage).keyword(),
-        hex: color.lightness(percentage).hex().replace('#', ''),
+        range: getColorFamily(color.lightness(value).hex()),
+        name: color.lightness(value).keyword(),
+        hex: color.lightness(value).hex().replace('#', ''),
         hsl: color
-          .lightness(percentage)
+          .lightness(value)
           .hsl()
           .array()
           .map((number) => Math.round(number)),
         rgb: color
-          .lightness(percentage)
+          .lightness(value)
           .rgb()
           .array()
           .map((number) => Math.round(number)),
       });
     }
-  }
+  });
 
   return {
-    currentIndex: currentIndex(),
+    currentIndex: currentIndex,
     tintShadeColors,
   };
 };
