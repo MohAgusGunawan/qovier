@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '@/src/redux/hooks';
 import { receiveColors } from '@/src/redux/features/combinationSlice';
 import { setCover } from '@/src/redux/features/coverSlice';
 import { receiveItems } from '@/src/redux/features/collectionSlice';
+import { receiveConserved } from '@/src/redux/features/conservedSlice';
 
 import { colorThumbnail, lolSecretMessage } from '@/src/data/color';
 import { coverPreview } from '@/src/data/coverPreview';
@@ -33,6 +34,8 @@ import { generateCombination } from '@/src/utils/generateCombination';
 import styles from './page.module.css';
 
 export default function Home() {
+  const [firstRender, setFirstRender] = useState(true);
+
   const [isOpenDrawer, setIsOpenDrawer] = useState(false);
   const [isOpenSheet, setIsOpenSheet] = useState(false);
   const [isOpenModal, setIsOpenModal] = useState(false);
@@ -70,7 +73,22 @@ export default function Home() {
   };
 
   useEffect(() => {
-    dispatch(receiveColors(generateCombination()));
+    const conservedStorage = localStorage.getItem('qovier-conserved');
+
+    const localData = conservedStorage !== null ? conservedStorage : '';
+
+    if (localData !== '') {
+      try {
+        const bytes = AES.decrypt(localData, lolSecretMessage);
+        const decryptedData = JSON.parse(bytes.toString(enc.Utf8));
+
+        dispatch(receiveConserved(decryptedData));
+      } catch {
+        dispatch(receiveConserved([]));
+      }
+    } else {
+      dispatch(receiveConserved([]));
+    }
   }, [dispatch]);
 
   useEffect(() => {
@@ -91,6 +109,13 @@ export default function Home() {
       dispatch(receiveItems([]));
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (firstRender) {
+      dispatch(receiveColors(generateCombination([], [], conserved)));
+      setFirstRender(false);
+    }
+  }, [conserved, dispatch, firstRender]);
 
   return (
     <>

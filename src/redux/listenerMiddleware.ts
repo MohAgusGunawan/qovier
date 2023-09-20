@@ -4,6 +4,7 @@ import type { TypedStartListening, TypedAddListener } from '@reduxjs/toolkit';
 import type { RootState, AppDispatch } from './store';
 
 import { collectionFeatureListeners } from './features/collectionSlice';
+import { conservedFeatureListeners } from './features/conservedSlice';
 
 export const listenerMiddleware = createListenerMiddleware();
 
@@ -19,3 +20,4 @@ export const addAppListener = addListener as TypedAddListener<
 
 // Listener Features
 collectionFeatureListeners(startAppListening);
+conservedFeatureListeners(startAppListening);

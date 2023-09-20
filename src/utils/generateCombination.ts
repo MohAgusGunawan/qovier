@@ -11,14 +11,19 @@ const group = Object.keys(rangeColor);
 export const maxList = 21;
 
 const isClosed = (primary: ColorDetail, secondary: ColorDetail) => {
+  const satPr = primary.hsl[1];
+  const satSc = secondary.hsl[1];
+
   const ligPr = primary.hsl[2];
   const ligSc = secondary.hsl[2];
 
   const dLig = Math.abs(ligPr - ligSc);
+  const dSat = Math.abs(satPr - satSc);
 
-  const l = dLig < 10;
+  const s = dSat < 15;
+  const l = dLig < 15;
 
-  return l;
+  return s || l;
 };
 
 const isAdded = (pair: ColorPair, list: ColorPair[]) => {
