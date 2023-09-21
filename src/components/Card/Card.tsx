@@ -51,7 +51,6 @@ type Props = {
 
 const Card = ({ data, index }: Props) => {
   const maxSlide = 4;
-  const maxSlidePattern = 5;
 
   const dispatch = useAppDispatch();
 
@@ -70,7 +69,7 @@ const Card = ({ data, index }: Props) => {
   const isLocked = conserved.find((item) => item.id === customId);
 
   const [slideIllustration, setSlideIllustration] = useState(index % maxSlide);
-  const [slidePattern, setSlidePattern] = useState(index % maxSlidePattern);
+  const [slidePattern, setSlidePattern] = useState(index % maxSlide);
   const [slideGradient, setSlideGradient] = useState(index % maxSlide);
 
   const [isIllustrationSwap, setIsIllustrationSwap] = useState(false);
@@ -161,7 +160,7 @@ const Card = ({ data, index }: Props) => {
     }
     if (slideName === 'pattern') {
       const afterSlide = slidePattern + 1;
-      setSlidePattern(afterSlide % maxSlidePattern);
+      setSlidePattern(afterSlide % maxSlide);
     }
     if (slideName === 'gradient') {
       const afterSlide = slideGradient + 1;
@@ -176,7 +175,7 @@ const Card = ({ data, index }: Props) => {
     }
     if (slideName === 'pattern') {
       const afterSlide = slidePattern - 1;
-      setSlidePattern(afterSlide < 0 ? maxSlidePattern - 1 : afterSlide);
+      setSlidePattern(afterSlide < 0 ? maxSlide - 1 : afterSlide);
     }
     if (slideName === 'gradient') {
       const afterSlide = slideGradient - 1;
@@ -675,22 +674,6 @@ const Card = ({ data, index }: Props) => {
 
                 {slidePattern === 3 && (
                   <div
-                    className={styles.cardPatternOctagonalStar}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isPatternSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isPatternSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
-                  />
-                )}
-
-                {slidePattern === 4 && (
-                  <div
                     className={styles.cardPatternCircleWave}
                     style={
                       {
@@ -721,7 +704,7 @@ const Card = ({ data, index }: Props) => {
                   <IndicatorSlider
                     currentSlide={slidePattern}
                     pagingDotsIndices={Array.from(
-                      { length: maxSlidePattern },
+                      { length: maxSlide },
                       (x, i) => i
                     )}
                     slideName="pattern"
