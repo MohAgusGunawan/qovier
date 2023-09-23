@@ -5,6 +5,8 @@ import { Source_Sans_3 } from 'next/font/google';
 
 import { Providers } from '@/src/redux/provider';
 
+import GoogleAnalytics from './GoogleAnalytics';
+
 import 'react-toastify/dist/ReactToastify.css';
 
 import './styles/main.css';
@@ -94,6 +96,7 @@ export default function RootLayout({
             style={{ zIndex: 99999999 }}
           />
         </Providers>
+        {process.env.NODE_ENV === 'production' && <GoogleAnalytics />}
       </body>
     </html>
   );
