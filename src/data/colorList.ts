@@ -145,7 +145,7 @@ export const colorList = [
   },
   {
     name: 'Eggplant',
-    hexcode: '61405',
+    hexcode: '614051',
     hue: 329,
     saturation: 20,
     lightness: 32,
@@ -633,7 +633,7 @@ export const colorList = [
   },
   {
     name: 'Royal Blue',
-    hexcode: '41690',
+    hexcode: '4169E1',
     hue: 225,
     saturation: 73,
     lightness: 57,
