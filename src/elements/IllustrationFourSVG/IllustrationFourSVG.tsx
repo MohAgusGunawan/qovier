@@ -104,7 +104,7 @@ function IllustrationFourSVG({ mainColor, accentColor }: Props) {
           cx="60.5"
           cy="45.5"
           r="4"
-          fill={`#${accentColor}`}
+          fill={adaptiveMainColor === '#ffffff' ? '#ffee00' : `#${accentColor}`}
           stroke="black"
         />
       </g>

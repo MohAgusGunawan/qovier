@@ -102,7 +102,7 @@ const IllustrationThreeSVG = ({ mainColor, accentColor }: Props) => {
         height="36"
         rx="3.5"
         transform="rotate(-90 0.5 182.5)"
-        fill="#818181"
+        fill={adaptiveMainColor === '#ffffff' ? '#808080' : '#454545'}
         stroke="black"
       />
       <rect
@@ -112,7 +112,7 @@ const IllustrationThreeSVG = ({ mainColor, accentColor }: Props) => {
         height="21"
         rx="3.5"
         transform="rotate(-90 297.5 182.5)"
-        fill="#818181"
+        fill={adaptiveMainColor === '#ffffff' ? '#808080' : '#454545'}
         stroke="black"
       />
       <rect
@@ -122,7 +122,7 @@ const IllustrationThreeSVG = ({ mainColor, accentColor }: Props) => {
         height="146"
         rx="3.5"
         transform="rotate(90 239.5 171.5)"
-        fill="#818181"
+        fill={adaptiveMainColor === '#ffffff' ? '#808080' : '#454545'}
         stroke="black"
       />
       <path

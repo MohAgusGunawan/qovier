@@ -156,7 +156,7 @@ const IllustrationTwoSVG = ({ mainColor, accentColor }: Props) => {
           stroke={adaptiveMainColor === '#ffffff' ? '#000000' : '#ffffff'}
           strokeWidth="2"
         />
-        <circle cx="72.3131" cy="141.56" r="11.7132" fill={`#${accentColor}`} />
+        <circle cx="72.3131" cy="141.56" r="11.7132" fill={`#${mainColor}`} />
         <path
           d="M72.7 129.44V153.44M75.7 129.44V153.44M63.7 131.44L63.7 151.44M85.2 135.94L61.2 135.94M84.2 142.94L60.2 142.94M81.2 149.94H61.2M78.7 129.44V153.44M66.7 129.44V153.44M81.7 131.44V151.44M69.7 129.44V153.44"
           stroke={adaptiveMainColor}
