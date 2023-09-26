@@ -1,16 +1,10 @@
-.sliderWrapper {
-  margin: 2em auto;
+.responsiveImageWrapper {
+  position: relative;
 
   width: 100%;
-  max-width: 360px;
+  max-width: 480px;
 
   aspect-ratio: 4 / 5;
-
-  box-shadow: var(--shadow-bottom);
-}
-
-.pagingDotsContainer {
-  gap: 0.5em;
 }
 
 @media (hover: hover) {
