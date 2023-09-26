@@ -28,11 +28,14 @@ const isClosed = (primary: ColorDetail, secondary: ColorDetail) => {
 
 const isAdded = (pair: ColorPair, list: ColorPair[]) => {
   const findPair = list.find((color) => {
-    const prmy = color.primary.hsl === pair.primary.hsl;
-    const scnd = color.secondary.hsl === pair.secondary.hsl;
+    const prmy = color.primary.hsl.toString() === pair.primary.hsl.toString();
+    const scnd =
+      color.secondary.hsl.toString() === pair.secondary.hsl.toString();
 
-    const prmyScnd = color.primary.hsl === pair.secondary.hsl;
-    const scndPrmy = color.secondary.hsl === pair.primary.hsl;
+    const prmyScnd =
+      color.primary.hsl.toString() === pair.secondary.hsl.toString();
+    const scndPrmy =
+      color.secondary.hsl.toString() === pair.primary.hsl.toString();
 
     return (prmy && scnd) || (prmyScnd && scndPrmy);
   });
