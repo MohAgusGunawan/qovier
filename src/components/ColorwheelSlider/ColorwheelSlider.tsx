@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import Carousel from 'nuka-carousel';
+
+import ImageElement from '@/src/elements/ImageElement/ImageElement';
 
 import styles from './ColorwheelSlider.module.css';
 
@@ -23,43 +24,19 @@ const ColorwheelSlider = () => {
   return (
     <div className={styles.sliderWrapper}>
       <Carousel {...settings}>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={ColorWheelPNG}
-            alt="Color Wheel RGB Format"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={ColorWheelPrimaryPNG}
-            alt="Primary Color on Color Wheel RGB Format"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={ColorWheelSecondaryPNG}
-            alt="Secondary Color on Color Wheel RGB Format"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={ColorWheelTertiaryPNG}
-            alt="Tertiary Color on Color Wheel RGB Format"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
+        <ImageElement src={ColorWheelPNG} alt="Color Wheel RGB Format" />
+        <ImageElement
+          src={ColorWheelPrimaryPNG}
+          alt="Primary Color on Color Wheel RGB Format"
+        />
+        <ImageElement
+          src={ColorWheelSecondaryPNG}
+          alt="Secondary Color on Color Wheel RGB Format"
+        />
+        <ImageElement
+          src={ColorWheelTertiaryPNG}
+          alt="Tertiary Color on Color Wheel RGB Format"
+        />
       </Carousel>
     </div>
   );

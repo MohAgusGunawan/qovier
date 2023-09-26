@@ -1,5 +1,6 @@
-import Image from 'next/image';
 import Carousel from 'nuka-carousel';
+
+import ImageElement from '@/src/elements/ImageElement/ImageElement';
 
 import styles from './ColorHarmonySlider.module.css';
 
@@ -27,78 +28,23 @@ const ColorHarmonySlider = () => {
   return (
     <div className={styles.sliderWrapper}>
       <Carousel {...settings}>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={harmonyPNG}
-            alt="Color Harmony"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={analogusPNG}
-            alt="Color Harmony Analogous"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={complementaryPNG}
-            alt="Color Harmony Complementary"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={monochromaticPNG}
-            alt="Color Harmony Monochromatic"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={splitComplementaryPNG}
-            alt="Color Harmony Split Complementary"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={squarePNG}
-            alt="Color Harmony Split Square"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={tetradicPNG}
-            alt="Color Harmony Split Tetradic"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
-        <div className={styles.responsiveImageWrapper}>
-          <Image
-            src={triadicPNG}
-            alt="Color Harmony Split Triadic"
-            fill
-            sizes="480px"
-            priority
-          />
-        </div>
+        <ImageElement src={harmonyPNG} alt="Color Harmony" />
+        <ImageElement src={analogusPNG} alt="Color Harmony Analogous" />
+        <ImageElement
+          src={complementaryPNG}
+          alt="Color Harmony Complementary"
+        />
+        <ImageElement
+          src={monochromaticPNG}
+          alt="Color Harmony Monochromatic"
+        />
+        <ImageElement
+          src={splitComplementaryPNG}
+          alt="Color Harmony Split Complementary"
+        />
+        <ImageElement src={squarePNG} alt="Color Harmony Split Square" />
+        <ImageElement src={tetradicPNG} alt="Color Harmony Split Tetradic" />
+        <ImageElement src={triadicPNG} alt="Color Harmony Split Triadic" />
       </Carousel>
     </div>
   );

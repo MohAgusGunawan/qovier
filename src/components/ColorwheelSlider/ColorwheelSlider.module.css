@@ -9,15 +9,6 @@
   box-shadow: var(--shadow-bottom);
 }
 
-.responsiveImageWrapper {
-  position: relative;
-
-  width: 100%;
-  max-width: 480px;
-
-  aspect-ratio: 4 / 5;
-}
-
 .pagingDotsContainer {
   gap: 0.5em;
 }
