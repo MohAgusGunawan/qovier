@@ -2,16 +2,9 @@
 
 // Please refactor this soon!!
 
-import React, {
-  Fragment,
-  useCallback,
-  useEffect,
-  useMemo,
-  useState,
-} from 'react';
+import React, { Fragment, useCallback, useMemo, useState } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { toast } from 'react-toastify';
-import ConfettiExplosion from 'react-confetti-explosion';
 import { getContrast } from 'accessible-colors';
 import { IoIosArrowDown } from 'react-icons/io';
 import { TbCopy } from 'react-icons/tb';
@@ -76,8 +69,6 @@ const Card = ({ data, index }: Props) => {
   const [isPatternSwap, setIsPatternSwap] = useState(false);
   const [isGradientSwap, setIsGradientSwap] = useState(false);
 
-  const [isExploding, setIsExploding] = useState(false);
-
   const contrastRatio = useMemo(() => {
     return getContrast(primary.hex, secondary.hex);
   }, [primary.hex, secondary.hex]);
@@ -108,7 +99,6 @@ const Card = ({ data, index }: Props) => {
     if (isAdded === undefined) {
       if (collection.length <= 99) {
         dispatch(addItem(payload));
-        setIsExploding(true);
       } else {
         window.alert('Has reached the maximum limit');
       }
@@ -117,7 +107,6 @@ const Card = ({ data, index }: Props) => {
 
   const removeFromCollection = () => {
     dispatch(removeItem(customId));
-    setIsExploding(false);
   };
 
   const addToConserved = () => {
@@ -182,10 +171,6 @@ const Card = ({ data, index }: Props) => {
       setSlideGradient(afterSlide < 0 ? maxSlide - 1 : afterSlide);
     }
   };
-
-  useEffect(() => {
-    setIsExploding(false);
-  }, [loading]);
 
   return (
     <div className={styles.card}>
@@ -458,26 +443,6 @@ const Card = ({ data, index }: Props) => {
         ) : (
           <>
             <div className={styles.topRightFloatButton}>
-              {isExploding && (
-                <ConfettiExplosion
-                  force={0.5}
-                  duration={2500}
-                  particleCount={15}
-                  width={400}
-                  style={{ position: 'absolute' }}
-                  colors={[
-                    '#000000',
-                    '#808080',
-                    '#FFFFFF',
-                    `#${primary.hex}`,
-                    `#${secondary.hex}`,
-                    `#${primary.hex}`,
-                    `#${secondary.hex}`,
-                  ]}
-                  onComplete={() => setIsExploding(false)}
-                />
-              )}
-
               {isAdded ? (
                 <button
                   className={styles.buttonIcon}
