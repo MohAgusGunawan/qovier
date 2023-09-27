@@ -43,3 +43,12 @@ export interface Conserved {
   primary: ColorDetail;
   secondary: ColorDetail;
 }
+
+export interface ColorList {
+  name: string;
+  hexcode: string;
+  hue: number;
+  saturation: number;
+  lightness: number;
+  popular: boolean;
+}

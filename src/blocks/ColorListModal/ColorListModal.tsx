@@ -1,14 +1,9 @@
-import { useCallback } from 'react';
 import { Dialog } from '@headlessui/react';
-import { toast } from 'react-toastify';
 import { AiOutlineClose } from 'react-icons/ai';
 import { IoIosColorFilter } from 'react-icons/io';
-import {
-  TbBrightnessUp,
-  TbCircleHalf2,
-  TbCopy,
-  TbMoonFilled,
-} from 'react-icons/tb';
+import { TbBrightnessUp, TbCircleHalf2, TbMoonFilled } from 'react-icons/tb';
+
+import ColorButton from '@/src/elements/ColorButton/ColorButton';
 
 import { colorList } from '@/src/data/colorList';
 import { rangeColor } from '@/src/data/color';
@@ -110,19 +105,6 @@ const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
     );
   });
 
-  const handleCopy = useCallback((text: string) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        toast(`"${text}" copied`, {
-          icon: <TbCopy />,
-        });
-      })
-      .catch(() => {
-        window.alert('Copy failed, please update your browser!');
-      });
-  }, []);
-
   return (
     <Dialog open={isOpenModal} onClose={() => closeModal()}>
       <div className={styles.modalBackdrop} aria-hidden="true" />
@@ -150,29 +132,7 @@ const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
                 {generalList.map((color, index) => {
                   return (
                     <li key={index} className={styles.itemColor}>
-                      {color.popular && (
-                        <span className={styles.colorRibbon}></span>
-                      )}
-                      <button
-                        className={styles.colorButton}
-                        title={`Copy ${color.hexcode}`}
-                        onClick={() => handleCopy(color.hexcode)}
-                      >
-                        <span
-                          className={styles.colorCard}
-                          style={{ background: `#${color.hexcode}` }}
-                        ></span>
-                        <span
-                          className={`${styles.colorName} ${
-                            color.popular ? styles.colorNameBold : null
-                          }`}
-                        >
-                          {color.name}
-                        </span>
-                        <span className={styles.colorCode}>
-                          #{color.hexcode}
-                        </span>
-                      </button>
+                      <ColorButton color={color} />
                     </li>
                   );
                 })}
@@ -191,29 +151,7 @@ const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
                 {dimList.map((color, index) => {
                   return (
                     <li key={index} className={styles.itemColor}>
-                      {color.popular && (
-                        <span className={styles.colorRibbon}></span>
-                      )}
-                      <button
-                        className={styles.colorButton}
-                        title={`Copy ${color.hexcode}`}
-                        onClick={() => handleCopy(color.hexcode)}
-                      >
-                        <span
-                          className={styles.colorCard}
-                          style={{ background: `#${color.hexcode}` }}
-                        ></span>
-                        <span
-                          className={`${styles.colorName} ${
-                            color.popular ? styles.colorNameBold : null
-                          }`}
-                        >
-                          {color.name}
-                        </span>
-                        <span className={styles.colorCode}>
-                          #{color.hexcode}
-                        </span>
-                      </button>
+                      <ColorButton color={color} />
                     </li>
                   );
                 })}
@@ -232,29 +170,7 @@ const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
                 {moderateList.map((color, index) => {
                   return (
                     <li key={index} className={styles.itemColor}>
-                      {color.popular && (
-                        <span className={styles.colorRibbon}></span>
-                      )}
-                      <button
-                        className={styles.colorButton}
-                        title={`Copy ${color.hexcode}`}
-                        onClick={() => handleCopy(color.hexcode)}
-                      >
-                        <span
-                          className={styles.colorCard}
-                          style={{ background: `#${color.hexcode}` }}
-                        ></span>
-                        <span
-                          className={`${styles.colorName} ${
-                            color.popular ? styles.colorNameBold : null
-                          }`}
-                        >
-                          {color.name}
-                        </span>
-                        <span className={styles.colorCode}>
-                          #{color.hexcode}
-                        </span>
-                      </button>
+                      <ColorButton color={color} />
                     </li>
                   );
                 })}
@@ -273,29 +189,7 @@ const ColorList = ({ isOpenModal, closeModal, range }: Props) => {
                 {brightList.map((color, index) => {
                   return (
                     <li key={index} className={styles.itemColor}>
-                      {color.popular && (
-                        <span className={styles.colorRibbon}></span>
-                      )}
-                      <button
-                        className={styles.colorButton}
-                        title={`Copy ${color.hexcode}`}
-                        onClick={() => handleCopy(color.hexcode)}
-                      >
-                        <span
-                          className={styles.colorCard}
-                          style={{ background: `#${color.hexcode}` }}
-                        ></span>
-                        <span
-                          className={`${styles.colorName} ${
-                            color.popular ? styles.colorNameBold : null
-                          }`}
-                        >
-                          {color.name}
-                        </span>
-                        <span className={styles.colorCode}>
-                          #{color.hexcode}
-                        </span>
-                      </button>
+                      <ColorButton color={color} />
                     </li>
                   );
                 })}
