@@ -11,6 +11,8 @@
   background: var(--surface-color);
 
   transform: rotate(35deg);
+
+  opacity: 1 !important;
 }
 
 .colorButton {
@@ -34,6 +36,15 @@
 
 .colorButton:focus-visible {
   border: 2px solid black;
+}
+
+.colorButton:active {
+  -webkit-tap-highlight-color: transparent;
+
+  opacity: 0.7;
+  border: 2px dashed #808080;
+
+  transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .colorCard {
