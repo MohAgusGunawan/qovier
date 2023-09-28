@@ -829,7 +829,11 @@ const Card = ({ data, index }: Props) => {
         <div className={styles.cardButtonWrap}>
           <div className={styles.buttonWrap}>
             <Menu>
-              <Menu.Button className={styles.menuButton} disabled={loading}>
+              <Menu.Button
+                className={styles.menuButton}
+                disabled={loading}
+                title="Copy"
+              >
                 <span
                   className="colorIcon"
                   style={
@@ -906,7 +910,11 @@ const Card = ({ data, index }: Props) => {
           </div>
           <div className={styles.buttonWrap}>
             <Menu>
-              <Menu.Button className={styles.menuButton} disabled={loading}>
+              <Menu.Button
+                className={styles.menuButton}
+                disabled={loading}
+                title="Copy"
+              >
                 <span
                   className="colorIcon"
                   style={

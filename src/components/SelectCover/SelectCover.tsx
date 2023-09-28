@@ -22,7 +22,10 @@ function SelectCover({ value, onChange, list, name, disabled }: Props) {
         name={name}
         disabled={disabled}
       >
-        <Listbox.Button className={styles.selectButton}>
+        <Listbox.Button
+          className={styles.selectButton}
+          title="Select a Visualization"
+        >
           <CgDisplayGrid />
           <span className={styles.selectLabel}>
             Preview: <b className={styles.titleBold}>{list[value]}</b>
