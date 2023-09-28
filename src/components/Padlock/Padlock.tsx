@@ -33,6 +33,7 @@ const Padlock = ({ num }: Props) => {
         startAnimate ? styles.pulseAnimation : null
       }`}
       onAnimationEnd={() => animationEnd()}
+      title="Unused lock"
     >
       <HiOutlineLockOpen />
       <span>{6 - num}</span>

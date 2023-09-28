@@ -154,6 +154,7 @@ const Client = ({ colorThumbnail, coverPreview, lolSecretKey }: Props) => {
                       className={styles.menuButton}
                       disabled={gettingCombination}
                       onClick={(e) => scrollToFormFilter(e)}
+                      title="Filter by Color Range"
                     >
                       <HiFilter />
                       <span>Filter</span>
@@ -163,6 +164,7 @@ const Client = ({ colorThumbnail, coverPreview, lolSecretKey }: Props) => {
                       onClick={() => setIsOpenDrawer(true)}
                       className={styles.menuButton}
                       disabled={gettingCollection}
+                      title="My Color Pair Collection"
                     >
                       <BsFolderFill />
                       <span>Collection ({collection.length})</span>
@@ -199,6 +201,7 @@ const Client = ({ colorThumbnail, coverPreview, lolSecretKey }: Props) => {
                 className={styles.mobileCollectionButton}
                 onClick={() => setIsOpenSheet(true)}
                 disabled={gettingCollection}
+                title="My Color Pair Collection"
               >
                 {gettingCollection ? (
                   <>
@@ -218,6 +221,7 @@ const Client = ({ colorThumbnail, coverPreview, lolSecretKey }: Props) => {
                 disabled={gettingCombination}
                 onClick={(e) => scrollToFormFilter(e)}
                 aria-label="Filter"
+                title="Filter by Color Range"
               >
                 <HiFilter />
               </button>
