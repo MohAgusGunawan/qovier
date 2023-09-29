@@ -184,7 +184,7 @@ const Client = ({ colorThumbnail, coverPreview, lolSecretKey }: Props) => {
         </section>
 
         <div className={styles.divider}>
-          <HiChevronDoubleUp className={styles.arrowUp} />
+          <HiChevronDoubleUp className={`bounceAnimation ${styles.arrowUp}`} />
         </div>
 
         <div className={styles.bottomBar}>
