@@ -201,33 +201,33 @@
 
   aspect-ratio: 16 / 9;
 
-  background-color: var(--second-color);
+  background-color: var(--first-color);
 
   background-image: radial-gradient(
       circle,
-      var(--first-color) 20%,
+      var(--second-color) 20%,
       transparent 20%
     ),
-    radial-gradient(circle at 0% 100%, var(--first-color) 15%, transparent 15%),
-    radial-gradient(circle at 100% 0%, var(--first-color) 15%, transparent 15%),
-    radial-gradient(circle at 0% 0%, var(--first-color) 15%, transparent 15%),
+    radial-gradient(circle at 0% 100%, var(--second-color) 15%, transparent 15%),
+    radial-gradient(circle at 100% 0%, var(--second-color) 15%, transparent 15%),
+    radial-gradient(circle at 0% 0%, var(--second-color) 15%, transparent 15%),
     radial-gradient(
       circle at 100% 100%,
-      var(--first-color) 15%,
+      var(--second-color) 15%,
       transparent 15%
     ),
     linear-gradient(
       45deg,
       transparent 45%,
-      var(--first-color) 45%,
-      var(--first-color) 55%,
+      var(--second-color) 45%,
+      var(--second-color) 55%,
       transparent 55%
     ),
     linear-gradient(
       -45deg,
       transparent 45%,
-      var(--first-color) 45%,
-      var(--first-color) 55%,
+      var(--second-color) 45%,
+      var(--second-color) 55%,
       transparent 55%
     );
 

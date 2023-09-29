@@ -1,0 +1,90 @@
+.main {
+  padding: 2em 1.6em;
+  padding-bottom: 4em;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 2em 1.6em;
+
+  width: 100%;
+  max-width: 768px;
+
+  background: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
+
+  border-radius: 16px;
+}
+
+.privacyPolicy {
+  padding-bottom: 2em;
+  border-bottom: 2px dashed #c2c2c2;
+  margin-bottom: 2em;
+}
+
+.headingOne {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  text-wrap: balance;
+
+  color: var(--text-focal-color);
+}
+
+.lastModified {
+  display: block;
+
+  margin-top: 0.875em;
+
+  font-size: var(--fs-sm);
+
+  color: var(--text-mute-color);
+}
+
+.section {
+  margin-top: 2em;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 1em;
+}
+
+.sectionHeading {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+}
+
+.sectionText > b {
+  font-weight: var(--fw-semibold);
+}
+
+.linkHome {
+  width: fit-content;
+  padding: 0.5em 0;
+  display: flex;
+  align-items: center;
+
+  gap: 0.875em;
+
+  color: var(--text-focal-color);
+  font-size: var(--fs-sm);
+}
+
+@media (hover: hover) {
+  /* when supported */
+  .linkHome:hover {
+    border-bottom: 1px solid var(--text-focal-color);
+  }
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

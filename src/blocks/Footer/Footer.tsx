@@ -1,4 +1,6 @@
+import Link from 'next/link';
 import { TbHeartFilled } from 'react-icons/tb';
+import { HiChevronDoubleUp } from 'react-icons/hi2';
 
 import ColorwheelSlider from '@/src/components/ColorwheelSlider/ColorwheelSlider';
 import ColorHarmonySlider from '@/src/components/ColorHarmonySlider/ColorHarmonySlider';
@@ -44,19 +46,30 @@ const Footer = () => {
           </p>
         </section>
       </div>
+
+      <div className={styles.divider}>
+        <HiChevronDoubleUp className={`bounceAnimation ${styles.arrowUp}`} />
+      </div>
+
       <div className={styles.copyright}>
-        <p className={styles.copyrightText}>
-          <span>Brought to life with passion and </span> <TbHeartFilled />{' '}
-          <span> by </span>
-          <a
-            className={styles.copyrightLink}
-            href="https://github.com/cholis04"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            cholis04
-          </a>
-        </p>
+        <div className={styles.footerbar}>
+          <p className={styles.copyrightText}>
+            <span>Brought to life with passion and </span> <TbHeartFilled />{' '}
+            <span> by </span>
+            <a
+              className={styles.copyrightLink}
+              href="https://github.com/cholis04"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              cholis04
+            </a>
+          </p>
+
+          <p className={styles.footerlink}>
+            <Link href="/page/privacy-policy">Privacy Policy</Link>
+          </p>
+        </div>
       </div>
     </footer>
   );
