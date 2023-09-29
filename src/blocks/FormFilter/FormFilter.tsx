@@ -68,9 +68,25 @@ const FormFilter = ({ elementRef, formFilterRef }: Props) => {
     dispatch(refreshColors(conserved));
 
     timerRef.current = setTimeout(() => {
-      const firstFilter =
+      const firstFilter = secondaryColors
+        .filter((color) => {
+          return color.name !== 'All';
+        })
+        .filter((color) => {
+          if (selectedSecondary.length === 1) {
+            if (color.name === selectedSecondary[0].name) {
+              return excludeColors.includes(color.name) !== true;
+            }
+            return true;
+          }
+
+          return true;
+        })
+        .map((color) => color.name.toLowerCase().replace(' ', ''));
+
+      const excludeFirstFilter =
         selectedPrimary.name === 'All'
-          ? []
+          ? firstFilter
           : [selectedPrimary.name.toLowerCase().replace(' ', '')];
 
       const secondFilter = selectedSecondary.map((selected) =>
@@ -86,7 +102,7 @@ const FormFilter = ({ elementRef, formFilterRef }: Props) => {
       dispatch(
         receiveColors(
           generateCombination(
-            isCode ? codeColor : firstFilter,
+            isCode ? codeColor : excludeFirstFilter,
             secondFilter.length <= 0 ? excludeSecondFilter : secondFilter,
             conserved
           )
