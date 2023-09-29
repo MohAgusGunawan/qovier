@@ -1,8 +1,8 @@
+import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import { hasCookie, setCookie } from 'cookies-next';
 
 import styles from './CookieConsent.module.css';
-import Link from 'next/link';
 
 const CookieConsent = () => {
   const [showConsent, setShowConsent] = useState(true);
