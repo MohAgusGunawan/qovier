@@ -22,6 +22,7 @@ import ColorListModal from '@/src/blocks/ColorListModal/ColorListModal';
 import CollectionDrawer from '@/src/blocks/CollectionDrawer/CollectionDrawer';
 import CollectionSheet from '@/src/blocks/CollectionSheet/CollectionSheet';
 
+import CookieConsent from '@/src/components/CookieConsent/CookieConsent';
 import Card from '@/src/components/Card/Card';
 import SelectCover from '@/src/components/SelectCover/SelectCover';
 import Padlock from '@/src/components/Padlock/Padlock';
@@ -286,6 +287,8 @@ const Client = ({ colorThumbnail, coverPreview, lolSecretKey }: Props) => {
         isOpenSheet={isOpenSheet}
         setIsOpenSheet={setIsOpenSheet}
       />
+
+      <CookieConsent />
 
       <Footer />
     </>

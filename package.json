@@ -19,6 +19,7 @@
     "accessible-colors": "^1.0.4",
     "color": "^4.2.3",
     "color-convert": "^2.0.1",
+    "cookies-next": "^4.0.0",
     "crypto-js": "^4.1.1",
     "eslint": "8.47.0",
     "eslint-config-next": "13.4.16",
