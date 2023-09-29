@@ -20,7 +20,9 @@ const sourceSans3 = Source_Sans_3({
 export const metadata: Metadata = {
   title: 'Qovier - Explore Color Pairs',
   description:
-    'With Qovier you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!',
+    'Qovier empowers designers to effortlessly generate and explore stunning two-color combinations for their projects. Preview how these color pairs will appear on text, illustrations, gradients, and more!',
+  keywords:
+    'Color Combinations, Color Pair Generator, Design Color Schemes, Color Preview Tool, Color Exploration, Design Color Palettes, Color Harmony ,Text Color Preview, Illustration Color Scheme, Gradient Color Picker, Creative Color Combinations',
 };
 
 export default function RootLayout({
@@ -59,7 +61,7 @@ export default function RootLayout({
         <meta property="og:title" content="Qovier - Explore Color Pair" />
         <meta
           property="og:description"
-          content="With Qovier you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
+          content="Qovier empowers designers to effortlessly generate and explore stunning two-color combinations for their projects. Preview how these color pairs will appear on text, illustrations, gradients, and more!"
         />
         <meta
           property="og:image"
@@ -72,7 +74,7 @@ export default function RootLayout({
         <meta property="twitter:title" content="Qovier - Explore Color Pair" />
         <meta
           property="twitter:description"
-          content="With Qovier you can generate and explore two color combinations for your design, preview how color pairs will look on Text, Illustration, Gradient, and more!"
+          content="Qovier empowers designers to effortlessly generate and explore stunning two-color combinations for their projects. Preview how these color pairs will appear on text, illustrations, gradients, and more!"
         />
         <meta
           property="twitter:image"
