@@ -38,8 +38,13 @@
   font-weight: var(--fw-semibold);
 }
 
-.iconBtn {
+.iconBtnUpDown {
   display: block;
+  color: var(--text-common-color);
+}
+
+.iconBtnDown {
+  display: none;
   color: var(--text-common-color);
 }
 
@@ -105,8 +110,12 @@
     min-width: 240px;
   }
 
-  .iconBtn {
+  .iconBtnUpDown {
     display: none;
+  }
+
+  .iconBtnDown {
+    display: block;
   }
 }
 

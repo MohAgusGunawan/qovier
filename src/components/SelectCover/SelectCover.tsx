@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { Listbox, Transition } from '@headlessui/react';
 import { HiChevronUpDown } from 'react-icons/hi2';
+import { IoIosArrowDown } from 'react-icons/io';
 import { CgDisplayGrid } from 'react-icons/cg';
 
 import styles from './SelectCover.module.css';
@@ -30,7 +31,8 @@ function SelectCover({ value, onChange, list, name, disabled }: Props) {
           <span className={styles.selectLabel}>
             Preview: <b className={styles.titleBold}>{list[value]}</b>
           </span>
-          <HiChevronUpDown className={styles.iconBtn} />
+          <HiChevronUpDown className={styles.iconBtnUpDown} />
+          <IoIosArrowDown className={styles.iconBtnDown} />
         </Listbox.Button>
         <Transition
           as={Fragment}
