@@ -67,7 +67,9 @@ const Footer = () => {
           </p>
 
           <p className={styles.footerlink}>
-            <Link href="/page/privacy-policy">Privacy Policy</Link>
+            <Link href="/page/privacy-policy" prefetch={false}>
+              Privacy Policy
+            </Link>
           </p>
         </div>
       </div>
