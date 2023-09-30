@@ -8,6 +8,8 @@ import ColorHarmonySlider from '@/src/components/ColorHarmonySlider/ColorHarmony
 import styles from './Footer.module.css';
 
 const Footer = () => {
+  const year = new Date().getFullYear();
+
   return (
     <footer className={styles.footer}>
       <div className="wrapper">
@@ -53,18 +55,7 @@ const Footer = () => {
 
       <div className={styles.copyright}>
         <div className={styles.footerbar}>
-          <p className={styles.copyrightText}>
-            <span>Brought to life with passion and </span> <TbHeartFilled />{' '}
-            <span> by </span>
-            <a
-              className={styles.copyrightLink}
-              href="https://github.com/cholis04"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              cholis04
-            </a>
-          </p>
+          <p className={styles.copyrightText}>Copyright &copy; {year} Qovier</p>
 
           <p className={styles.footerlink}>
             <Link href="/page/privacy-policy" prefetch={false}>
