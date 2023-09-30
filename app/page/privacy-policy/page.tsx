@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import type { Metadata } from 'next';
+import { TbCornerUpLeft } from 'react-icons/tb';
 
 import styles from './page.module.css';
-import { TbCornerUpLeft } from 'react-icons/tb';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy - Qovier',

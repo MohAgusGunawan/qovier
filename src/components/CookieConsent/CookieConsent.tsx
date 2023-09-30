@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { hasCookie, setCookie } from 'cookies-next';
 
 import styles from './CookieConsent.module.css';
@@ -25,7 +25,11 @@ const CookieConsent = () => {
       <div className={styles.wrapper}>
         <span className={styles.text}>
           By continuing, you agree to our use of cookies as outlined in our{' '}
-          <Link href="/page/privacy-policy" className={styles.link}>
+          <Link
+            href="/page/privacy-policy"
+            className={styles.link}
+            prefetch={false}
+          >
             Privacy Policy
           </Link>{' '}
           to enhance your experience.
