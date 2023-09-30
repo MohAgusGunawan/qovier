@@ -243,8 +243,10 @@ const Client = ({ colorThumbnail, coverPreview, lolSecretKey }: Props) => {
               Among the millions of available colors, here are some colors that
               we may already recognize based on their hue range. These colors
               can be used as the most likely color references to appear in the
-              color results above. Click the card to see the full list of
-              colors!
+              color results above.{' '}
+              <span className={styles.emphasis}>
+                Click the card to see the full list of colors!
+              </span>
             </p>
 
             <div className={styles.colorContainer}>

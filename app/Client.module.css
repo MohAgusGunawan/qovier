@@ -153,6 +153,11 @@
   text-align: center;
 }
 
+.emphasis {
+  font-weight: var(--fw-semibold);
+  text-decoration: underline;
+}
+
 .colorContainer {
   margin: 0 auto;
   margin-top: 4em;
