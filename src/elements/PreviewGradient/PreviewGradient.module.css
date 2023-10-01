@@ -1,0 +1,63 @@
+.cardLinearGradient {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: linear-gradient(45deg, var(--first-color), var(--second-color));
+}
+
+.cardRadialGradient {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: repeating-radial-gradient(
+    circle at 100%,
+    var(--first-color),
+    var(--second-color) 20%
+  );
+}
+
+.cardLinearGradientRepeat {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--first-color),
+    var(--second-color) 33%
+  );
+}
+
+.cardConicGradient {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  background: repeating-conic-gradient(
+    from 45deg at 30% 50%,
+    var(--first-color),
+    var(--second-color) 20%
+  );
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

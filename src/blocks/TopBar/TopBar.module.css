@@ -1,0 +1,63 @@
+.bar {
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+
+  background: var(--body-background-color);
+
+  padding: 1em 0;
+}
+
+.topBar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuWrapper {
+  display: none;
+}
+
+.menuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5em 0.875em;
+  gap: 0.5em;
+
+  font-weight: var(--fw-medium);
+  color: var(--text-common-color);
+
+  cursor: pointer;
+}
+
+.menuButton:focus-visible {
+  outline: 2px solid var(--text-common-color);
+}
+
+@media (hover: hover) {
+  /* when supported */
+  .menuButton:hover > span {
+    text-decoration: underline;
+  }
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .menuWrapper {
+    display: flex;
+    align-items: center;
+
+    gap: 1em;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

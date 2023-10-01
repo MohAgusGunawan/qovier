@@ -2,8 +2,6 @@ import Carousel from 'nuka-carousel';
 
 import ImageElement from '@/src/elements/ImageElement/ImageElement';
 
-import styles from './ColorHarmonySlider.module.css';
-
 import harmonyPNG from '@/src/assets/images/color-harmony.png';
 import analogusPNG from '@/src/assets/images/color-harmony-analogous.png';
 import complementaryPNG from '@/src/assets/images/color-harmony-complementary.png';
@@ -12,6 +10,8 @@ import splitComplementaryPNG from '@/src/assets/images/color-harmony-split-compl
 import squarePNG from '@/src/assets/images/color-harmony-square.png';
 import triadicPNG from '@/src/assets/images/color-harmony-triadic.png';
 import tetradicPNG from '@/src/assets/images/color-harmony-tetradic.png';
+
+import styles from './ColorHarmonySlider.module.css';
 
 const ColorHarmonySlider = () => {
   const settings = {

@@ -2,31 +2,6 @@
   margin-top: 4rem;
 }
 
-.about {
-  margin: 0 auto;
-  margin-bottom: 6rem;
-
-  display: flex;
-  flex-direction: column;
-  gap: 1em;
-
-  max-width: 980px;
-}
-
-.aboutTitle {
-  text-align: center;
-
-  font-size: var(--fs-xl);
-  font-weight: var(--fw-bold);
-
-  color: var(--text-focal-color);
-}
-
-.aboutParagraph {
-  text-wrap: balance;
-  text-align: center;
-}
-
 .divider {
   margin: 6em auto;
 
@@ -82,8 +57,16 @@
   color: var(--surface-color);
 }
 
+.link:focus-visible {
+  outline: 1px dashed white;
+  outline-offset: 2px;
+}
+
 @media (hover: hover) {
   /* when supported */
+  .link:hover {
+    text-decoration: underline;
+  }
 }
 
 /* ================================================ */

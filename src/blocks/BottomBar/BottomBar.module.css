@@ -1,0 +1,73 @@
+.bottomBar {
+  position: sticky;
+  z-index: 99;
+  bottom: 0;
+
+  padding: 0 1.6em;
+
+  display: block;
+
+  margin-top: 7em;
+  background: var(--body-background-color);
+
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mobileCollectionButton {
+  transform: translateY(-1em);
+
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+
+  padding: 0.5em 1.5em;
+
+  background: var(--text-focal-color);
+  color: var(--surface-color);
+
+  box-shadow: var(--shadow-top), var(--shadow-bottom);
+
+  border-radius: 8px;
+  border: 0.875em solid var(--body-background-color);
+
+  cursor: pointer;
+}
+
+.mobileMenuButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 0.5em;
+
+  aspect-ratio: 1 / 1;
+  width: 40px;
+
+  font-weight: var(--fw-medium);
+  color: var(--text-common-color);
+
+  cursor: pointer;
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .bottomBar {
+    display: none;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}
