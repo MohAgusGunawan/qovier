@@ -1,0 +1,114 @@
+.colorList {
+  margin: 7em auto;
+  padding: 1em 0;
+}
+
+.colorListHeading {
+  text-align: center;
+
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+
+  color: var(--text-focal-color);
+
+  margin-bottom: 1em;
+}
+
+.colorListParagraph {
+  text-wrap: balance;
+  text-align: center;
+}
+
+.emphasis {
+  font-weight: var(--fw-semibold);
+}
+
+.colorContainer {
+  margin: 0 auto;
+  margin-top: 4em;
+
+  width: 90%;
+  max-width: 864px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+  gap: 0.5em;
+}
+
+.colorGroup {
+  padding: 0.5em;
+
+  aspect-ratio: 5 / 4;
+
+  background: var(--surface-color);
+  box-shadow: var(--shadow-bottom);
+
+  border-radius: 1em;
+}
+
+.colorGroupButton {
+  width: 100%;
+  height: 100%;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.5em;
+
+  overflow: hidden;
+
+  cursor: pointer;
+}
+
+.colorGroupButton:focus-visible {
+  outline: 2px solid black;
+  outline-offset: 4px;
+}
+
+.colorGroupButtonLabel {
+  padding: 0.5em;
+
+  font-weight: var(--fw-black);
+  font-size: var(--fs-md);
+
+  white-space: nowrap;
+
+  text-align: center;
+
+  transform: rotate(-30deg) scale(5);
+  opacity: 0.4;
+
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@media (hover: hover) {
+  /* when supported */
+
+  .colorGroupButton:hover .colorGroupButtonLabel {
+    white-space: normal;
+
+    transform: rotate(0deg) scale(1);
+    opacity: 0.4;
+  }
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .colorContainer {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1em;
+  }
+
+  .colorGroup {
+    aspect-ratio: 1 / 1;
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

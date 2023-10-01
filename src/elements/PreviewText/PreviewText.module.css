@@ -1,0 +1,64 @@
+.cardTypoColor {
+  --first-color: transparent;
+  --second-color: transparent;
+
+  aspect-ratio: 16 / 9;
+
+  display: flex;
+  flex-direction: column;
+
+  position: relative;
+}
+
+.cardTypoColorMain,
+.cardTypoColorAccent {
+  flex-grow: 1;
+
+  padding: 1em;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardTypoColorMain {
+  color: var(--second-color);
+  background: var(--first-color);
+}
+
+.cardTypoColorAccent {
+  color: var(--first-color);
+  background: var(--second-color);
+}
+
+.cardTypoText,
+.cardTypoTextBold {
+  font-size: var(--fs-lg);
+
+  line-height: 1.4;
+}
+
+.cardTypoTextBold {
+  font-weight: var(--fw-bold);
+}
+
+@media (hover: hover) {
+  /* when supported */
+}
+
+/* ================================================ */
+/* Tablet Responsive */
+
+@media only screen and (min-width: 768px) {
+  .cardTypoText,
+  .cardTypoTextBold {
+    font-size: var(--fs-md);
+  }
+}
+
+/* ================================================ */
+/* Desktop Responsive */
+
+@media only screen and (min-width: 1024px) {
+}

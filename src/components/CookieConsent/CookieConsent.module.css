@@ -34,8 +34,12 @@
 }
 
 .link {
-  text-decoration: underline;
   font-weight: var(--fw-semibold);
+}
+
+.link:focus-visible {
+  outline: 1px dashed white;
+  outline-offset: 2px;
 }
 
 .button {
@@ -53,8 +57,16 @@
   cursor: pointer;
 }
 
+.button:focus-visible {
+  outline: 2px dashed white;
+  outline-offset: 3px;
+}
+
 @media (hover: hover) {
   /* when supported */
+  .link:hover {
+    text-decoration: underline;
+  }
 }
 
 /* ================================================ */

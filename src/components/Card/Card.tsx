@@ -1,13 +1,9 @@
 'use client';
 
-// Please refactor this soon!!
+// Bar bar coding is real!
 
-import React, { Fragment, useCallback, useMemo, useState } from 'react';
-import { Menu, Transition } from '@headlessui/react';
-import { toast } from 'react-toastify';
+import React, { useMemo, useState } from 'react';
 import { getContrast } from 'accessible-colors';
-import { IoIosArrowDown } from 'react-icons/io';
-import { TbCopy } from 'react-icons/tb';
 import { BsFolderPlus, BsFillFolderFill } from 'react-icons/bs';
 import {
   HiLockClosed,
@@ -21,19 +17,17 @@ import { lock, unlock } from '@/src/redux/features/conservedSlice';
 
 import { coverPreview } from '@/src/data/coverPreview';
 
-import IllustrationOneSVG from '@/src/elements/IllustrationOneSVG/IllustrationOneSVG';
-import IllustrationTwoSVG from '@/src/elements/IllustrationTwoSVG/IllustrationTwoSVG';
-import IllustrationThreeSVG from '@/src/elements/IllustrationThreeSVG/IllustrationThreeSVG';
-import IllustrationFourSVG from '@/src/elements/IllustrationFourSVG/IllustrationFourSVG';
-import RatioBadge from '@/src/elements/RatioBadge/RatioBadge';
+import PreviewSolid from '@/src/elements/PreviewSolid/PreviewSolid';
+import PreviewPattern from '@/src/elements/PreviewPattern/PreviewPattern';
+import PreviewText from '@/src/elements/PreviewText/PreviewText';
+import PreviewGradient from '@/src/elements/PreviewGradient/PreviewGradient';
+import PreviewIllustration from '@/src/elements/PreviewIllustration/PreviewIllustration';
+
+import ButtonCopy from '@/src/elements/ButtonCopy/ButtonCopy';
 import SlideButton from '@/src/elements/SlideButton/SlideButton';
 import IndicatorSlider from '@/src/elements/IndicatorSlider/IndicatorSlider';
 
-import {
-  ColorPair,
-  CustomColorType,
-  ColorIconType,
-} from '@/src/types/ColorType';
+import { ColorPair } from '@/src/types/ColorType';
 
 import styles from './Card.module.css';
 
@@ -72,19 +66,6 @@ const Card = ({ data, index }: Props) => {
   const contrastRatio = useMemo(() => {
     return getContrast(primary.hex, secondary.hex);
   }, [primary.hex, secondary.hex]);
-
-  const handleCopy = useCallback((text: string) => {
-    navigator.clipboard
-      .writeText(text)
-      .then(() => {
-        toast(`"${text}" copied`, {
-          icon: <TbCopy />,
-        });
-      })
-      .catch(() => {
-        window.alert('Copy failed, please update your browser!');
-      });
-  }, []);
 
   const addToCollection = () => {
     const now = new Date();
@@ -178,252 +159,57 @@ const Card = ({ data, index }: Props) => {
         {loading ? (
           <>
             {!isLocked ? (
-              <div
-                className={`${styles.cardPairColor} ${styles.sparklingAnimation}`}
-                style={
-                  {
-                    '--first-color': `#${primary.hex}`,
-                    '--second-color': `#${secondary.hex}`,
-                  } as CustomColorType
-                }
-              />
+              <div>
+                <PreviewSolid
+                  loading={loading}
+                  primary={primary}
+                  secondary={secondary}
+                />
+              </div>
             ) : (
-              // Bar Bar Component
-              // Bar Bar Component
               <>
                 {(cover === 0 || cover > 5) && (
                   <div>
-                    <div
-                      className={styles.cardPairColor}
-                      style={
-                        {
-                          '--first-color': `#${primary.hex}`,
-                          '--second-color': `#${secondary.hex}`,
-                        } as CustomColorType
-                      }
-                    />
+                    <PreviewSolid primary={primary} secondary={secondary} />
                   </div>
                 )}
 
                 {preview === 'Illustration' && (
-                  <>
-                    <div className={styles.slide}>
-                      {slideIllustration === 0 && (
-                        <div className={styles.cardPairPreview}>
-                          <IllustrationOneSVG
-                            mainColor={
-                              isIllustrationSwap ? secondary.hex : primary.hex
-                            }
-                            accentColor={
-                              isIllustrationSwap ? primary.hex : secondary.hex
-                            }
-                          />
-                        </div>
-                      )}
-                      {slideIllustration === 1 && (
-                        <div className={styles.cardPairPreview}>
-                          <IllustrationTwoSVG
-                            mainColor={
-                              isIllustrationSwap ? secondary.hex : primary.hex
-                            }
-                            accentColor={
-                              isIllustrationSwap ? primary.hex : secondary.hex
-                            }
-                          />
-                        </div>
-                      )}
-                      {slideIllustration === 2 && (
-                        <div className={styles.cardPairPreview}>
-                          <IllustrationThreeSVG
-                            mainColor={
-                              isIllustrationSwap ? secondary.hex : primary.hex
-                            }
-                            accentColor={
-                              isIllustrationSwap ? primary.hex : secondary.hex
-                            }
-                          />
-                        </div>
-                      )}
-                      {slideIllustration === 3 && (
-                        <div className={styles.cardPairPreview}>
-                          <IllustrationFourSVG
-                            mainColor={
-                              isIllustrationSwap ? secondary.hex : primary.hex
-                            }
-                            accentColor={
-                              isIllustrationSwap ? primary.hex : secondary.hex
-                            }
-                          />
-                        </div>
-                      )}
-                    </div>
-                  </>
+                  <div>
+                    <PreviewIllustration
+                      primary={primary}
+                      secondary={secondary}
+                      slideIllustration={slideIllustration}
+                      isIllustrationSwap={isIllustrationSwap}
+                    />
+                  </div>
                 )}
 
                 {preview === 'Pattern' && (
-                  <div className={styles.slide}>
-                    {slidePattern === 0 && (
-                      <div
-                        className={styles.cardPatternZigzag}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isPatternSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isPatternSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
-
-                    {slidePattern === 1 && (
-                      <div
-                        className={styles.cardPatternWindmill}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isPatternSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isPatternSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
-
-                    {slidePattern === 2 && (
-                      <div
-                        className={styles.cardPatternCircledot}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isPatternSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isPatternSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
-
-                    {slidePattern === 3 && (
-                      <div
-                        className={styles.cardPatternCircleWave}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isPatternSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isPatternSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
+                  <div>
+                    <PreviewPattern
+                      primary={primary}
+                      secondary={secondary}
+                      slidePattern={slidePattern}
+                      isPatternSwap={isPatternSwap}
+                    />
                   </div>
                 )}
 
                 {preview === 'Text' && (
                   <div>
-                    <div
-                      className={styles.cardTypoColor}
-                      style={
-                        {
-                          '--first-color': `#${primary.hex}`,
-                          '--second-color': `#${secondary.hex}`,
-                        } as CustomColorType
-                      }
-                    >
-                      <div className={styles.cardTypoColorMain}>
-                        <p className={styles.cardTypoTextBold}>
-                          Puos tenetur dolorum.
-                        </p>
-                        <p className={styles.cardTypoText}>
-                          Eveniet sint maiores quisquam.
-                        </p>
-                      </div>
-                      <div className={styles.cardTypoColorAccent}>
-                        <p className={styles.cardTypoTextBold}>
-                          Puos tenetur dolorum.
-                        </p>
-                        <p className={styles.cardTypoText}>
-                          Eveniet sint maiores quisquam.
-                        </p>
-                      </div>
-                    </div>
+                    <PreviewText primary={primary} secondary={secondary} />
                   </div>
                 )}
 
                 {preview === 'Gradient' && (
-                  <div className={styles.slide}>
-                    {slideGradient === 0 && (
-                      <div
-                        className={styles.cardLinearGradient}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isGradientSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isGradientSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
-
-                    {slideGradient === 1 && (
-                      <div
-                        className={styles.cardRadialGradient}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isGradientSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isGradientSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
-
-                    {slideGradient === 2 && (
-                      <div
-                        className={styles.cardLinearGradientRepeat}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isGradientSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isGradientSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
-
-                    {slideGradient === 3 && (
-                      <div
-                        className={styles.cardConicGradient}
-                        style={
-                          {
-                            '--first-color': `#${
-                              isGradientSwap ? secondary.hex : primary.hex
-                            }`,
-                            '--second-color': `#${
-                              isGradientSwap ? primary.hex : secondary.hex
-                            }`,
-                          } as CustomColorType
-                        }
-                      />
-                    )}
+                  <div>
+                    <PreviewGradient
+                      primary={primary}
+                      secondary={secondary}
+                      slideGradient={slideGradient}
+                      isGradientSwap={isGradientSwap}
+                    />
                   </div>
                 )}
 
@@ -437,8 +223,6 @@ const Card = ({ data, index }: Props) => {
                 </div>
               </>
             )}
-            {/* // Bar Bar Component
-              // Bar Bar Component */}
           </>
         ) : (
           <>
@@ -486,69 +270,19 @@ const Card = ({ data, index }: Props) => {
 
             {(cover === 0 || cover > 5) && (
               <div>
-                <div
-                  className={styles.cardPairColor}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                />
+                <PreviewSolid primary={primary} secondary={secondary} />
               </div>
             )}
 
             {preview === 'Illustration' && (
-              <>
-                <div className={styles.slide}>
-                  {slideIllustration === 0 && (
-                    <div className={styles.cardPairPreview}>
-                      <IllustrationOneSVG
-                        mainColor={
-                          isIllustrationSwap ? secondary.hex : primary.hex
-                        }
-                        accentColor={
-                          isIllustrationSwap ? primary.hex : secondary.hex
-                        }
-                      />
-                    </div>
-                  )}
-                  {slideIllustration === 1 && (
-                    <div className={styles.cardPairPreview}>
-                      <IllustrationTwoSVG
-                        mainColor={
-                          isIllustrationSwap ? secondary.hex : primary.hex
-                        }
-                        accentColor={
-                          isIllustrationSwap ? primary.hex : secondary.hex
-                        }
-                      />
-                    </div>
-                  )}
-                  {slideIllustration === 2 && (
-                    <div className={styles.cardPairPreview}>
-                      <IllustrationThreeSVG
-                        mainColor={
-                          isIllustrationSwap ? secondary.hex : primary.hex
-                        }
-                        accentColor={
-                          isIllustrationSwap ? primary.hex : secondary.hex
-                        }
-                      />
-                    </div>
-                  )}
-                  {slideIllustration === 3 && (
-                    <div className={styles.cardPairPreview}>
-                      <IllustrationFourSVG
-                        mainColor={
-                          isIllustrationSwap ? secondary.hex : primary.hex
-                        }
-                        accentColor={
-                          isIllustrationSwap ? primary.hex : secondary.hex
-                        }
-                      />
-                    </div>
-                  )}
+              <div>
+                <div>
+                  <PreviewIllustration
+                    primary={primary}
+                    secondary={secondary}
+                    slideIllustration={slideIllustration}
+                    isIllustrationSwap={isIllustrationSwap}
+                  />
                 </div>
 
                 <div className={styles.topleftFloat}>
@@ -563,6 +297,7 @@ const Card = ({ data, index }: Props) => {
                     <HiMiniArrowsRightLeft />
                   </button>
                 </div>
+
                 <div className={styles.indicator}>
                   <IndicatorSlider
                     currentSlide={slideIllustration}
@@ -574,6 +309,7 @@ const Card = ({ data, index }: Props) => {
                     goToSlide={goToSlide}
                   />
                 </div>
+
                 <div className={styles.slideButton}>
                   <SlideButton
                     direction="prev"
@@ -584,74 +320,19 @@ const Card = ({ data, index }: Props) => {
                     onClick={() => nextSlide('illustration')}
                   />
                 </div>
-              </>
+              </div>
             )}
 
             {preview === 'Pattern' && (
-              <div className={styles.slide}>
-                {slidePattern === 0 && (
-                  <div
-                    className={styles.cardPatternZigzag}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isPatternSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isPatternSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
+              <div>
+                <div>
+                  <PreviewPattern
+                    primary={primary}
+                    secondary={secondary}
+                    slidePattern={slidePattern}
+                    isPatternSwap={isPatternSwap}
                   />
-                )}
-
-                {slidePattern === 1 && (
-                  <div
-                    className={styles.cardPatternBubbleCandy}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isPatternSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isPatternSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
-                  />
-                )}
-
-                {slidePattern === 2 && (
-                  <div
-                    className={styles.cardPatternWire}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isPatternSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isPatternSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
-                  />
-                )}
-
-                {slidePattern === 3 && (
-                  <div
-                    className={styles.cardPatternCircleWave}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isPatternSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isPatternSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
-                  />
-                )}
+                </div>
 
                 <div className={styles.topleftFloat}>
                   <button
@@ -691,101 +372,24 @@ const Card = ({ data, index }: Props) => {
 
             {preview === 'Text' && (
               <div>
-                <div
-                  className={styles.cardTypoColor}
-                  style={
-                    {
-                      '--first-color': `#${primary.hex}`,
-                      '--second-color': `#${secondary.hex}`,
-                    } as CustomColorType
-                  }
-                >
-                  <div className={styles.cardTypoColorMain}>
-                    <p className={styles.cardTypoTextBold}>
-                      Puos tenetur dolorum.
-                    </p>
-                    <p className={styles.cardTypoText}>
-                      Eveniet sint maiores quisquam.
-                    </p>
-                  </div>
-                  <div className={styles.cardTypoColorAccent}>
-                    <p className={styles.cardTypoTextBold}>
-                      Puos tenetur dolorum.
-                    </p>
-                    <p className={styles.cardTypoText}>
-                      Eveniet sint maiores quisquam.
-                    </p>
-                  </div>
-                  {contrastRatio && <RatioBadge ratio={contrastRatio} />}
-                </div>
+                <PreviewText
+                  primary={primary}
+                  secondary={secondary}
+                  contrastRatio={contrastRatio}
+                />
               </div>
             )}
 
             {preview === 'Gradient' && (
-              <div className={styles.slide}>
-                {slideGradient === 0 && (
-                  <div
-                    className={styles.cardLinearGradient}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isGradientSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isGradientSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
+              <div>
+                <div>
+                  <PreviewGradient
+                    primary={primary}
+                    secondary={secondary}
+                    slideGradient={slideGradient}
+                    isGradientSwap={isGradientSwap}
                   />
-                )}
-
-                {slideGradient === 1 && (
-                  <div
-                    className={styles.cardRadialGradient}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isGradientSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isGradientSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
-                  />
-                )}
-
-                {slideGradient === 2 && (
-                  <div
-                    className={styles.cardLinearGradientRepeat}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isGradientSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isGradientSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
-                  />
-                )}
-
-                {slideGradient === 3 && (
-                  <div
-                    className={styles.cardConicGradient}
-                    style={
-                      {
-                        '--first-color': `#${
-                          isGradientSwap ? secondary.hex : primary.hex
-                        }`,
-                        '--second-color': `#${
-                          isGradientSwap ? primary.hex : secondary.hex
-                        }`,
-                      } as CustomColorType
-                    }
-                  />
-                )}
+                </div>
 
                 <div className={styles.topleftFloat}>
                   <button
@@ -825,170 +429,19 @@ const Card = ({ data, index }: Props) => {
           </>
         )}
       </div>
+
       <div className={styles.cardInfo}>
         <div className={styles.cardButtonWrap}>
-          <div className={styles.buttonWrap}>
-            <Menu>
-              <Menu.Button
-                className={styles.menuButton}
-                disabled={loading}
-                title="Copy"
-              >
-                <span
-                  className="colorIcon"
-                  style={
-                    {
-                      '--color': `#${primary.hex}`,
-                    } as ColorIconType
-                  }
-                />
-                <span className={styles.mbLabel}>
-                  {loading && !isLocked
-                    ? '#######'
-                    : `#${primary.hex.toUpperCase()}`}
-                </span>
-                <IoIosArrowDown />
-              </Menu.Button>
-              {!loading && (
-                <Transition
-                  as={Fragment}
-                  enter="at-enterTransition"
-                  enterFrom="at-fadeSlideOut"
-                  enterTo="at-fadeSlideIn"
-                  leave="at-leaveTransition"
-                  leaveFrom="at-fadeSlideIn"
-                  leaveTo="at-fadeSlideOut"
-                >
-                  <Menu.Items className={styles.menuItems}>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          className={`${styles.menuCopyButton} ${
-                            active ? styles.menuCopyButtonActive : null
-                          }`}
-                          onClick={() => handleCopy(primary.hex)}
-                        >
-                          <TbCopy />
-                          <span>HEX ({primary.hex.toLocaleUpperCase()})</span>
-                        </button>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          className={`${styles.menuCopyButton} ${
-                            active ? styles.menuCopyButtonActive : null
-                          }`}
-                          onClick={() => handleCopy(String(primary.rgb))}
-                        >
-                          <TbCopy />
-                          <span>RGB ({String(primary.rgb)})</span>
-                        </button>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          className={`${styles.menuCopyButton} ${
-                            active ? styles.menuCopyButtonActive : null
-                          }`}
-                          onClick={() =>
-                            handleCopy(
-                              `${primary.hsl[0]}°,${primary.hsl[1]}%,${primary.hsl[2]}%`
-                            )
-                          }
-                        >
-                          <TbCopy />
-                          <span>HSL ({String(primary.hsl)})</span>
-                        </button>
-                      )}
-                    </Menu.Item>
-                  </Menu.Items>
-                </Transition>
-              )}
-            </Menu>
-          </div>
-          <div className={styles.buttonWrap}>
-            <Menu>
-              <Menu.Button
-                className={styles.menuButton}
-                disabled={loading}
-                title="Copy"
-              >
-                <span
-                  className="colorIcon"
-                  style={
-                    {
-                      '--color': `#${secondary.hex}`,
-                    } as ColorIconType
-                  }
-                />
-                <span className={styles.mbLabel}>
-                  {loading && !isLocked
-                    ? '#######'
-                    : `#${secondary.hex.toUpperCase()}`}
-                </span>
-                <IoIosArrowDown />
-              </Menu.Button>
-              {!loading && (
-                <Transition
-                  as={Fragment}
-                  enter="at-enterTransition"
-                  enterFrom="at-fadeSlideOut"
-                  enterTo="at-fadeSlideIn"
-                  leave="at-leaveTransition"
-                  leaveFrom="at-fadeSlideIn"
-                  leaveTo="at-fadeSlideOut"
-                >
-                  <Menu.Items className={styles.menuItems}>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          className={`${styles.menuCopyButton} ${
-                            active ? styles.menuCopyButtonActive : null
-                          }`}
-                          onClick={() => handleCopy(secondary.hex)}
-                        >
-                          <TbCopy />
-                          <span>HEX ({secondary.hex.toLocaleUpperCase()})</span>
-                        </button>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          className={`${styles.menuCopyButton} ${
-                            active ? styles.menuCopyButtonActive : null
-                          }`}
-                          onClick={() => handleCopy(String(secondary.rgb))}
-                        >
-                          <TbCopy />
-                          <span>RGB ({String(secondary.rgb)})</span>
-                        </button>
-                      )}
-                    </Menu.Item>
-                    <Menu.Item>
-                      {({ active }) => (
-                        <button
-                          className={`${styles.menuCopyButton} ${
-                            active ? styles.menuCopyButtonActive : null
-                          }`}
-                          onClick={() =>
-                            handleCopy(
-                              `${secondary.hsl[0]}°,${secondary.hsl[1]}%,${secondary.hsl[2]}%`
-                            )
-                          }
-                        >
-                          <TbCopy />
-                          <span>HSL ({String(secondary.hsl)})</span>
-                        </button>
-                      )}
-                    </Menu.Item>
-                  </Menu.Items>
-                </Transition>
-              )}
-            </Menu>
-          </div>
+          <ButtonCopy
+            color={primary}
+            loading={loading}
+            isLocked={Boolean(isLocked)}
+          />
+          <ButtonCopy
+            color={secondary}
+            loading={loading}
+            isLocked={Boolean(isLocked)}
+          />
         </div>
       </div>
     </div>

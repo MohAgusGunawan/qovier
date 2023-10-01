@@ -3,14 +3,7 @@ import AES from 'crypto-js/aes';
 
 import { AppStartListening } from '../listenerMiddleware';
 
-import {
-  lolKeyA,
-  lolKeyB,
-  lolKeyC,
-  lolKeyD,
-  lolKeyE,
-  lolKeyF,
-} from '@/src/data/lolKey';
+import { lolKey } from '@/src/data/lolKey';
 
 import { Collection } from '@/src/types/ColorType';
 
@@ -52,7 +45,7 @@ export const collectionFeatureListeners = (
       const collectionData = listenerAPI.getState().collection.value;
       const encryptData = AES.encrypt(
         JSON.stringify(collectionData),
-        lolKeyA + lolKeyB + lolKeyC + lolKeyD + lolKeyE + lolKeyF
+        lolKey
       ).toString();
 
       localStorage.setItem('qovier-collection', encryptData);

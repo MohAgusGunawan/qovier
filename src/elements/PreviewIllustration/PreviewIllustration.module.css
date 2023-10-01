@@ -1,17 +1,11 @@
-.menuConserved {
+.cardPairPreview {
   display: flex;
   justify-content: center;
   align-items: center;
 
-  padding: 0.5em;
-  gap: 0.2em;
+  aspect-ratio: 16 / 9;
 
-  width: 40px;
-
-  border-radius: 50% / 50%;
-
-  font-weight: var(--fw-medium);
-  color: var(--text-common-color);
+  background: var(--background-color);
 }
 
 @media (hover: hover) {
@@ -22,14 +16,6 @@
 /* Tablet Responsive */
 
 @media only screen and (min-width: 768px) {
-  .menuConserved {
-    width: unset;
-
-    padding: 0.5em 0.875em;
-    gap: 0.5em;
-
-    border-radius: 25% / 50%;
-  }
 }
 
 /* ================================================ */

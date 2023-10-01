@@ -30,7 +30,7 @@ const Padlock = ({ num }: Props) => {
   return (
     <span
       className={`${styles.menuConserved} ${
-        startAnimate ? styles.pulseAnimation : null
+        startAnimate ? 'pulseAnimation' : null
       }`}
       onAnimationEnd={() => animationEnd()}
       title="Unused lock"

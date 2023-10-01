@@ -1,8 +1,8 @@
-export const hueSaturationMin = 30;
-export const hueLightnessMin = 25;
-export const hueLightnessMax = 85;
+const hueSaturationMin = 30;
+const hueLightnessMin = 25;
+const hueLightnessMax = 85;
 
-const rangeColor = {
+export const rangeColor = {
   red: {
     hue: {
       min: 345,

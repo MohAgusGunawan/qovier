@@ -2,12 +2,12 @@ import Carousel from 'nuka-carousel';
 
 import ImageElement from '@/src/elements/ImageElement/ImageElement';
 
-import styles from './ColorwheelSlider.module.css';
-
 import ColorWheelPNG from '@/src/assets/images/color-wheel-rgb.png';
 import ColorWheelPrimaryPNG from '@/src/assets/images/color-wheel-rgb-primary.png';
 import ColorWheelSecondaryPNG from '@/src/assets/images/color-wheel-rgb-secondary.png';
 import ColorWheelTertiaryPNG from '@/src/assets/images/color-wheel-rgb-tertiary.png';
+
+import styles from './ColorwheelSlider.module.css';
 
 const ColorwheelSlider = () => {
   const settings = {

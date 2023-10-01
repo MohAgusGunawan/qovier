@@ -3,14 +3,7 @@ import AES from 'crypto-js/aes';
 
 import { AppStartListening } from '../listenerMiddleware';
 
-import {
-  lolKeyA,
-  lolKeyB,
-  lolKeyC,
-  lolKeyD,
-  lolKeyE,
-  lolKeyF,
-} from '@/src/data/lolKey';
+import { lolKey } from '@/src/data/lolKey';
 
 import { Conserved } from '@/src/types/ColorType';
 
@@ -49,7 +42,7 @@ export const conservedFeatureListeners = (
       const conservedData = listenerAPI.getState().conserved.value;
       const encryptData = AES.encrypt(
         JSON.stringify(conservedData),
-        lolKeyA + lolKeyB + lolKeyC + lolKeyD + lolKeyE + lolKeyF
+        lolKey
       ).toString();
 
       localStorage.setItem('qovier-conserved', encryptData);
