@@ -1,34 +1,28 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Qovier — Explore Color Pairs
 
-## Getting Started
+Qovier is an online tool that generates stunning color pairs to help you select the perfect combinations for your design projects.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+![Qovier's Banner](/screenshots/qovier-banner.png)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Main Features 🚀
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- Get a **visual preview** of your selected colors with multi-color previews.
+- Refine your color choices by **filtering based on hue range or color code**.
+- **Secure your preferred color** combination before generating new ones.
+- **Store your favorite color pairs** locally for quick access.
 
-## Learn More
+## Complement Features 🎨
 
-To learn more about Next.js, take a look at the following resources:
+- Easily **copy color codes in various formats**, including HEX, RGB, and HSL.
+- Evaluate text previews with **contrast ratios for readability assurance**.
+- Effortlessly **interchange colors** in previews to experiment with different combinations.
+- Automatically Add labels to **categorize your color collections** for quick reference.
+- Apply **tint and shade variations** within your color collections.
+- Automatically **identify complementary colors** to achieve harmonious designs.
+- **Organize colors** by hue range for convenient selection.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+---
