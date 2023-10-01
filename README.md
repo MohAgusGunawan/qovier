@@ -2,11 +2,7 @@
 
 Qovier is an online tool that generates stunning color pairs to help you select the perfect combinations for your design projects.
 
----
-
 ![Qovier's Banner](/screenshots/qovier-banner.png)
-
----
 
 ## Main Features 🚀
 
