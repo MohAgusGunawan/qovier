@@ -156,9 +156,77 @@ const Card = ({ data, index }: Props) => {
   return (
     <div className={styles.card}>
       <div className={styles.cardDisplay}>
+        {/* Top Right Float Action */}
         {loading ? (
-          <>
-            {!isLocked ? (
+          isLocked ? (
+            <div className={styles.topRightFloatButton}>
+              <button className={styles.buttonIcon}>
+                {isAdded ? <BsFillFolderFill /> : <BsFolderPlus />}
+              </button>
+              <button className={styles.buttonIcon}>
+                {isLocked ? <HiLockClosed /> : <HiOutlineLockOpen />}
+              </button>
+            </div>
+          ) : null
+        ) : (
+          <div className={styles.topRightFloatButton}>
+            {isAdded ? (
+              <button
+                className={styles.buttonIcon}
+                aria-label="Remove from My Collection"
+                title="Remove from My Collection"
+                onClick={() => removeFromCollection()}
+              >
+                <BsFillFolderFill />
+              </button>
+            ) : (
+              <button
+                className={styles.buttonIcon}
+                aria-label="Add to My Collection"
+                title="Add to My Collection"
+                onClick={() => addToCollection()}
+              >
+                <BsFolderPlus />
+              </button>
+            )}
+
+            {isLocked ? (
+              <button
+                className={styles.buttonIcon}
+                aria-label="Unlock these color pairs"
+                title="Unlock these color pairs"
+                onClick={() => removeFromConserved()}
+              >
+                <HiLockClosed />
+              </button>
+            ) : (
+              <button
+                className={styles.buttonIcon}
+                aria-label="Lock these color pairs"
+                title="Lock these color pairs"
+                onClick={() => addToConserved()}
+              >
+                <HiOutlineLockOpen />
+              </button>
+            )}
+          </div>
+        )}
+        {/* Top Right Float Action */}
+
+        {/* Preview */}
+        {(cover === 0 || cover > 5) && (
+          <div>
+            <PreviewSolid
+              primary={primary}
+              secondary={secondary}
+              loading={loading && !Boolean(isLocked)}
+            />
+          </div>
+        )}
+
+        {preview === 'Illustration' && (
+          <div>
+            {loading && !isLocked ? (
               <div>
                 <PreviewSolid
                   loading={loading}
@@ -167,124 +235,18 @@ const Card = ({ data, index }: Props) => {
                 />
               </div>
             ) : (
-              <>
-                {(cover === 0 || cover > 5) && (
-                  <div>
-                    <PreviewSolid primary={primary} secondary={secondary} />
-                  </div>
-                )}
-
-                {preview === 'Illustration' && (
-                  <div>
-                    <PreviewIllustration
-                      primary={primary}
-                      secondary={secondary}
-                      slideIllustration={slideIllustration}
-                      isIllustrationSwap={isIllustrationSwap}
-                    />
-                  </div>
-                )}
-
-                {preview === 'Pattern' && (
-                  <div>
-                    <PreviewPattern
-                      primary={primary}
-                      secondary={secondary}
-                      slidePattern={slidePattern}
-                      isPatternSwap={isPatternSwap}
-                    />
-                  </div>
-                )}
-
-                {preview === 'Text' && (
-                  <div>
-                    <PreviewText primary={primary} secondary={secondary} />
-                  </div>
-                )}
-
-                {preview === 'Gradient' && (
-                  <div>
-                    <PreviewGradient
-                      primary={primary}
-                      secondary={secondary}
-                      slideGradient={slideGradient}
-                      isGradientSwap={isGradientSwap}
-                    />
-                  </div>
-                )}
-
-                <div className={styles.topRightFloatButton}>
-                  <button className={styles.buttonIcon}>
-                    {isAdded ? <BsFillFolderFill /> : <BsFolderPlus />}
-                  </button>
-                  <button className={styles.buttonIcon}>
-                    <HiLockClosed />
-                  </button>
-                </div>
-              </>
-            )}
-          </>
-        ) : (
-          <>
-            <div className={styles.topRightFloatButton}>
-              {isAdded ? (
-                <button
-                  className={styles.buttonIcon}
-                  aria-label="Remove from My Collection"
-                  title="Remove from My Collection"
-                  onClick={() => removeFromCollection()}
-                >
-                  <BsFillFolderFill />
-                </button>
-              ) : (
-                <button
-                  className={styles.buttonIcon}
-                  aria-label="Add to My Collection"
-                  title="Add to My Collection"
-                  onClick={() => addToCollection()}
-                >
-                  <BsFolderPlus />
-                </button>
-              )}
-
-              {isLocked ? (
-                <button
-                  className={styles.buttonIcon}
-                  aria-label="Unlock these color pairs"
-                  title="Unlock these color pairs"
-                  onClick={() => removeFromConserved()}
-                >
-                  <HiLockClosed />
-                </button>
-              ) : (
-                <button
-                  className={styles.buttonIcon}
-                  aria-label="Lock these color pairs"
-                  title="Lock these color pairs"
-                  onClick={() => addToConserved()}
-                >
-                  <HiOutlineLockOpen />
-                </button>
-              )}
-            </div>
-
-            {(cover === 0 || cover > 5) && (
               <div>
-                <PreviewSolid primary={primary} secondary={secondary} />
+                <PreviewIllustration
+                  primary={primary}
+                  secondary={secondary}
+                  slideIllustration={slideIllustration}
+                  isIllustrationSwap={isIllustrationSwap}
+                />
               </div>
             )}
 
-            {preview === 'Illustration' && (
-              <div>
-                <div>
-                  <PreviewIllustration
-                    primary={primary}
-                    secondary={secondary}
-                    slideIllustration={slideIllustration}
-                    isIllustrationSwap={isIllustrationSwap}
-                  />
-                </div>
-
+            {loading === false && (
+              <>
                 <div className={styles.topleftFloat}>
                   <button
                     aria-label="Swap Color"
@@ -320,20 +282,34 @@ const Card = ({ data, index }: Props) => {
                     onClick={() => nextSlide('illustration')}
                   />
                 </div>
+              </>
+            )}
+          </div>
+        )}
+
+        {preview === 'Pattern' && (
+          <div>
+            {loading && !isLocked ? (
+              <div>
+                <PreviewSolid
+                  loading={loading}
+                  primary={primary}
+                  secondary={secondary}
+                />
+              </div>
+            ) : (
+              <div>
+                <PreviewPattern
+                  primary={primary}
+                  secondary={secondary}
+                  slidePattern={slidePattern}
+                  isPatternSwap={isPatternSwap}
+                />
               </div>
             )}
 
-            {preview === 'Pattern' && (
-              <div>
-                <div>
-                  <PreviewPattern
-                    primary={primary}
-                    secondary={secondary}
-                    slidePattern={slidePattern}
-                    isPatternSwap={isPatternSwap}
-                  />
-                </div>
-
+            {loading === false && (
+              <>
                 <div className={styles.topleftFloat}>
                   <button
                     aria-label="Swap Color"
@@ -367,30 +343,56 @@ const Card = ({ data, index }: Props) => {
                     onClick={() => nextSlide('pattern')}
                   />
                 </div>
-              </div>
+              </>
             )}
+          </div>
+        )}
 
-            {preview === 'Text' && (
+        {preview === 'Text' && (
+          <div>
+            {loading && !isLocked ? (
+              <div>
+                <PreviewSolid
+                  loading={loading}
+                  primary={primary}
+                  secondary={secondary}
+                />
+              </div>
+            ) : (
               <div>
                 <PreviewText
                   primary={primary}
                   secondary={secondary}
-                  contrastRatio={contrastRatio}
+                  contrastRatio={loading ? undefined : contrastRatio}
+                />
+              </div>
+            )}
+          </div>
+        )}
+
+        {preview === 'Gradient' && (
+          <div>
+            {loading && !isLocked ? (
+              <div>
+                <PreviewSolid
+                  loading={loading}
+                  primary={primary}
+                  secondary={secondary}
+                />
+              </div>
+            ) : (
+              <div>
+                <PreviewGradient
+                  primary={primary}
+                  secondary={secondary}
+                  slideGradient={slideGradient}
+                  isGradientSwap={isGradientSwap}
                 />
               </div>
             )}
 
-            {preview === 'Gradient' && (
-              <div>
-                <div>
-                  <PreviewGradient
-                    primary={primary}
-                    secondary={secondary}
-                    slideGradient={slideGradient}
-                    isGradientSwap={isGradientSwap}
-                  />
-                </div>
-
+            {loading === false && (
+              <>
                 <div className={styles.topleftFloat}>
                   <button
                     aria-label="Swap Color"
@@ -424,10 +426,11 @@ const Card = ({ data, index }: Props) => {
                     onClick={() => nextSlide('gradient')}
                   />
                 </div>
-              </div>
+              </>
             )}
-          </>
+          </div>
         )}
+        {/* Preview */}
       </div>
 
       <div className={styles.cardInfo}>
